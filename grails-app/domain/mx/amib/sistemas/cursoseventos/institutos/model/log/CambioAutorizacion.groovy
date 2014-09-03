@@ -4,21 +4,30 @@ import mx.amib.sistemas.cursoseventos.institutos.model.Instituto
 
 class CambioAutorizacion {
 
-	String stAutorizacion
-	String txComentarios
-	Date fhCreacion
+	String estatusAutorizacion
+	String comentarios
+	Date fechaCreacion
+	
 	Instituto instituto
 
 	static belongsTo = [Instituto]
 
 	static mapping = {
+		table 't004_b_cambioautorizacion'
+		
 		id generator: "assigned"
 		version false
+		
+		estatusAutorizacion column:'st_autorizacion'
+		comentarios column:'tx_comentarios'
+		fechaCreacion column:'fh_creacion'
+		
+		instituto column:'id_001_instituto'
 	}
 
 	static constraints = {
-		stAutorizacion nullable: true, maxSize: 1
-		txComentarios nullable: true, maxSize: 1000
-		fhCreacion nullable: true
+		estatusAutorizacion nullable: true, maxSize: 1
+		comentarios nullable: true, maxSize: 1000
+		fechaCreacion nullable: true
 	}
 }

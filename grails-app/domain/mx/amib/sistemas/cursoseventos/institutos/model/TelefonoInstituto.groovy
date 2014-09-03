@@ -9,8 +9,15 @@ class TelefonoInstituto {
 	static belongsTo = [Instituto]
 
 	static mapping = {
+		table 't003_t_telefonosinstituto'
+		
 		id generator: "assigned"
 		version false
+		
+		telefono column:'tx_telefono'
+		fechaCreacion column:'fh_creacion'
+		
+		instituto column:'id_001_instituto'
 	}
 
 	static constraints = {

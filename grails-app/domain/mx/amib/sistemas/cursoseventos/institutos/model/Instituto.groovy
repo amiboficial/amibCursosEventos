@@ -35,19 +35,39 @@ class Instituto {
 	static belongsTo = [TipoInstituto]
 
 	static mapping = {
+		table 't001_t_instituto'
+		
 		id generator: "assigned"
 		version false
+		
+		razonSocial column:'nb_razonsocial'
+		siglas column:'nb_siglas'
+		rfc column:'tx_rfc'
+		correo column:'tx_correo'
+		numeroEscritura column:'nm_numeroescritura'
+		aniosExperiencia column:'nm_aniosexp'
+		urlSitioWeb column:'tx_sitioweburl'
+		aplicaCobroIva column:'st_aplicacobroiva'
+		repLegalNombre column:'nb_replegal_nombre'
+		repLegalPrimerApellido column:'nb_replegal_apellido1'
+		repLegalSegundoApellido column:'nb_replegal_apellido2'
+		domicilioOficialIdSepomex column:'id_domoficial_sepomex'
+		domicilioOficialCalle column:'tx_domoficial_calle'
+		domicilioOficialNumext column:'tx_domoficial_numext'
+		domicilioFiscalIdSepomex column:'id_domfiscal_sepomex'
+		domicilioFiscalCalle column:'tx_domfiscal_calle'
+		domicilioFiscalNumext column:'tx_domfiscal_numext'
+		statusAutorizacion column:'st_autorizacion'
+		fechaAlta column:'fh_alta'
+		fechaFinVigencia column:'fh_finvigencia'
+		fechaCreacion column:'fh_creacion'
+		fechaModificacion column:'fh_modificacion'
+		
+		tipoInstituto column:'id_002_tpinstituto'
 	}
 
 	static constraints = {
-		Long domicilioFiscalIdSepomex
-		String domicilioFiscalCalle
-		String domicilioFiscalNumext
-		String statusAutorizacion
-		Date fechaAlta
-		Date fechaFinVigencia
-		Date fechaCreacion
-		Date fechaModificacion
+
 		razonSocial nullable: true, maxSize: 254
 		siglas nullable: true, maxSize: 4
 		rfc nullable: true, maxSize: 13
@@ -70,5 +90,6 @@ class Instituto {
 		fechaFinVigencia nullable: true
 		fechaCreacion nullable: true
 		fechaModificacion nullable: true
+		
 	}
 }
