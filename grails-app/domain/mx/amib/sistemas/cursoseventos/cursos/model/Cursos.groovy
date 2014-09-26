@@ -1,9 +1,10 @@
 package mx.amib.sistemas.cursoseventos.cursos.model
 
 
-import mx.amib.sistemas.cursoseventos.institutos.model.Evento
 import mx.amib.sistemas.cursoseventos.cursos.model.log.CambioStatus
 import mx.amib.sistemas.cursoseventos.cursos.model.Expositor
+import mx.amib.sistemas.cursoseventos.cursos.model.catalogo.DocumentoCursos
+import mx.amib.sistemas.cursoseventos.eventos.model.Evento;
 
 class Cursos {
 	
@@ -11,7 +12,7 @@ class Cursos {
 	String nombreDelCurso
 	String siglas
 	String objetivoDelCurso
-	String duracionEnHoras
+	Integer duracionEnHoras
 	String observaciones
 	
 	//Datos del coordinador
@@ -22,11 +23,13 @@ class Cursos {
 	String faxCoordinador
 	String email
 	Boolean status
+	Date fechaCreacion
+	Date fechaModificacion
 	
 	
 	//TipoCurso tipoCurso
 	
-	static hasMany = [cambioStatus: CambioStatus, expositores:Expositor]
+	static hasMany = [cambioStatus: CambioStatus, expositores:Expositor, documentoCurso: DocumentoCursos]
 	//static belongsTo = [TipoCurso]
 	
 	static mapping = {
@@ -48,6 +51,8 @@ class Cursos {
 		faxCoordinador column:'tx_coordi_fax'
 		email column:'tx_coordi_correoe'
 		status column:'st_estatus'
+		fechaCreacion column:'fh_creacion'
+		fechaModificacion column:'fh_modificacion'
 	}
 	
     static constraints = {

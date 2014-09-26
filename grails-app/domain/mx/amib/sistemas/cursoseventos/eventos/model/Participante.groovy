@@ -4,6 +4,8 @@ class Participante {
 	String matricula
 	String nombreParticipante
 	Evento evento
+	Date fechaCreacion
+	Date fechaModificacion
 	
 	static belongsTo = [Evento]
 	
@@ -15,7 +17,8 @@ class Participante {
 		version false
 		matricula column:'nu_matricula'
 		nombreParticipante column:'nb_ncompleto'
-		
+		fechaCreacion column: 'fh_creacion'
+		fechaModificacion column: 'fh_modificacion'
 		evento column:'id_007_evento'
 		
 	}

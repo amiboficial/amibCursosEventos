@@ -3,21 +3,24 @@ package mx.amib.sistemas.cursoseventos.eventos.model
 class HorarioEvento {
 	
 	Date fechaDia
-	String horaInicio
-	String horafin
+	Date horaInicio
+	Date horafin
+	Date fechaCreacion
+	
 	Evento evento
 	static belongTo = [Evento]
 	
 	static mapping = {
 		table 't008_t_horarioevento'
 		
-		id generator: "asigned"
+		id generator: "assigned"
 		version false
 		
 		fechaDia column:'fh_dia'
 		horaInicio column: 'nu_horainicio'
 		horafin column: 'nu_horafin'
-		
+		fechaCreacion column: 'fh_creacion'
+		 
 		evento column:'id_007_evento'
 		
 	}

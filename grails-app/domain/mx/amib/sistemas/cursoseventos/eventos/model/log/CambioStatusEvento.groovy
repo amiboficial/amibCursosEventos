@@ -15,7 +15,7 @@ class CambioStatusEvento {
 	static mapping = {
 		table 't016_b_cambioestatusevt'
 		
-		id generator: 'asigned'
+		id generator: "assigned"
 		version false
 		
 		estatusStatus column:'st_status'

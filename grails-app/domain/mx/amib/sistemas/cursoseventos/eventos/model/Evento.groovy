@@ -21,7 +21,8 @@ class Evento {
 	Boolean estatus
 	String domicilioSEDECalle
 	String domicilioSEDENumero
-	String domicilioSEDESepomex
+	Long domicilioSEDESepomex
+	Date fechaCreacion
 	
 	static hasMany = [expositores: Expositor, participantes: Participante, domicilo: Domicilio]
 
@@ -42,6 +43,7 @@ class Evento {
 		domicilioSEDECalle column:'tx_domsede_calle'
 		domicilioSEDENumero column:'tx_domsede_numext'
 		domicilioSEDESepomex column:'id_domsede_f_sepomex'
+		fechaCreacion column:'fh_creacion'
 		}
 	
     static constraints = {
@@ -57,6 +59,7 @@ class Evento {
 		domicilioSEDECalle nullable: true, maxSize: 100
 		domicilioSEDENumero nullable: true, maxSize: 20
 		domicilioSEDESepomex nullable: true, maxSize: 100
+		fechaCreacion nullable: true, maxSize: 100
 	
     }
 }

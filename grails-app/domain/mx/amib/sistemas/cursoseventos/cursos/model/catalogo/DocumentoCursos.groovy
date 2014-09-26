@@ -6,10 +6,12 @@ import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
 class DocumentoCursos {
 	
 	String documentos
+	Date fechaCreacion
 	
 	Cursos curso
+	TipoDocumentoCurso tipoDocumentoCurso
 	
-	static belongsTo = [Cursos]
+	static belongsTo = [Cursos, TipoDocumentoCurso]
 	
 	
 	static mapping = {
@@ -18,15 +20,17 @@ class DocumentoCursos {
 		id generator: "assigned"
 		version false
 		
-		documentos column:'tx_telefono'
-		
+		documentos column:'id_f_doc'
+		fechaCreacion column:'fh_creacion'
 		
 		curso column:'id_006_curso'
+		tipoDocumentoCurso column:'id_013_curso'
 	}
 	
 
 	
 
     static constraints = {
+		documentos nullable: true, maxSize: 100
     }
 }

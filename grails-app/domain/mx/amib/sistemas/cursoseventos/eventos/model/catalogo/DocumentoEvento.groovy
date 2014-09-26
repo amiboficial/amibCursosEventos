@@ -4,7 +4,9 @@ import mx.amib.sistemas.cursoseventos.eventos.model.Evento
 import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.TipoDocumentoEvento
 
 class DocumentoEvento {
-	String documentos
+	
+	Long documentos
+	Date fechaCreacion
 	
 	Evento evento
 	TipoDocumentoEvento tipoDocumentoEvento
@@ -20,7 +22,7 @@ class DocumentoEvento {
 		
 		evento column:'id_007_evento'
 		tipoDocumentoEvento column:'id_015_tpdocevento'
-		
+		fechaCreacion column:'fh_creacion'
 		
 	}
 

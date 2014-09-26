@@ -5,6 +5,8 @@ class Expositor {
 	String nombreExpositor
 	String primerApellidoExpositor
 	String segundoApellidoExpositor
+	Integer duracionHoras
+	Date fechaCreacion
 	String horas
 	Cursos curso
 	
@@ -19,7 +21,7 @@ class Expositor {
 		primerApellidoExpositor column:'nb_apellido1'
 		segundoApellidoExpositor column:'nb_apellido2'
 		horas column:'nu_horas'
-		
+		fechaCreacion column:'fh_creacion'
 		curso column:'id_006_curso'
 	}
 	 
