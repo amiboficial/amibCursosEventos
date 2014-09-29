@@ -59,7 +59,7 @@ class Evento {
 		domicilioSEDECalle nullable: true, maxSize: 100
 		domicilioSEDENumero nullable: true, maxSize: 20
 		domicilioSEDESepomex nullable: true, maxSize: 100
-		fechaCreacion nullable: true, maxSize: 100
+		fechaCreacion nullable: true
 	
     }
 }

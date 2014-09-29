@@ -70,6 +70,8 @@ class Cursos {
 		faxCoordinador nullable: true, maxSize: 254
 		email email: true, blank: false, unique: true
 		status nullable: true
+		fechaCreacion nullable: true
+		fechaModificacion nullable: true
 		
     }
 	

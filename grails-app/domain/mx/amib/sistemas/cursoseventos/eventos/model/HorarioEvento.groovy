@@ -29,5 +29,6 @@ class HorarioEvento {
 		fechaDia nullable: true
 		horaInicio nullable:true
 		horafin nullable:true
+		fechaCreacion nullable:true
     }
 }

@@ -32,5 +32,6 @@ class DocumentoCursos {
 
     static constraints = {
 		documentos nullable: true, maxSize: 100
+		fechaCreacion nullable: true
     }
 }

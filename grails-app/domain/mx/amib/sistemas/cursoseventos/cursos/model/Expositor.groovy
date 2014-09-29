@@ -32,6 +32,6 @@ class Expositor {
 		primerApellidoExpositor nullable: true, maxSize: 100
 		segundoApellidoExpositor nullable: true, maxSize: 100
 		horas nullable: true, maxSize: 20
-
+		fechaCreacion nullable: true
     }
 }

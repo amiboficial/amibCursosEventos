@@ -1,7 +1,7 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
 class Participante {
-	String matricula
+	Integer matricula
 	String nombreParticipante
 	Evento evento
 	Date fechaCreacion
@@ -15,6 +15,7 @@ class Participante {
 		
 		id generator: "assigned"
 		version false
+		
 		matricula column:'nu_matricula'
 		nombreParticipante column:'nb_ncompleto'
 		fechaCreacion column: 'fh_creacion'
@@ -25,7 +26,10 @@ class Participante {
 
     static constraints = {
 	
+	
 		nombreParticipante nullable: true, maxSize: 100
+		fechaCreacion nullable: true
+		fechaModificacion nullable: true
 		
     }
 }
