@@ -5,8 +5,9 @@ class TelefonoInstituto {
 	String telefono
 	Date fechaCreacion
 	Instituto instituto
-
-	static belongsTo = [Instituto]
+	TipoTelefono tipotelefono
+	
+	static belongsTo = [Instituto, TipoTelefono]
 
 	static mapping = {
 		table 't003_t_telefonosinstituto'

@@ -1,7 +1,9 @@
 package mx.amib.sistemas.cursoseventos.institutos.model
 
-import mx.amib.sistemas.cursoseventos.institutos.model.catalog.TipoInstituto;
+import mx.amib.sistemas.cursoseventos.cursos.model.Cursos;
+import mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto;
 import mx.amib.sistemas.cursoseventos.institutos.model.log.CambioAutorizacion;
+
 
 class Instituto {
 
@@ -9,17 +11,17 @@ class Instituto {
 	String siglas
 	String rfc
 	String correo
-	Long numeroEscritura
+	Integer numeroEscritura
 	Integer aniosExperiencia
 	String urlSitioWeb
 	Boolean aplicaCobroIva
-	Integer repLegalNombre
-	Integer repLegalPrimerApellido
-	Integer repLegalSegundoApellido
-	Long domicilioOficialIdSepomex
+	String repLegalNombre
+	String repLegalPrimerApellido
+	String repLegalSegundoApellido
+	Integer domicilioOficialIdSepomex
 	String domicilioOficialCalle
 	String domicilioOficialNumext
-	Long domicilioFiscalIdSepomex
+	Integer domicilioFiscalIdSepomex
 	String domicilioFiscalCalle
 	String domicilioFiscalNumext
 	String statusAutorizacion
@@ -29,9 +31,9 @@ class Instituto {
 	Date fechaModificacion
 	
 	TipoInstituto tipoInstituto
-
+	Cursos curso
 	static hasMany = [telefonos: TelefonoInstituto,
-	                  cambiosAutorizacion: CambioAutorizacion]
+	                  cambiosAutorizacion: CambioAutorizacion, cursos: Cursos]
 	static belongsTo = [TipoInstituto]
 
 	static mapping = {

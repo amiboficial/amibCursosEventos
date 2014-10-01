@@ -4,7 +4,7 @@ import mx.amib.sistemas.cursoseventos.institutos.model.Instituto
 
 class CambioAutorizacion {
 
-	String estatusAutorizacion
+	Boolean estatusAutorizacion
 	String comentarios
 	Date fechaCreacion
 	
