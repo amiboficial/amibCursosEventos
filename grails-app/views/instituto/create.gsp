@@ -19,13 +19,14 @@
 			<br>
 		</div>
 		</fieldset>
+		<fieldset>
 	<div class="panel panel-default col-lg-12">
 		<div class="panel-heading">
 			<div class="widgetTitle">
 				<div id="create-instituto" class="content scaffold-create"
 					role="main">
 					<h1>
-						<g:message code="default.create.label" args="[entityName]" />
+						Crear instituto
 					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">
@@ -35,7 +36,7 @@
 				</div>
 			</div>
 		</div>
-		</br>
+		<br>
 		<g:hasErrors bean="${institutoInstance}">
 			<ul class="errors" role="alert">
 				<g:eachError bean="${institutoInstance}" var="error">
@@ -49,19 +50,16 @@
 			<fieldset class="form">
 				<g:render template="form" />
 			</fieldset>
-			</br>
+			<br>
 			<fieldset class="buttons">
-				<g:submitButton name="create"
-					class="save btn btn-primary colortitle colorblack"
-					value="${message(code: 'default.button.create.label', default: 'Create')}" />
+				<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				&nbsp;
-				<g:link class="list btn btn-primary colortitle colorblack"
-					action="index">Regresar</g:link>
+				<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
 				</li>
 			</fieldset>
 			<br>
 		</g:form>
 	</div>
-
+</fieldset>
 </body>
 </html>

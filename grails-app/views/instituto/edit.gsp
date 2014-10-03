@@ -23,6 +23,7 @@
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Instituto</g:link></li>
 			</ul>
+			<br>
 		</div>
 	</fieldset>
 	<fieldset>
@@ -38,10 +39,9 @@
 								${flash.message}
 							</div>
 						</g:if>
-
 					</div>
 				</div>
-			</div>
+			</div><br>
 
 			<g:hasErrors bean="${institutoInstance}">
 				<ul class="errors" role="alert">
@@ -54,14 +54,14 @@
 			</g:hasErrors>
 			<g:form url="[resource:institutoInstance, action:'update']"
 				method="PUT">
-				<g:hiddenField name="version" value="${institutoInstance?.version}" />
+				<g:hiddenField name="version" value="${institutoInstance?.version}" /><br>
 				<fieldset class="form">
 					<g:render template="form" />
 						&nbsp;
 					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 						&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset>
+				</fieldset><br>
 			</g:form>
 		</div>
 	</fieldset>

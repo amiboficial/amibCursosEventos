@@ -1,7 +1,7 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
 import mx.amib.sistemas.cursoseventos.cursos.model.Expositor;
-import mx.amib.sistemas.cursoseventos.institutos.model.log.Domicilio
+
 
 
 
@@ -24,7 +24,7 @@ class Evento {
 	Long domicilioSEDESepomex
 	Date fechaCreacion
 	
-	static hasMany = [expositores: Expositor, participantes: Participante, domicilo: Domicilio]
+	static hasMany = [expositores: Expositor, participantes: Participante]
 
 	static mapping = {
 		table 't007_t_evento'

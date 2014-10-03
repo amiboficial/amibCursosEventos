@@ -9,12 +9,12 @@
 	value="${message(code: 'instituto.label', default: 'Instituto')}" />
 <title><g:message code="default.show.label" args="[entityName]" /></title>
 
-<link rel="stylesheet" type="text/css"
+	<link rel="stylesheet" type="text/css"
 	href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8"
+	<script type="text/javascript" charset="utf8"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 
-<g:javascript src="dataTableFormat.js" />
+	<g:javascript src="dataTableFormat.js" />
 
 
 
@@ -323,13 +323,12 @@
 			<g:form url="[resource:institutoInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${institutoInstance}">
-						<g:message code="default.button.edit.label" default="Edit" />
-					</g:link>
-					<g:actionSubmit class="delete" action="delete"
-						value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
+					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${institutoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						&nbsp;
+					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+						&nbsp;
+					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
+				</fieldset><br>
 			</g:form>
 		</div>
 	</fieldset>

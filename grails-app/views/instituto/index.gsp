@@ -26,7 +26,7 @@
 			<ul class="nav navbar-nav" role="navigation">
 				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
 				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Nuevo Instituto</g:link></li>
-			</ul>
+			</ul><br>
 			<br>
 		</div>
 	</fieldset>
@@ -110,10 +110,11 @@
 				</g:each>
 			</tbody>
 		</table>
+		</div>
 		</fieldset>
 		<div class="pagination">
 			<g:paginate total="${institutoInstanceCount ?: 0}" />
 		</div>
-	</div>
+
 </body>
 </html>

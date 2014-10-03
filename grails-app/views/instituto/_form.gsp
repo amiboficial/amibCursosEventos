@@ -303,25 +303,11 @@
 			<label for="cambiosAutorizacion" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 				<g:message code="instituto.cambiosAutorizacion.label"
 					default="Cambios de autorizacion" />
+					<span class="required-indicator">*</span>
 
 			</label>
-
-			<ul class="one-to-many">
-				<g:each in="${institutoInstance?.cambiosAutorizacion?}" var="c">
-					<li><g:link controller="cambioAutorizacion" action="show"
-							id="${c.id}">
-							${c?.encodeAsHTML()}
-						</g:link></li>
-				</g:each>
-				<li class="add"><g:link controller="cambioAutorizacion"
-						action="create" params="['instituto.id': institutoInstance?.id]">
-						${message(code: 'default.add.label', args: [message(code: 'cambioAutorizacion.label', default: 'CambioAutorizacion')])}
-					</g:link></li>
-			</ul>
-
-
+				<g:select id="cambioAutorizacion" name="cambioAutorizacion.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.log.CambioAutorizacion.list()}" optionKey="id" required="" value="${institutoInstance?.cambiosAutorizacion?.id}" class="many-to-one"/>
 		</div>
-
 <br>
 		<div
 			class=" fieldcontain ${hasErrors(bean: institutoInstance, field: 'curso', 'error')} required">
@@ -355,34 +341,21 @@
 			class=" fieldcontain ${hasErrors(bean: institutoInstance, field: 'telefonos', 'error')} ">
 			<label for="telefonos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label"> <g:message
 					code="instituto.telefonos.label" default="Telefonos" />
+					<span class="required-indicator">*</span>
 
 			</label>
 
-			<ul class="one-to-many">
-				<g:each in="${institutoInstance?.telefonos?}" var="t">
-					<li><g:link controller="telefonoInstituto" action="show"
-							id="${t.id}">
-							${t?.encodeAsHTML()}
-						</g:link></li>
-				</g:each>
-				<li class="add"><g:link controller="telefonoInstituto"
-						action="create" params="['instituto.id': institutoInstance?.id]">
-						${message(code: 'default.add.label', args: [message(code: 'telefonoInstituto.label', default: 'TelefonoInstituto')])}
-					</g:link></li>
-			</ul>
-
-
+	<g:select id="telefonoInstituto" name="telefonoInstituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.TelefonoInstituto.list()}" optionKey="id" required="" value="${institutoInstance?.telefonos?.id}" class="many-to-one"/>
 		</div>
-
 <br>
 
-<div class=" fieldcontain ${hasErrors(bean: institutoInstance, field: 'tipoInstituto', 'error')} required">
-	<label for="tipoInstituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="instituto.tipoInstituto.label" default="Tipo Instituto" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="tipoInstituto" name="tipoInstituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto.list()}" optionKey="id" required="" value="${institutoInstance?.tipoInstituto?.id}" class="many-to-one"/>
+		<div class=" fieldcontain ${hasErrors(bean: institutoInstance, field: 'tipoInstituto', 'error')} required">
+			<label for="tipoInstituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+				<g:message code="instituto.tipoInstituto.label" default="Tipo Instituto" />
+				<span class="required-indicator">*</span>
+			</label>
+				<g:select id="tipoInstituto" name="tipoInstituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto.list()}" optionKey="id" required="" value="${institutoInstance?.tipoInstituto?.id}" class="many-to-one"/>
 
-</div>
+		</div>
 
 </div>

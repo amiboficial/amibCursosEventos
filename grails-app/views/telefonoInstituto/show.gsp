@@ -97,13 +97,11 @@
 			<g:form url="[resource:telefonoInstitutoInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit"
-						resource="${telefonoInstitutoInstance}">
-						<g:message code="default.button.edit.label" default="Edit" />
-					</g:link>
-					<g:actionSubmit class="delete" action="delete"
-						value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${telefonoInstitutoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					&nbsp;
+					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					&nbsp;
+					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
 				</fieldset>
 			</g:form>
 		</div>

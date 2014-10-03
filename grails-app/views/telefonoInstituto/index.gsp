@@ -83,10 +83,11 @@
 				</g:each>
 				</tbody>
 			</table>
-			</fielset>
+			</div>
+			</fieldset>
 			<div class="pagination">
 				<g:paginate total="${telefonoInstitutoInstanceCount ?: 0}" />
 			</div>
-		</div>
+
 	</body>
 </html>

@@ -8,26 +8,24 @@
 	</head>
 	<body>
 	
-	
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-			    <li><g:link class="list" action="index">Gestión tipo de teléfono</g:link></li>
-			    <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create" action="create">Crear tipo teléfono</g:link></li>
+				<!-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
+				<li><g:link class="list" action="index">Gestión tipo de teléfono</g:link></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li><g:link class="create" action="create">Crear tipo de teléfono</g:link></li>
 			</ul>
 		</div>
-	</fieldset>
+		</fieldset>
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
-
 					<div id="edit-tipoTelefono" class="content scaffold-edit"
 						role="main">
 						<h1>
@@ -41,7 +39,8 @@
 					</div>
 				</div>
 			</div>
-			
+			<br>
+
 			<g:hasErrors bean="${tipoTelefonoInstance}">
 				<ul class="errors" role="alert">
 					<g:eachError bean="${tipoTelefonoInstance}" var="error">
@@ -55,17 +54,14 @@
 				method="PUT">
 				<g:hiddenField name="version"
 					value="${tipoTelefonoInstance?.version}" />
-				<fieldset class="form">
+				<fieldset class="form"><br>
 					<g:render template="form" />
-					&nbsp;
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 						&nbsp;
+					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset>
+				</fieldset><br>
 			</g:form>
 		</div>
-	</fieldset>
 </body>
 </html>
