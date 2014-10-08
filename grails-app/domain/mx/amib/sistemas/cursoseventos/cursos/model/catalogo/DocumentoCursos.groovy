@@ -5,7 +5,7 @@ import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
 
 class DocumentoCursos {
 	
-	String documentos
+	Long documentos
 	Date fechaCreacion
 	
 	Cursos curso
@@ -24,7 +24,7 @@ class DocumentoCursos {
 		fechaCreacion column:'fh_creacion'
 		
 		curso column:'id_006_curso'
-		tipoDocumentoCurso column:'id_013_curso'
+		tipoDocumentoCurso column:'id_013_tpdoccurso'
 	}
 	
 

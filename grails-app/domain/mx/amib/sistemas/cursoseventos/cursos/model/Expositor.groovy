@@ -5,9 +5,9 @@ class Expositor {
 	String nombreExpositor
 	String primerApellidoExpositor
 	String segundoApellidoExpositor
-	Integer duracionHoras
+	
 	Date fechaCreacion
-	String horas
+	Integer horas
 	Cursos curso
 	
 	static belongsTo = [Cursos]

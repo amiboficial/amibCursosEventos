@@ -2,8 +2,9 @@ package mx.amib.sistemas.cursoseventos.cursos.model.catalogo
 
 class TipoDocumentoCurso {
 	
-	Integer tipoDoumentoCurso
-	
+	String tipoDoumentoCurso
+	String clave
+	Boolean estatus
 	static hasMany = [documentoCurso: DocumentoCursos]
 	
 	static mapping = {
@@ -11,8 +12,11 @@ class TipoDocumentoCurso {
 		
 		id generator: "assigned"
 		version false
-		
+		clave column: 'tx_clave'
 		tipoDoumentoCurso column:'ds_tpdoccurso'
+		estatus column :'st_vigente'
+		
+		
 	}
 
     static constraints = {

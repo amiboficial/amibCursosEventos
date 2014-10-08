@@ -1,10 +1,11 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
+
 class HorarioEvento {
 	
 	Date fechaDia
-	Date horaInicio
-	Date horafin
+	BigDecimal horaInicio
+	BigDecimal horafin
 	Date fechaCreacion
 	
 	Evento evento

@@ -18,13 +18,13 @@ class Evento {
 	String telefonoFijoCoordinador
 	String faxCoordinador
 	String email
-	Boolean estatus
+	String estatus
 	String domicilioSEDECalle
 	String domicilioSEDENumero
 	Long domicilioSEDESepomex
 	Date fechaCreacion
 	
-	static hasMany = [expositores: Expositor, participantes: Participante]
+	static hasMany = [participantes: Participante,horarioEvento :HorarioEvento]
 
 	static mapping = {
 		table 't007_t_evento'

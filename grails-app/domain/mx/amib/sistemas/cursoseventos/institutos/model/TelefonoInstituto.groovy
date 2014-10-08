@@ -7,10 +7,10 @@ class TelefonoInstituto {
 	Instituto instituto
 	TipoTelefono tipotelefono
 	
-	static belongsTo = [Instituto, TipoTelefono]
+	
 
 	static mapping = {
-		table 't003_t_telefonosinstituto'
+		table 't003_t_telefonoinstituto'
 		
 		id generator: "assigned"
 		version false
@@ -19,6 +19,8 @@ class TelefonoInstituto {
 		fechaCreacion column:'fh_creacion'
 		
 		instituto column:'id_001_instituto'
+		
+		tipotelefono column:'id_005_tptelefono'
 	}
 
 	static constraints = {

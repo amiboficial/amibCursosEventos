@@ -11,17 +11,17 @@ class Instituto {
 	String siglas
 	String rfc
 	String correo
-	Integer numeroEscritura
+	Long numeroEscritura
 	Integer aniosExperiencia
 	String urlSitioWeb
 	Boolean aplicaCobroIva
 	String repLegalNombre
 	String repLegalPrimerApellido
 	String repLegalSegundoApellido
-	Integer domicilioOficialIdSepomex
+	Long domicilioOficialIdSepomex
 	String domicilioOficialCalle
 	String domicilioOficialNumext
-	Integer domicilioFiscalIdSepomex
+	Long domicilioFiscalIdSepomex
 	String domicilioFiscalCalle
 	String domicilioFiscalNumext
 	String statusAutorizacion
@@ -29,11 +29,13 @@ class Instituto {
 	Date fechaFinVigencia
 	Date fechaCreacion
 	Date fechaModificacion
-	
 	TipoInstituto tipoInstituto
-	Cursos curso
+	
+	
+	
+	
 	static hasMany = [telefonos: TelefonoInstituto,
-	                  cambiosAutorizacion: CambioAutorizacion, cursos: Cursos]
+	                  cambiosAutorizacion: CambioAutorizacion]
 	static belongsTo = [TipoInstituto]
 
 	static mapping = {
@@ -53,10 +55,10 @@ class Instituto {
 		repLegalNombre column:'nb_replegal_nombre'
 		repLegalPrimerApellido column:'nb_replegal_apellido1'
 		repLegalSegundoApellido column:'nb_replegal_apellido2'
-		domicilioOficialIdSepomex column:'id_domoficial_sepomex'
+		domicilioOficialIdSepomex column:'id_domoficial_f_sepomex'
 		domicilioOficialCalle column:'tx_domoficial_calle'
 		domicilioOficialNumext column:'tx_domoficial_numext'
-		domicilioFiscalIdSepomex column:'id_domfiscal_sepomex'
+		domicilioFiscalIdSepomex column:'id_domfiscal_f_sepomex'
 		domicilioFiscalCalle column:'tx_domfiscal_calle'
 		domicilioFiscalNumext column:'tx_domfiscal_numext'
 		statusAutorizacion column:'st_autorizacion'

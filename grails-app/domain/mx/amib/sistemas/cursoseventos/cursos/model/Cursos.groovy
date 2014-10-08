@@ -22,7 +22,7 @@ class Cursos {
 	String telefonoFijoCoordinador
 	String faxCoordinador
 	String email
-	Boolean status
+	String status
 	Date fechaCreacion
 	Date fechaModificacion
 	

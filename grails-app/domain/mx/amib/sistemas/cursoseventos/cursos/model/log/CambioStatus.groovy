@@ -6,7 +6,7 @@ import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
 
 class CambioStatus {
 
-    Boolean estatusStatus
+    String estatusStatus
 	String comentarios
 	Date fechaCreacion
 	
