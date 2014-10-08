@@ -6,18 +6,18 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-				<!-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>  -->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión tipo de documento</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion Tipo de documento "Curso"</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
+
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
@@ -25,7 +25,7 @@
 					<div id="create-tipoDocumentoCurso" class="content scaffold-create"
 						role="main">
 						<h1>
-							Crear tipo de documento
+							Crear tipo de documento "Curso"
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -36,9 +36,7 @@
 				</div>
 			</div>
 			<br>
-
-
-				
+			
 			<g:hasErrors bean="${tipoDocumentoCursoInstance}">
 				<ul class="errors" role="alert">
 					<g:eachError bean="${tipoDocumentoCursoInstance}" var="error">
@@ -51,7 +49,7 @@
 			<g:form url="[resource:tipoDocumentoCursoInstance, action:'save']">
 				<fieldset class="form">
 					<g:render template="form" />
-				</fieldset><br>
+				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					&nbsp;
@@ -59,5 +57,6 @@
 				</fieldset><br>
 			</g:form>
 		</div>
+		</fieldset>
 </body>
 </html>

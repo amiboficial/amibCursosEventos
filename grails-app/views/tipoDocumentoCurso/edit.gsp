@@ -7,18 +7,18 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión tipo de documento</g:link></li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear tipo de documento</g:link></li>
-			</ul><br>
+				
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion tipo de documento "Curso"</g:link></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear tipo de documento "Curso"</g:link></li>
+			</ul> <br>
 		</div>
 		</fieldset>
 
@@ -38,7 +38,8 @@
 						</g:if>
 					</div>
 				</div>
-			</div><br>
+			</div>
+			<br>
 
 
 			<g:hasErrors bean="${tipoDocumentoCursoInstance}">
@@ -56,13 +57,13 @@
 					value="${tipoDocumentoCursoInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form" />
-					&nbsp;
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+				</fieldset>
+				<fieldset class="buttons">
+					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset><br>
+				</fieldset>
 			</g:form>
 		</div>
-	</fieldset>
 </body>
 </html>

@@ -16,7 +16,7 @@
 		<g:message code="horarioEvento.horaInicio.label" default="Hora Inicio" />
 		
 	</label>
-	<g:datePicker name="horaInicio" precision="day"  value="${horarioEventoInstance?.horaInicio}" default="none" noSelection="['': '']" />
+	<g:textField name="horaInicio" value="${fieldValue(bean: horarioEventoInstance, field: 'horaInicio')}" class ="form-control"/>
 
 </div>
 <br>
@@ -25,7 +25,7 @@
 		<g:message code="horarioEvento.horafin.label" default="Horafin" />
 		
 	</label>
-	<g:datePicker name="horafin" precision="day"  value="${horarioEventoInstance?.horafin}" default="none" noSelection="['': '']" />
+	<g:textField name="horafin" value="${fieldValue(bean: horarioEventoInstance, field: 'horafin')}" class ="form-control"/>
 
 </div>
 <br>
@@ -46,5 +46,4 @@
 	<g:select id="evento" name="evento.id" from="${mx.amib.sistemas.cursoseventos.eventos.model.Evento.list()}" optionKey="id" required="" value="${horarioEventoInstance?.evento?.id}" class="many-to-one" class ="form-control"/>
 
 </div>
-
 </div>

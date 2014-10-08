@@ -13,8 +13,8 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion horario</g:link></li>
+				
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Horario "Evento"</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -26,7 +26,7 @@
 					<div id="create-horarioEvento" class="content scaffold-create"
 						role="main">
 						<h1>
-							Crear horario
+						Crear Horario "Evento"
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -37,7 +37,6 @@
 				</div>
 			</div>
 			<br>
-
 
 			<g:hasErrors bean="${horarioEventoInstance}">
 				<ul class="errors" role="alert">
@@ -54,8 +53,8 @@
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
+				&nbsp;
+						<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
 				</fieldset><br>
 			</g:form>
 		</div>

@@ -18,7 +18,7 @@
 				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión estatus</g:link></li>
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear estatus</g:link></li>
-			</ul>
+			</ul><br>
 		</div>
 		</fieldset>
 
@@ -60,7 +60,7 @@
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset>
+				</fieldset><br>
 			</g:form>
 		</div>
 </body>

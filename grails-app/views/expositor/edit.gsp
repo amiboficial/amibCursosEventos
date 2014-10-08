@@ -7,26 +7,27 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
-				<!--  <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>-->
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear expositor</g:link></li>
-			</ul>
-			<br>
+				<li><g:link class="list btn-primary colortitle colorblack" action="index">Gestion Expositor</g:link></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li><g:link class="create btn-primary colortitle colorblack" action="create">Crear Expositor</g:link></li>
+			</ul><br>
 		</div>
 		</fieldset>
+
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
 					<div id="edit-expositor" class="content scaffold-edit" role="main">
 						<h1>
-							Editar expositor
+							Editar Expositor
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -36,6 +37,7 @@
 					</div>
 				</div>
 			</div>
+			<br>
 
 			<g:hasErrors bean="${expositorInstance}">
 				<ul class="errors" role="alert">
@@ -52,7 +54,7 @@
 				<fieldset class="form">
 					<g:render template="form" />
 					&nbsp;
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="save btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
 				</fieldset><br>

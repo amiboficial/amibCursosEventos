@@ -8,16 +8,17 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<!-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="list" action="index">Gestión evento</g:link></li>
-			</ul>
+				
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Evento</g:link></li>
+			
+			</ul> <br>
 		</div>
 		</fieldset>
 
@@ -37,7 +38,7 @@
 					</div>
 				</div>
 			</div>
-
+			<br>
 
 			<ul class="property-list evento">
 
@@ -119,8 +120,8 @@
 					<li class="fieldcontain"><span id="estatus-label"
 						class="property-label"><g:message
 								code="evento.estatus.label" default="Estatus" /></span> <span
-						class="property-value" aria-labelledby="estatus-label"><g:formatBoolean
-								boolean="${eventoInstance?.estatus}" /></span></li>
+						class="property-value" aria-labelledby="estatus-label"><g:fieldValue
+								bean="${eventoInstance}" field="estatus" /></span></li>
 				</g:if>
 
 				<g:if test="${eventoInstance?.domicilioSEDECalle}">
@@ -159,14 +160,15 @@
 								date="${eventoInstance?.fechaCreacion}" /></span></li>
 				</g:if>
 
-				<g:if test="${eventoInstance?.expositores}">
-					<li class="fieldcontain"><span id="expositores-label"
+				<g:if test="${eventoInstance?.horarioEvento}">
+					<li class="fieldcontain"><span id="horarioEvento-label"
 						class="property-label"><g:message
-								code="evento.expositores.label" default="Expositores" /></span> <g:each
-							in="${eventoInstance.expositores}" var="e">
-							<span class="property-value" aria-labelledby="expositores-label"><g:link
-									controller="expositor" action="show" id="${e.id}">
-									${e?.encodeAsHTML()}
+								code="evento.horarioEvento.label" default="Horario Evento" /></span> <g:each
+							in="${eventoInstance.horarioEvento}" var="h">
+							<span class="property-value"
+								aria-labelledby="horarioEvento-label"><g:link
+									controller="horarioEvento" action="show" id="${h.id}">
+									${h?.encodeAsHTML()}
 								</g:link></span>
 						</g:each></li>
 				</g:if>
@@ -188,13 +190,14 @@
 			<g:form url="[resource:eventoInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit btn-primary colortitle colorblack" action="edit" resource="${eventoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${eventoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					&nbsp;
-					<g:actionSubmit class="delete btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset>
+				</fieldset><br>
 			</g:form>
 		</div>
+	</fieldset>
 </body>
 </html>

@@ -15,20 +15,22 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión tipo de documento</g:link></li>
+	
+				<li><g:link class="list" action="index">Gestio tipo de documento "Curso"</g:link></li>
+
 			</ul>
 		</div>
-	</fieldset>
+		</fieldset>
 
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
+
 					<div id="show-tipoDocumentoCurso" class="content scaffold-show"
 						role="main">
 						<h1>
-							<g:message code="default.show.label" args="[entityName]" />
+							Mostrar Tipo Documento Curso
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -39,7 +41,6 @@
 				</div>
 			</div>
 			<br>
-
 
 			<ul class="property-list tipoDocumentoCurso">
 
@@ -52,6 +53,14 @@
 								bean="${tipoDocumentoCursoInstance}" field="tipoDoumentoCurso" /></span>
 
 					</li>
+				</g:if>
+
+				<g:if test="${tipoDocumentoCursoInstance?.clave}">
+					<li class="fieldcontain"><span id="clave-label"
+						class="property-label"><g:message
+								code="tipoDocumentoCurso.clave.label" default="Clave" /></span> <span
+						class="property-value" aria-labelledby="clave-label"><g:fieldValue
+								bean="${tipoDocumentoCursoInstance}" field="clave" /></span></li>
 				</g:if>
 
 				<g:if test="${tipoDocumentoCursoInstance?.documentoCurso}">
@@ -68,18 +77,25 @@
 						</g:each></li>
 				</g:if>
 
+				<g:if test="${tipoDocumentoCursoInstance?.estatus}">
+					<li class="fieldcontain"><span id="estatus-label"
+						class="property-label"><g:message
+								code="tipoDocumentoCurso.estatus.label" default="Estatus" /></span> <span
+						class="property-value" aria-labelledby="estatus-label"><g:formatBoolean
+								boolean="${tipoDocumentoCursoInstance?.estatus}" /></span></li>
+				</g:if>
+
 			</ul>
 			<g:form url="[resource:tipoDocumentoCursoInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${tipoDocumentoCursoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-						&nbsp;
+					&nbsp;
 					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-						&nbsp;
+					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset><br>
+				</fieldset>
 			</g:form>
 		</div>
-		</fieldset>
 </body>
 </html>

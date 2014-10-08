@@ -1,45 +1,35 @@
 
-<%@ page
-	import="mx.amib.sistemas.cursoseventos.institutos.model.Instituto"%>
+<%@ page import="mx.amib.sistemas.cursoseventos.institutos.model.Instituto" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="layout" content="main">
-<g:set var="entityName"
-	value="${message(code: 'instituto.label', default: 'Instituto')}" />
-<title><g:message code="default.show.label" args="[entityName]" /></title>
-
-	<link rel="stylesheet" type="text/css"
-	href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
-	<script type="text/javascript" charset="utf8"
-	src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-
-	<g:javascript src="dataTableFormat.js" />
-
-
-
-</head>
-<body>
-	<fieldset>
+	<head>
+		<meta name="layout" content="main">
+		<g:set var="entityName" value="${message(code: 'instituto.label', default: 'Instituto')}" />
+		<title><g:message code="default.show.label" args="[entityName]" /></title>
+	</head>
+	<body>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión instituto</g:link></li>
+
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Instituto</g:link></li>
+	
 			</ul>
-			<br>
 		</div>
-	</fieldset>
+		</fieldset>
 
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
 					<div id="show-instituto" class="content scaffold-show" role="main">
-						<h1>Mostrar instituto</h1>
+						<h1>
+							Muestra Intituto
+						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
 								${flash.message}
@@ -48,7 +38,7 @@
 					</div>
 				</div>
 			</div>
-			</br>
+			<br>
 
 			<ul class="property-list instituto">
 
@@ -272,29 +262,6 @@
 						</g:each></li>
 				</g:if>
 
-				<g:if test="${institutoInstance?.curso}">
-					<li class="fieldcontain"><span id="curso-label"
-						class="property-label"><g:message
-								code="instituto.curso.label" default="Curso" /></span> <span
-						class="property-value" aria-labelledby="curso-label"><g:link
-								controller="cursos" action="show"
-								id="${institutoInstance?.curso?.id}">
-								${institutoInstance?.curso?.encodeAsHTML()}
-							</g:link></span></li>
-				</g:if>
-
-				<g:if test="${institutoInstance?.cursos}">
-					<li class="fieldcontain"><span id="cursos-label"
-						class="property-label"><g:message
-								code="instituto.cursos.label" default="Cursos" /></span> <g:each
-							in="${institutoInstance.cursos}" var="c">
-							<span class="property-value" aria-labelledby="cursos-label"><g:link
-									controller="cursos" action="show" id="${c.id}">
-									${c?.encodeAsHTML()}
-								</g:link></span>
-						</g:each></li>
-				</g:if>
-
 				<g:if test="${institutoInstance?.telefonos}">
 					<li class="fieldcontain"><span id="telefonos-label"
 						class="property-label"><g:message
@@ -325,12 +292,11 @@
 				<fieldset class="buttons">
 					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${institutoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 						&nbsp;
-					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 						&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset><br>
+				</fieldset>
 			</g:form>
 		</div>
-	</fieldset>
 </body>
 </html>

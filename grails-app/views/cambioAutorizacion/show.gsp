@@ -8,17 +8,15 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Autorización</g:link></li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear autorización</g:link></li>
-			</ul>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Estatus "Instituto"</g:link></li>
+			</ul><br>
 		</div>
 		</fieldset>
 
@@ -26,10 +24,11 @@
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
-
 					<div id="show-cambioAutorizacion" class="content scaffold-show"
 						role="main">
-						<h1>Muestra Autorización</h1>
+						<h1>
+							<g:message code="default.show.label" args="[entityName]" />
+						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
 								${flash.message}
@@ -47,8 +46,8 @@
 						class="property-label"><g:message
 								code="cambioAutorizacion.estatusAutorizacion.label"
 								default="Estatus Autorizacion" /></span> <span class="property-value"
-						aria-labelledby="estatusAutorizacion-label"><g:formatBoolean
-								boolean="${cambioAutorizacionInstance?.estatusAutorizacion}" /></span>
+						aria-labelledby="estatusAutorizacion-label"><g:fieldValue
+								bean="${cambioAutorizacionInstance}" field="estatusAutorizacion" /></span>
 
 					</li>
 				</g:if>
@@ -87,14 +86,13 @@
 			<g:form url="[resource:cambioAutorizacionInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${cambioAutorizacionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${cambioAutorizacionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 						&nbsp;
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 						&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
 				</fieldset>
 			</g:form>
 		</div>
-	</fieldset>
 </body>
 </html>

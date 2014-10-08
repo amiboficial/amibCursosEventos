@@ -39,7 +39,7 @@
 					</div>
 				</div>
 			</div>
-
+			<br>
 
 			<g:hasErrors bean="${cursosInstance}">
 				<ul class="errors" role="alert">

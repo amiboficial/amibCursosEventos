@@ -30,7 +30,7 @@
 </div>
 <br>
 <div class="fieldcontain ${hasErrors(bean: cambioStatusEventoInstance, field: 'evento', 'error')} required">
-	<label for="evento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label"> 
+	<label for="evento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cambioStatusEvento.evento.label" default="Evento" />
 		<span class="required-indicator">*</span>
 	</label>

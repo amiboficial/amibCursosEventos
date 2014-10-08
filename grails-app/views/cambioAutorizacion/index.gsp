@@ -10,33 +10,31 @@
 		href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 		<script type="text/javascript" charset="utf8"
 		src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
 		<g:javascript src="dataTableFormat.js" />
-		
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-				<li><g:link
-						class="create btn btn-primary colortitle colorblack"
-						action="create">Crear autorización</g:link></li>
-			</ul>
-			<br>
+				
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Estatus "Instituto"</g:link></li>
+			</ul><br>
 		</div>
-	</fieldset>
-
+		</fieldset>
 
 	<fieldset>
 		<div class="panel-heading">
 			<div class="widgetTitle">
 				<div id="list-cambioAutorizacion" class="content scaffold-list"
 					role="main">
-					<h1>Gestión Autorización</h1>
+					<h1>
+						<g:message code="default.list.label" args="[entityName]" />
+					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">
 							${flash.message}
@@ -44,12 +42,13 @@
 					</g:if>
 				</div>
 			</div>
+		</div>
 	</fieldset>
-
+	
 	<fieldset>
 			<div class="panel panel-default">
             	<div class="panel-heading">
-                	<h3 class="panel-title">Lista de autorizaciones</h3>
+                	<h3 class="panel-title">Lista de estatus</h3>
 				</div>
 
 	<table class="table table-bordered table-striped table-hover"
@@ -88,6 +87,6 @@
 			<div class="pagination">
 				<g:paginate total="${cambioAutorizacionInstanceCount ?: 0}" />
 			</div>
-	
+
 	</body>
 </html>

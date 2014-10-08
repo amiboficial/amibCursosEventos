@@ -23,7 +23,7 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Telefono Instituto</g:link></li>
 			</ul>
 			<br>
 		</div>

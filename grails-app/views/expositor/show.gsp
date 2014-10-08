@@ -8,7 +8,7 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
@@ -16,20 +16,18 @@
 			</br>
 			<ul class="nav navbar-nav navbar-center">
 				
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión expositor</g:link></li>
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear expositor</g:link></li>
-			</ul>
-			<br>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+			</ul>	<br>
 		</div>
 		</fieldset>
+
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
 					<div id="show-expositor" class="content scaffold-show" role="main">
 						<h1>
-							Muestra expositor
+							Mostrar Expositor
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -39,9 +37,7 @@
 					</div>
 				</div>
 			</div>
-			<br>
-
-
+<br>
 			<ul class="property-list expositor">
 
 				<g:if test="${expositorInstance?.nombreExpositor}">
@@ -103,27 +99,27 @@
 							</g:link></span></li>
 				</g:if>
 
-				<g:if test="${expositorInstance?.duracionHoras}">
-					<li class="fieldcontain"><span id="duracionHoras-label"
-						class="property-label"><g:message
-								code="expositor.duracionHoras.label" default="Duracion Horas" /></span>
-
-						<span class="property-value" aria-labelledby="duracionHoras-label"><g:fieldValue
-								bean="${expositorInstance}" field="duracionHoras" /></span></li>
-				</g:if>
-
 			</ul>
 			<g:form url="[resource:expositorInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${expositorInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit btn btn-primary colortitle colorblack"
+						action="edit" resource="${expositorInstance}">
+						<g:message code="default.button.edit.label" default="Edit" />
+					</g:link>
 					&nbsp;
-					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit
+						class="delete btn btn-primary colortitle colorblack"
+						action="delete"
+						value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
+					<g:link class="list btn btn-primary colortitle colorblack"
+						action="index">Regresar</g:link>
+					</li>
 				</fieldset>
 			</g:form>
 		</div>
-		</fieldset>
+	</fieldset>
 </body>
 </html>

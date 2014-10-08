@@ -79,7 +79,7 @@
 		<g:message code="evento.estatus.label" default="Estatus" />
 		
 	</label>
-	<g:checkBox name="estatus" value="${eventoInstance?.estatus}" />
+	<g:textField name="estatus" value="${eventoInstance?.estatus}" class ="form-control"/>
 
 </div>
 <br>
@@ -119,12 +119,21 @@
 
 </div>
 <br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'expositores', 'error')} ">
-	<label for="expositores" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.expositores.label" default="Expositores" />
+<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'horarioEvento', 'error')} ">
+	<label for="horarioEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="evento.horarioEvento.label" default="Horario Evento" />
 		
 	</label>
-	<g:select name="expositores" from="${mx.amib.sistemas.cursoseventos.cursos.model.Expositor.list()}" multiple="multiple" optionKey="id" size="5" value="${eventoInstance?.expositores*.id}" class="many-to-many" class ="form-control"/>
+	
+<ul class="one-to-many">
+<g:each in="${eventoInstance?.horarioEvento?}" var="h">
+    <li><g:link controller="horarioEvento" action="show" id="${h.id}">${h?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="horarioEvento" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'horarioEvento.label', default: 'HorarioEvento')])}</g:link>
+</li>
+</ul>
+
 
 </div>
 <br>
@@ -134,8 +143,14 @@
 		
 	</label>
 	
-
-<g:select id="participante" name="participante.id" from="${mx.amib.sistemas.cursoseventos.eventos.model.Participante.list()}" optionKey="id" required="" value="${eventoInstance?.participantes?.id}" class="many-to-one"/>
+<ul class="one-to-many">
+<g:each in="${eventoInstance?.participantes?}" var="p">
+    <li><g:link controller="participante" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="participante" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'participante.label', default: 'Participante')])}</g:link>
+</li>
+</ul>
 
 </div>
 </div>

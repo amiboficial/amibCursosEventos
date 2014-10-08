@@ -17,7 +17,6 @@
 			<ul class="nav navbar-nav navbar-center">
 				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
 				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion curso</g:link></li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear curso</g:link></li>
 			</ul>
 		</div>
 		</fieldset>
@@ -38,7 +37,8 @@
 					</div>
 				</div>
 			</div>
-
+			
+			<br>
 			<ul class="property-list cursos">
 
 				<g:if test="${cursosInstance?.nombreDelCurso}">

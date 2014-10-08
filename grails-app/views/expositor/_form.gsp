@@ -25,7 +25,7 @@
 		<g:message code="expositor.segundoApellidoExpositor.label" default="Segundo Apellido Expositor" />
 		
 	</label>
-	<g:textField name="segundoApellidoExpositor" maxlength="100" value="${expositorInstance?.segundoApellidoExpositor}" class ="form-control"/>
+	<g:textField name="segundoApellidoExpositor" maxlength="100" value="${expositorInstance?.segundoApellidoExpositor}"class ="form-control"/>
 
 </div>
 <br>
@@ -34,7 +34,7 @@
 		<g:message code="expositor.horas.label" default="Horas" />
 		
 	</label>
-	<g:textField name="horas" maxlength="20" value="${expositorInstance?.horas}" class ="form-control"/>
+	<g:field name="horas" type="number" value="${expositorInstance.horas}" class ="form-control"/>
 
 </div>
 <br>
@@ -55,15 +55,4 @@
 	<g:select id="curso" name="curso.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" optionKey="id" required="" value="${expositorInstance?.curso?.id}" class="many-to-one" class ="form-control"/>
 
 </div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: expositorInstance, field: 'duracionHoras', 'error')} required">
-	<label for="duracionHoras" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="expositor.duracionHoras.label" default="Duracion Horas" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="duracionHoras" type="number" value="${expositorInstance.duracionHoras}" required="" class ="form-control"/>
-
 </div>
-
-</div>
-
