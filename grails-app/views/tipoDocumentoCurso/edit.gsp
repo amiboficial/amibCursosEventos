@@ -15,9 +15,9 @@
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
 				
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion tipo de documento "Curso"</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Tipos de Docuemntos de Cursos</g:link></li>
 					<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear tipo de documento "Curso"</g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Tipos de Docuemntos de Cursos</g:link></li>
 			</ul> <br>
 		</div>
 		</fieldset>
@@ -29,7 +29,7 @@
 					<div id="edit-tipoDocumentoCurso" class="content scaffold-edit"
 						role="main">
 						<h1>
-							<g:message code="default.edit.label" args="[entityName]" />
+							Editar Tipos de Docuemntos de Cursos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

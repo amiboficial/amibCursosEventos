@@ -15,10 +15,10 @@
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
 				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión tipo intituto</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Tipos de Institutos</g:link></li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear tipo instituto</g:link></li>
-			</ul>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Tipos de Institutos</g:link></li>
+			</ul><br>
 			<br>
 		</div>
 	</fieldset>

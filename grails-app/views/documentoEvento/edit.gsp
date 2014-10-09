@@ -16,9 +16,9 @@
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
 				<!-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión documento</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Documentos de Evento</g:link></li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create"></g:link>Crear documento</li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create"></g:link>Crear Documento de Evento</li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -30,7 +30,7 @@
 					<div id="edit-documentoEvento" class="content scaffold-edit"
 						role="main">
 						<h1>
-							<g:message code="default.edit.label" args="[entityName]" />
+							Editar Documento de Evento
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

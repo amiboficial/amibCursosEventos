@@ -12,15 +12,15 @@
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
-			</br>
+			<br>
 			<ul class="nav navbar-nav" role="vavBar">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión participante</g:link></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear participante</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Participantes</g:link></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Participantes</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
+
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
@@ -28,7 +28,7 @@
 					<div id="edit-participante" class="content scaffold-edit"
 						role="main">
 						<h1>
-							Editar participante
+							Editar Participantes
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -39,8 +39,6 @@
 				</div>
 			</div>
 			<br>
-
-
 
 			<g:hasErrors bean="${participanteInstance}">
 				<ul class="errors" role="alert">
@@ -55,15 +53,15 @@
 				method="PUT">
 				<g:hiddenField name="version"
 					value="${participanteInstance?.version}" />
-				<fieldset class="form"><br>
+				<fieldset class="form">
 					<g:render template="form" />
-					&nbsp;
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+				</fieldset>
+				<fieldset class="buttons">
+					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
 				</fieldset><br>
 			</g:form>
 		</div>
-		</fieldset>
 </body>
 </html>

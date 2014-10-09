@@ -28,7 +28,7 @@
 				<!-- <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li> -->
 				<li><g:link
 						class="create btn btn-primary colortitle colorblack"
-						action="create">Gestión teléfono instituto</g:link></li>
+						action="create">Gestión de Teléfonos de Institutos</g:link></li>
 			</ul>
 		</div>
 	</fieldset>
@@ -39,7 +39,7 @@
 				<div class="widgetTitle">
 					<div id="show-telefonoInstituto" class="content scaffold-show"
 						role="main">
-						<h1>Mostrar teléfono instituto</h1>
+						<h1>Mostrar Teléfonos de Institutos</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
 								${flash.message}

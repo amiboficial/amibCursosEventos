@@ -30,7 +30,7 @@
 			<div class="widgetTitle">
 				<div id="list-expositor" class="content scaffold-list" role="main">
 					<h1>
-						<g:message code="default.list.label" args="[entityName]" />
+						Gestión de Expositores
 					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">

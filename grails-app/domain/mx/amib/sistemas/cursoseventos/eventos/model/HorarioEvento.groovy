@@ -9,6 +9,7 @@ class HorarioEvento {
 	Date fechaCreacion
 	
 	Evento evento
+	
 	static belongTo = [Evento]
 	
 	static mapping = {

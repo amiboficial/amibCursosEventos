@@ -23,7 +23,7 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 				<!--  <li><a class="home btn btn-primary colortitle colorblack" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear tipo instituto</g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Tipos de Institutos</g:link></li>
 			</ul>
 			<br>
 		</div>
@@ -35,7 +35,7 @@
 			<div class="widgetTitle">
 				<div id="list-tipoInstituto" class="content scaffold-list"
 					role="main">
-					<h1>Gestión tipo instituto</h1>
+					<h1>Gestión de Tipos de Institutos</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">
 							${flash.message}
@@ -59,10 +59,10 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="vigente" title="${message(code: 'tipoInstituto.vigente.label', default: 'Vigente')}" />
-					
 						<g:sortableColumn property="descripcion" title="${message(code: 'tipoInstituto.descripcion.label', default: 'Descripcion')}" />
 					
+						<g:sortableColumn property="vigente" title="${message(code: 'tipoInstituto.vigente.label', default: 'Vigente')}" />
+						
 					</tr>
 				</thead>
 				<tbody>

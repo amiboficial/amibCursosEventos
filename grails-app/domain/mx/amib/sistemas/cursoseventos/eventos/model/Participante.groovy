@@ -1,11 +1,12 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
 class Participante {
+	
 	Integer matricula
 	String nombreParticipante
-	Evento evento
 	Date fechaCreacion
 	Date fechaModificacion
+	Evento evento
 	
 	static belongsTo = [Evento]
 	
@@ -26,7 +27,7 @@ class Participante {
 
     static constraints = {
 	
-	
+		matricula nullable: true, maxSize: 100
 		nombreParticipante nullable: true, maxSize: 100
 		fechaCreacion nullable: true
 		fechaModificacion nullable: true

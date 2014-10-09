@@ -7,6 +7,7 @@ import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
 class CambioStatus {
 
     String estatusStatus
+	/// en la base tiene int para comentarios
 	String comentarios
 	Date fechaCreacion
 	

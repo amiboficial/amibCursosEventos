@@ -22,7 +22,7 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 				<!-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear documento</g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Documento de Evento</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -31,7 +31,7 @@
 		<div class="panel-heading">
 			<div class="widgetTitle">
 		<div id="list-documentoEvento" class="content scaffold-list" role="main">
-			<h1>Gestión documento</h1>
+			<h1>Gestión de Documentos de Evento</h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>

@@ -22,7 +22,7 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 				
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Estatus "Instituto"</g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Cambios de autorización</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -33,7 +33,7 @@
 				<div id="list-cambioAutorizacion" class="content scaffold-list"
 					role="main">
 					<h1>
-						<g:message code="default.list.label" args="[entityName]" />
+						Gestión de Cambios de Autorización
 					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">

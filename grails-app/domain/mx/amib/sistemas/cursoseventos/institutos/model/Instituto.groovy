@@ -35,7 +35,7 @@ class Instituto {
 	
 	
 	static hasMany = [telefonos: TelefonoInstituto,
-	                  cambiosAutorizacion: CambioAutorizacion]
+	                  cambiosAutorizacion: CambioAutorizacion, cursos:Cursos]
 	static belongsTo = [TipoInstituto]
 
 	static mapping = {

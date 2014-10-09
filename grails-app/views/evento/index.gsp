@@ -10,7 +10,8 @@
 		href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 		<script type="text/javascript" charset="utf8"
 		src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-		<g:javascript src="dataTableFormat.js" />
+
+		<g:javascript src="dataTableFormat.js" />	
 	</head>
 	<body>
 		<fieldset>
@@ -20,18 +21,18 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-				
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear evento</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
+
 
 	<fieldset>
 		<div class="panel-heading">
 			<div class="widgetTitle">
 				<div id="list-evento" class="content scaffold-list" role="main">
 					<h1>
-						<g:message code="default.list.label" args="[entityName]" />
+					Gestión de Eventos
 					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">
@@ -42,13 +43,12 @@
 			</div>
 		</div>
 	</fieldset>
-	
+
 	<fieldset>
 			<div class="panel panel-default">
             	<div class="panel-heading">
-                	<h3 class="panel-title">Lista de cursos</h3>
+                	<h3 class="panel-title">Lista de eventos</h3>
 				</div>
-
 	<table class="table table-bordered table-striped table-hover"
 			style="width: 100%; margin: auto;" border="0" id="tblFormat">
 			<thead>

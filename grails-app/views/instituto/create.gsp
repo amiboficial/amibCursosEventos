@@ -11,10 +11,9 @@
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
-			</br>
+			<br>
 			<ul class="nav navbar-nav" role="navigation">
-			
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Instituto</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Institutos</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -38,6 +37,7 @@
 			</div>
 			<br>
 
+			
 			<g:hasErrors bean="${institutoInstance}">
 				<ul class="errors" role="alert">
 					<g:eachError bean="${institutoInstance}" var="error">
@@ -54,7 +54,7 @@
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					&nbsp;
-						<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
+					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
 				</fieldset><br>
 			</g:form>
 		</div>

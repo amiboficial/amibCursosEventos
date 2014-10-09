@@ -14,7 +14,7 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 				
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Estatus "Instituto"</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Cambios de Autorización</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -26,7 +26,7 @@
 					<div id="create-cambioAutorizacion" class="content scaffold-create"
 						role="main">
 						<h1>
-							Crear Estatus
+							Crear Cambios de Autorización
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -60,5 +60,6 @@
 				</fieldset> <br>
 			</g:form>
 		</div>
+		</fieldset>
 </body>
 </html>

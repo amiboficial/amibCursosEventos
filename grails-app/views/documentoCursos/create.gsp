@@ -27,7 +27,7 @@
 					<div id="create-documentoCursos" class="content scaffold-create"
 						role="main">
 						<h1>
-							Crear documento
+							Crear Documentos de Cursos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

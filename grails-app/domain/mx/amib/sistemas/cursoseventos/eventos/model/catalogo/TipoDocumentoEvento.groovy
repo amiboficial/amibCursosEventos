@@ -5,6 +5,8 @@ import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.DocumentoEvento
 class TipoDocumentoEvento {
 	
 	String tipoDoumentoEvento
+	String clave
+	Boolean estatus
 	
 	static hasMany = [documentoEvento: DocumentoEvento]
 	
@@ -15,6 +17,8 @@ class TipoDocumentoEvento {
 		version false
 		
 		tipoDoumentoEvento column:'ds_tpdocevento'
+		clave colum:'tx_clave'
+		estatus colum:'st_vigente'
 	}
 
     static constraints = {

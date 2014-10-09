@@ -28,7 +28,7 @@
 					<div id="edit-documentoCursos" class="content scaffold-edit"
 						role="main">
 						<h1>
-							<g:message code="default.edit.label" args="[entityName]" />
+							Edición de Documentos de Cursos 
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

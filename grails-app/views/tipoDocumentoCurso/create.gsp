@@ -13,7 +13,7 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion Tipo de documento "Curso"</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Tipos de Docuemntos de Cursos</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -25,7 +25,7 @@
 					<div id="create-tipoDocumentoCurso" class="content scaffold-create"
 						role="main">
 						<h1>
-							Crear tipo de documento "Curso"
+							Crear Tipos de Docuemntos de Cursos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

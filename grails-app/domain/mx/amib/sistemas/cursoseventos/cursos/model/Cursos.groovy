@@ -27,10 +27,10 @@ class Cursos {
 	Date fechaModificacion
 	
 	
-	//TipoCurso tipoCurso
+	//Instituto instituto
 	
-	static hasMany = [cambioStatus: CambioStatus, expositores:Expositor, documentoCurso: DocumentoCursos]
-	//static belongsTo = [TipoCurso]
+	static hasMany = [cambioStatus: CambioStatus, expositores:Expositor, documentoCurso: DocumentoCursos, eventos:Evento]
+	//static belongsTo = [intituto: Instituto]
 	
 	static mapping = {
 		table 't006_t_curso'

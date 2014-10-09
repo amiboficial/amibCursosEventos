@@ -16,7 +16,7 @@
 			</br>
 			<ul class="nav navbar-nav navbar-center">
 				
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión tipo intituto</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Tipos de Institutos</g:link></li>
 
 			</ul><br>
 			

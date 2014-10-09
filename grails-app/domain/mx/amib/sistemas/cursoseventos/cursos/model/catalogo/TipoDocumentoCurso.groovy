@@ -5,6 +5,8 @@ class TipoDocumentoCurso {
 	String tipoDoumentoCurso
 	String clave
 	Boolean estatus
+	
+	
 	static hasMany = [documentoCurso: DocumentoCursos]
 	
 	static mapping = {
@@ -21,5 +23,7 @@ class TipoDocumentoCurso {
 
     static constraints = {
 		tipoDoumentoCurso nullable: true, maxSize: 100
+		estatus nullable: true
+		clave nullable: true, maxSize: 15
     }
 }

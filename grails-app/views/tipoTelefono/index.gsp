@@ -23,25 +23,30 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 				<!-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>  -->
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear tipo teléfono</g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Tipos de Teléfonos</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
-		
-		<fieldset>
+
+	<fieldset>
 		<div class="panel-heading">
 			<div class="widgetTitle">
-		<div id="list-tipoTelefono" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
+				<div id="list-tipoTelefono" class="content scaffold-list"
+					role="main">
+					<h1>
+						Gestión de Tipos de Teléfonos
+					</h1>
+					<g:if test="${flash.message}">
+						<div class="message" role="status">
+							${flash.message}
+						</div>
+					</g:if>
+				</div>
 			</div>
-			</div>
-			</div>
-			</fieldset>
-			
-			<fieldset>
+		</div>
+	</fieldset>
+
+	<fieldset>
 			<div class="panel panel-default">
             	<div class="panel-heading">
                 	<h3 class="panel-title">Lista de tipos de teléfono</h3>
@@ -52,10 +57,10 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="vigente" title="${message(code: 'tipoTelefono.vigente.label', default: 'Vigente')}" />
-					
 						<g:sortableColumn property="descripcion" title="${message(code: 'tipoTelefono.descripcion.label', default: 'Descripcion')}" />
 					
+						<g:sortableColumn property="vigente" title="${message(code: 'tipoTelefono.vigente.label', default: 'Vigente')}" />
+						
 					</tr>
 				</thead>
 				<tbody>

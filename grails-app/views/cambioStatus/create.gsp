@@ -26,7 +26,7 @@
 					<div id="create-cambioStatus" class="content scaffold-create"
 						role="main">
 						<h1>
-							Crear estatus
+							Crear Cambios de Estatus
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

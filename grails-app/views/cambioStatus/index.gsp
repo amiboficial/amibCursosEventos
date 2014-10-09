@@ -33,7 +33,7 @@
 				<div id="list-cambioStatus" class="content scaffold-list"
 					role="main">
 					<h1>
-						<g:message code="default.list.label" args="[entityName]" />
+					Gestión de Cambios de Estatus
 					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">

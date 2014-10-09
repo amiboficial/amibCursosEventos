@@ -1,6 +1,9 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
 import mx.amib.sistemas.cursoseventos.cursos.model.Expositor;
+import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
+import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.DocumentoEvento
+import mx.amib.sistemas.cursoseventos.eventos.model.log.CambioStatusEvento
 
 
 
@@ -24,7 +27,10 @@ class Evento {
 	Long domicilioSEDESepomex
 	Date fechaCreacion
 	
-	static hasMany = [participantes: Participante,horarioEvento :HorarioEvento]
+	static hasMany = [participantes:Participante, horarioEvento:HorarioEvento, documentoEvento:DocumentoEvento,
+		cambioEstatusEvento:CambioStatusEvento]
+	
+	static belongTo = [Cursos]
 
 	static mapping = {
 		table 't007_t_evento'

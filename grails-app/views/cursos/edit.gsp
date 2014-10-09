@@ -7,30 +7,28 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="list btn btn-primary colortitle colorblack"
-						action="index">Gestion curso</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión curso</g:link></li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link
-						class="create btn btn-primary colortitle colorblack"
-						action="create">Crear curso</g:link></li>
-			</ul>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear curso</g:link></li>
+			</ul><br>
 		</div>
-	</fieldset>
+		</fieldset>
 
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
 					<div id="edit-cursos" class="content scaffold-edit" role="main">
-						<h1>Editar Curso</h1>
+						<h1>
+							Editar Curso
+						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
 								${flash.message}
@@ -54,7 +52,8 @@
 				<g:hiddenField name="version" value="${cursosInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form" />
-					&nbsp;
+				</fieldset>
+				<fieldset class="buttons">
 					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>

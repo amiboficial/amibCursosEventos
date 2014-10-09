@@ -26,7 +26,7 @@
 					<div id="create-tipoTelefono" class="content scaffold-create"
 						role="main">
 						<h1>
-							<g:message code="default.create.label" args="[entityName]" />
+							Crear Tipos de Teléfonos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

@@ -70,7 +70,7 @@
 		<g:message code="instituto.aplicaCobroIva.label" default="Aplica Cobro Iva" />
 		
 	</label>
-	<g:checkBox name="aplicaCobroIva" value="${institutoInstance?.aplicaCobroIva}"  class ="form-control"/>
+	<g:checkBox name="aplicaCobroIva" value="${institutoInstance?.aplicaCobroIva}" class ="form-control"/>
 
 </div>
 <br>
@@ -218,6 +218,15 @@
 
 </div>
 <br>
+<div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'cursos', 'error')} ">
+	<label for="cursos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.cursos.label" default="Cursos" />
+		
+	</label>
+	<g:select name="cursos" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" multiple="multiple" optionKey="id" size="5" value="${institutoInstance?.cursos*.id}" class="many-to-many"/>
+
+</div>
+<br>
 <div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'telefonos', 'error')} ">
 	<label for="telefonos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="instituto.telefonos.label" default="Telefonos" />
@@ -244,4 +253,6 @@
 	<g:select id="tipoInstituto" name="tipoInstituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto.list()}" optionKey="id" required="" value="${institutoInstance?.tipoInstituto?.id}" class="many-to-one" class ="form-control"/>
 
 </div>
+<br>
 </div>
+

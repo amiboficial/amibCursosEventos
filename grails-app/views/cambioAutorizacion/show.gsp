@@ -15,7 +15,7 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Estatus "Instituto"</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Cambios de Autorización</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -27,7 +27,7 @@
 					<div id="show-cambioAutorizacion" class="content scaffold-show"
 						role="main">
 						<h1>
-							<g:message code="default.show.label" args="[entityName]" />
+							Mostrar Cambios de Autorización
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -91,8 +91,9 @@
 					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 						&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset>
+				</fieldset><br>
 			</g:form>
 		</div>
+		</fieldset>
 </body>
 </html>

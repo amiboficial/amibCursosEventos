@@ -13,8 +13,8 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-				
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestón Evento</g:link></li>
+			
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Eventos</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -25,7 +25,7 @@
 				<div class="widgetTitle">
 					<div id="create-evento" class="content scaffold-create" role="main">
 						<h1>
-							Crear Evento
+							Crear Eventos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -36,8 +36,6 @@
 				</div>
 			</div>
 			<br>
-
-
 
 			<g:hasErrors bean="${eventoInstance}">
 				<ul class="errors" role="alert">
@@ -55,10 +53,9 @@
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					&nbsp;
-						<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
+					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
 				</fieldset><br>
 			</g:form>
 		</div>
-		</fieldset>
 </body>
 </html>

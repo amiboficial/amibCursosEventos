@@ -2,6 +2,15 @@
 
 <div class="form-inline" role="form">
 
+<div class="fieldcontain ${hasErrors(bean: participanteInstance, field: 'matricula', 'error')} ">
+	<label for="matricula" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="participante.matricula.label" default="Matricula" />
+		
+	</label>
+	<g:field name="matricula" type="number" value="${participanteInstance.matricula}" class ="form-control"/>
+
+</div>
+<br>
 <div class="fieldcontain ${hasErrors(bean: participanteInstance, field: 'nombreParticipante', 'error')} ">
 	<label for="nombreParticipante" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="participante.nombreParticipante.label" default="Nombre Participante" />
@@ -38,13 +47,4 @@
 
 </div>
 <br>
-<div class="fieldcontain ${hasErrors(bean: participanteInstance, field: 'matricula', 'error')} required">
-	<label for="matricula" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="participante.matricula.label" default="Matricula" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="matricula" type="number" value="${participanteInstance.matricula}" required="" class ="form-control"/>
-
-</div>
-
 </div>

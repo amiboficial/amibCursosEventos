@@ -43,7 +43,7 @@
 		<g:message code="evento.segundoApellidoCoordinador.label" default="Segundo Apellido Coordinador" />
 		
 	</label>
-	<g:textField name="segundoApellidoCoordinador" maxlength="100" value="${eventoInstance?.segundoApellidoCoordinador}" class ="form-control"/>
+	<g:textField name="segundoApellidoCoordinador" maxlength="100" value="${eventoInstance?.segundoApellidoCoordinador}"class ="form-control"/>
 
 </div>
 <br>
@@ -119,6 +119,42 @@
 
 </div>
 <br>
+<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'cambioEstatusEvento', 'error')} ">
+	<label for="cambioEstatusEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="evento.cambioEstatusEvento.label" default="Cambio Estatus Evento" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${eventoInstance?.cambioEstatusEvento?}" var="c">
+    <li><g:link controller="cambioStatusEvento" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="cambioStatusEvento" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'cambioStatusEvento.label', default: 'CambioStatusEvento')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+<br>
+<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'documentoEvento', 'error')} ">
+	<label for="documentoEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="evento.documentoEvento.label" default="Documento Evento" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${eventoInstance?.documentoEvento?}" var="d">
+    <li><g:link controller="documentoEvento" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="documentoEvento" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'documentoEvento.label', default: 'DocumentoEvento')])}</g:link>
+</li>
+</ul>
+
+
+</div>
+<br>
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'horarioEvento', 'error')} ">
 	<label for="horarioEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.horarioEvento.label" default="Horario Evento" />
@@ -151,7 +187,7 @@
 <g:link controller="participante" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'participante.label', default: 'Participante')])}</g:link>
 </li>
 </ul>
-
+<br>
 </div>
 </div>
 

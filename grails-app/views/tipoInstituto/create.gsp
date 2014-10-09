@@ -14,7 +14,7 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 				<!--<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión tipo intituto</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Tipos de Institutos</g:link></li>
 			</ul>
 			<br>
 		</div>
@@ -26,7 +26,7 @@
 				<div id="create-tipoInstituto" class="content scaffold-create"
 					role="main">
 					<h1>
-						<g:message code="default.create.label" args="[entityName]" />
+						Crear Tipos de Institutos
 					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">

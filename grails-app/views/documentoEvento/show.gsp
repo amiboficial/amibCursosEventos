@@ -15,10 +15,10 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<!-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+				
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index"> Gestión de Documentos de Evento</g:link></li>
+				
+			</ul><br>
 		</div>
 
 		<fieldset>
@@ -28,7 +28,7 @@
 						<div id="show-documentoEvento" class="content scaffold-show"
 							role="main">
 							<h1>
-								<g:message code="default.show.label" args="[entityName]" />
+								Muestra Documentos de Evento
 							</h1>
 							<g:if test="${flash.message}">
 								<div class="message" role="status">
@@ -95,5 +95,7 @@
 						<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
 					</fieldset>
 				</g:form>
-			</div></body>
+			</div>
+			</fieldset>
+			</body>
 </html>

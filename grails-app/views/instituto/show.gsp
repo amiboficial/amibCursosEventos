@@ -15,9 +15,8 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Instituto</g:link></li>
-	
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Institutos</g:link></li>
+				
 			</ul>
 		</div>
 		</fieldset>
@@ -28,7 +27,7 @@
 				<div class="widgetTitle">
 					<div id="show-instituto" class="content scaffold-show" role="main">
 						<h1>
-							Muestra Intituto
+							Muestra Institutos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -39,6 +38,7 @@
 				</div>
 			</div>
 			<br>
+
 
 			<ul class="property-list instituto">
 
@@ -262,6 +262,18 @@
 						</g:each></li>
 				</g:if>
 
+				<g:if test="${institutoInstance?.cursos}">
+					<li class="fieldcontain"><span id="cursos-label"
+						class="property-label"><g:message
+								code="instituto.cursos.label" default="Cursos" /></span> <g:each
+							in="${institutoInstance.cursos}" var="c">
+							<span class="property-value" aria-labelledby="cursos-label"><g:link
+									controller="cursos" action="show" id="${c.id}">
+									${c?.encodeAsHTML()}
+								</g:link></span>
+						</g:each></li>
+				</g:if>
+
 				<g:if test="${institutoInstance?.telefonos}">
 					<li class="fieldcontain"><span id="telefonos-label"
 						class="property-label"><g:message
@@ -290,13 +302,24 @@
 			<g:form url="[resource:institutoInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${institutoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-						&nbsp;
-					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-						&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
+					<g:link class="edit btn btn-primary colortitle colorblack"
+						action="edit" resource="${institutoInstance}">
+						<g:message code="default.button.edit.label" default="Edit" />
+					</g:link>
+					&nbsp;
+					<g:actionSubmit
+						class="delete btn btn-primary colortitle colorblack"
+						action="delete"
+						value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					&nbsp;
+					<g:link class="list btn btn-primary colortitle colorblack"
+						action="index">Regresar</g:link>
+					</li>
 				</fieldset>
+				<br>
 			</g:form>
 		</div>
+	</fieldset>
 </body>
 </html>

@@ -31,7 +31,7 @@
 					<div id="show-cambioStatus" class="content scaffold-show"
 						role="main">
 						<h1>
-							<g:message code="default.show.label" args="[entityName]" />
+							Mostrar Cambios de Estatus
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

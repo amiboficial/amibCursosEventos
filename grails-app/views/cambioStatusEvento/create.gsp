@@ -14,10 +14,10 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 			
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion Estatus "Evento"</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de cambios de Estatus de Evento</g:link></li>
 			</ul><br>
 		</div>
-
+		</fieldset>
 		<fieldset>
 			<div class="panel panel-default col-lg-12">
 				<div class="panel-heading">
@@ -25,7 +25,7 @@
 						<div id="create-cambioStatusEvento"
 							class="content scaffold-create" role="main">
 							<h1>
-								Crear Estatus "Evento"
+								Crear cambios de Estatus de Evento
 							</h1>
 							<g:if test="${flash.message}">
 								<div class="message" role="status">
@@ -56,5 +56,7 @@
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
 					</fieldset><br>
 				</g:form>
-			</div></body>
+			</div>
+			</fieldset>
+			</body>
 </html>

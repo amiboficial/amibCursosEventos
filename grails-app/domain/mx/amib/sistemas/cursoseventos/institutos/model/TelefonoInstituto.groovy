@@ -8,6 +8,10 @@ class TelefonoInstituto {
 	TipoTelefono tipotelefono
 	
 	
+	//falta relacion con instituto y tipo de telefono instituto
+	
+	static hasMany = []
+	static belongsTo = [Instituto, TipoTelefono]
 
 	static mapping = {
 		table 't003_t_telefonoinstituto'

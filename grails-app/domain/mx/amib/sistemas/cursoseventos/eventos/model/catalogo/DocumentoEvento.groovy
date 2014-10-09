@@ -19,7 +19,6 @@ class DocumentoEvento {
 		id generator: "assigned"
 		version false
 		documentos column:'id_f_doc'
-		
 		evento column:'id_007_evento'
 		tipoDocumentoEvento column:'id_015_tpdocevento'
 		fechaCreacion column:'fh_creacion'

@@ -34,7 +34,7 @@
 					<div id="list-telefonoInstituto" class="content scaffold-list"
 						role="main">
 						<h1>
-							Gestión teléfono instituto
+							Gestión de Teléfonos de Institutos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

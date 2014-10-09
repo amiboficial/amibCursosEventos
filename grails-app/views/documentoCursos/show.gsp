@@ -35,7 +35,7 @@
 				<div class="widgetTitle">
 					<div id="show-documentoCursos" class="content scaffold-show"
 						role="main">
-						<h1>Muestra documento</h1>
+						<h1>Muestra Documento de Curso</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
 								${flash.message}

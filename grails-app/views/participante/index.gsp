@@ -11,7 +11,7 @@
 		<script type="text/javascript" charset="utf8"
 		src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 
-<g:javascript src="dataTableFormat.js" />
+		<g:javascript src="dataTableFormat.js" />	
 	</head>
 	<body>
 		<fieldset>
@@ -21,11 +21,12 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear participante</g:link></li>
+				
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Participantes</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
+
 
 	<fieldset>
 		<div class="panel-heading">
@@ -33,7 +34,7 @@
 				<div id="list-participante" class="content scaffold-list"
 					role="main">
 					<h1>
-						Gestión participante
+						Gestión de Participantes
 					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">
@@ -48,14 +49,14 @@
 	<fieldset>
 			<div class="panel panel-default">
             	<div class="panel-heading">
-                	<h3 class="panel-title">Lista de participantes</h3>
+                	<h3 class="panel-title">Lista de cursos</h3>
 				</div>
-				
-				
-		<table class="table table-bordered table-striped table-hover"
+	<table class="table table-bordered table-striped table-hover"
 			style="width: 100%; margin: auto;" border="0" id="tblFormat">
 			<thead>
 					<tr>
+					
+						<g:sortableColumn property="matricula" title="${message(code: 'participante.matricula.label', default: 'Matricula')}" />
 					
 						<g:sortableColumn property="nombreParticipante" title="${message(code: 'participante.nombreParticipante.label', default: 'Nombre Participante')}" />
 					
@@ -65,23 +66,21 @@
 					
 						<th><g:message code="participante.evento.label" default="Evento" /></th>
 					
-						<g:sortableColumn property="matricula" title="${message(code: 'participante.matricula.label', default: 'Matricula')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${participanteInstanceList}" status="i" var="participanteInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${participanteInstance.id}">${fieldValue(bean: participanteInstance, field: "nombreParticipante")}</g:link></td>
+						<td><g:link action="show" id="${participanteInstance.id}">${fieldValue(bean: participanteInstance, field: "matricula")}</g:link></td>
+					
+						<td>${fieldValue(bean: participanteInstance, field: "nombreParticipante")}</td>
 					
 						<td><g:formatDate date="${participanteInstance.fechaCreacion}" /></td>
 					
 						<td><g:formatDate date="${participanteInstance.fechaModificacion}" /></td>
 					
 						<td>${fieldValue(bean: participanteInstance, field: "evento")}</td>
-					
-						<td>${fieldValue(bean: participanteInstance, field: "matricula")}</td>
 					
 					</tr>
 				</g:each>
@@ -92,5 +91,6 @@
 			<div class="pagination">
 				<g:paginate total="${participanteInstanceCount ?: 0}" />
 			</div>
+	
 	</body>
 </html>

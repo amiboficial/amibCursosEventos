@@ -2,6 +2,7 @@
 
 <div class="form-inline" role="form">
 
+
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'nombreDelCurso', 'error')} ">
 	<label for="nombreDelCurso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.nombreDelCurso.label" default="Nombre Del Curso" />
@@ -79,7 +80,7 @@
 		<g:message code="cursos.telefonoFijoCoordinador.label" default="Telefono Fijo Coordinador" />
 		
 	</label>
-	<g:textField name="telefonoFijoCoordinador" cols="40" rows="5" maxlength="254" value="${cursosInstance?.telefonoFijoCoordinador}"class ="form-control"/>
+	<g:textField name="telefonoFijoCoordinador" cols="40" rows="5" maxlength="254" value="${cursosInstance?.telefonoFijoCoordinador}" class ="form-control"/>
 
 </div>
 <br>
@@ -106,7 +107,7 @@
 		<g:message code="cursos.status.label" default="Status" />
 		
 	</label>
-	<g:checkBox name="status" value="${cursosInstance?.status}" class ="form-control"/>
+	<g:textField name="status" value="${cursosInstance?.status}" class ="form-control"/>
 
 </div>
 <br>
@@ -134,8 +135,14 @@
 		
 	</label>
 	
-
-<g:select id="cambioStatus" name="cambioStatus.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.log.CambioStatus.list()}" optionKey="id" required="" value="${cursosInstance?.cambioStatus?.id}" class="many-to-one"/>
+<ul class="one-to-many">
+<g:each in="${cursosInstance?.cambioStatus?}" var="c">
+    <li><g:link controller="cambioStatus" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="cambioStatus" action="create" params="['cursos.id': cursosInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'cambioStatus.label', default: 'CambioStatus')])}</g:link>
+</li>
+</ul>
 
 
 </div>
@@ -143,22 +150,45 @@
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'documentoCurso', 'error')} ">
 	<label for="documentoCurso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.documentoCurso.label" default="Documento Curso" />
-		<span class="required-indicator">*</span>
+		
 	</label>
 	
-
-<g:select id="documentoCursos" name="documentoCursos.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.catalogo.DocumentoCursos.list()}" optionKey="id" required="" value="${cursosInstance?.documentoCurso?.id}" class="many-to-one"/>
+<ul class="one-to-many">
+<g:each in="${cursosInstance?.documentoCurso?}" var="d">
+    <li><g:link controller="documentoCursos" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="documentoCursos" action="create" params="['cursos.id': cursosInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'documentoCursos.label', default: 'DocumentoCursos')])}</g:link>
+</li>
+</ul>
 
 
 </div>
 <br>
+<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'eventos', 'error')} ">
+	<label for="eventos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="cursos.eventos.label" default="Eventos" />
+		
+	</label>
+	<g:select name="eventos" from="${mx.amib.sistemas.cursoseventos.eventos.model.Evento.list()}" multiple="multiple" optionKey="id" size="5" value="${cursosInstance?.eventos*.id}" class="many-to-many"/>
 
+</div>
+<br>
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'expositores', 'error')} ">
 	<label for="expositores" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.expositores.label" default="Expositores" />
-			<span class="required-indicator">*</span>
+		
 	</label>
-<g:select id="expositor" name="expositor.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Expositor.list()}" optionKey="id" required="" value="${cursosInstance?.expositores?.id}" class="many-to-one"/>
+	
+<ul class="one-to-many">
+<g:each in="${cursosInstance?.expositores?}" var="e">
+    <li><g:link controller="expositor" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="expositor" action="create" params="['cursos.id': cursosInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'expositor.label', default: 'Expositor')])}</g:link>
+</li>
+</ul>
+
 </div>
 </div>
 

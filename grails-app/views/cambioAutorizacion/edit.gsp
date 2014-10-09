@@ -15,12 +15,12 @@
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
 			
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion Estatus "Instituto"</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Cambios de Autorización</g:link></li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Estatus "Instituto"</g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Cambios de Autorización</g:link></li>
 			</ul><br>
 		</div>
-
+	</fieldset>
 		<fieldset>
 			<div class="panel panel-default col-lg-12">
 				<div class="panel-heading">
@@ -28,7 +28,7 @@
 						<div id="edit-cambioAutorizacion" class="content scaffold-edit"
 							role="main">
 							<h1>
-								Editar Estatus "Instituto"
+								Editar Cambios de Autorización
 							</h1>
 							<g:if test="${flash.message}">
 								<div class="message" role="status">

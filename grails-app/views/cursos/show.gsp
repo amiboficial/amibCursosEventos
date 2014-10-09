@@ -8,26 +8,25 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-	<fieldset>
+		<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<!--  <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>-->
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestion curso</g:link></li>
-			</ul>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+			</ul><br>
 		</div>
 		</fieldset>
-		
-		<fieldset>
+
+	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
 					<div id="show-cursos" class="content scaffold-show" role="main">
 						<h1>
-							<g:message code="default.show.label" args="[entityName]" />
+							Mostrar Curso
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -37,8 +36,8 @@
 					</div>
 				</div>
 			</div>
-			
 			<br>
+
 			<ul class="property-list cursos">
 
 				<g:if test="${cursosInstance?.nombreDelCurso}">
@@ -147,8 +146,8 @@
 					<li class="fieldcontain"><span id="status-label"
 						class="property-label"><g:message
 								code="cursos.status.label" default="Status" /></span> <span
-						class="property-value" aria-labelledby="status-label"><g:formatBoolean
-								boolean="${cursosInstance?.status}" /></span></li>
+						class="property-value" aria-labelledby="status-label"><g:fieldValue
+								bean="${cursosInstance}" field="status" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.fechaCreacion}">
@@ -194,6 +193,18 @@
 						</g:each></li>
 				</g:if>
 
+				<g:if test="${cursosInstance?.eventos}">
+					<li class="fieldcontain"><span id="eventos-label"
+						class="property-label"><g:message
+								code="cursos.eventos.label" default="Eventos" /></span> <g:each
+							in="${cursosInstance.eventos}" var="e">
+							<span class="property-value" aria-labelledby="eventos-label"><g:link
+									controller="evento" action="show" id="${e.id}">
+									${e?.encodeAsHTML()}
+								</g:link></span>
+						</g:each></li>
+				</g:if>
+
 				<g:if test="${cursosInstance?.expositores}">
 					<li class="fieldcontain"><span id="expositores-label"
 						class="property-label"><g:message
@@ -210,14 +221,14 @@
 			<g:form url="[resource:cursosInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${cursosInstance}"> <g:message code="default.button.edit.label" default="Edit" /></g:link>
-					&nbsp;
+					<g:link class="edit  btn btn-primary colortitle colorblack" action="edit" resource="${cursosInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						&nbsp;
 					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					&nbsp;
+						&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
-				</fieldset>
+				</fieldset><br>
 			</g:form>
 		</div>
-	</fieldset>
-	</body>
+		</fieldset>
+</body>
 </html>

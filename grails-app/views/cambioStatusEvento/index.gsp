@@ -21,7 +21,7 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 				
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Estatus "Evento"</g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear cambios de Estatus de Evento</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -32,7 +32,7 @@
 				<div id="list-cambioStatusEvento" class="content scaffold-list"
 					role="main">
 					<h1>
-						Gestión Estatus "Evento"
+						Gestión de cambios de Estatus de Evento
 					</h1>
 					<g:if test="${flash.message}">
 						<div class="message" role="status">

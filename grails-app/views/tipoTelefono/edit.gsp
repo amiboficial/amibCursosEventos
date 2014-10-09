@@ -16,9 +16,9 @@
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
 				<!-- <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li> -->
-				<li><g:link class="list" action="index">Gestión tipo de teléfono</g:link></li>
+				<li><g:link class="list" action="index">Gestión de Tipos de Teléfonos</g:link></li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create" action="create">Crear tipo de teléfono</g:link></li>
+				<li><g:link class="create" action="create">Crear Tipos de Teléfonos</g:link></li>
 			</ul>
 		</div>
 		</fieldset>
@@ -29,7 +29,7 @@
 					<div id="edit-tipoTelefono" class="content scaffold-edit"
 						role="main">
 						<h1>
-							<g:message code="default.edit.label" args="[entityName]" />
+						Editar Tipos de Teléfonos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">

@@ -14,10 +14,9 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
-		
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Instituto</g:link></li>
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Institutos</g:link></li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Insituto</g:link></li>
+				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear institutos</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -28,7 +27,7 @@
 				<div class="widgetTitle">
 					<div id="edit-instituto" class="content scaffold-edit" role="main">
 						<h1>
-							Editar Instituto
+							Editar Institutos
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
