@@ -26,8 +26,9 @@ class Evento {
 	String domicilioSEDENumero
 	Long domicilioSEDESepomex
 	Date fechaCreacion
+	Cursos cursos
 	
-	static hasMany = [participantes:Participante, horarioEvento:HorarioEvento, documentoEvento:DocumentoEvento,
+		static hasMany = [participantes:Participante, horarioEvento:HorarioEvento, documentoEvento:DocumentoEvento,
 		cambioEstatusEvento:CambioStatusEvento]
 	
 	static belongTo = [Cursos]
@@ -50,13 +51,14 @@ class Evento {
 		domicilioSEDENumero column:'tx_domsede_numext'
 		domicilioSEDESepomex column:'id_domsede_f_sepomex'
 		fechaCreacion column:'fh_creacion'
+		cursos  column : 'id_006_curso'
 		}
 	
-    static constraints = {
+	static constraints = {
 		fechaInicio nullable: true
 		fechaTermino nullable: true
 		nombreCordinador nullable: true, maxSize: 100
-		primerApellidoCoordinador nullable: true, maxSize:100 
+		primerApellidoCoordinador nullable: true, maxSize:100
 		segundoApellidoCoordinador nullable: true, maxSize: 100
 		telefonoFijoCoordinador nullable: true, maxSize: 20
 		faxCoordinador nullable: true, maxSize: 20
@@ -67,5 +69,5 @@ class Evento {
 		domicilioSEDESepomex nullable: true, maxSize: 100
 		fechaCreacion nullable: true
 	
-    }
+	}
 }

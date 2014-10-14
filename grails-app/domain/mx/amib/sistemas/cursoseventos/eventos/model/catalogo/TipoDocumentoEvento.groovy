@@ -17,11 +17,11 @@ class TipoDocumentoEvento {
 		version false
 		
 		tipoDoumentoEvento column:'ds_tpdocevento'
-		clave colum:'tx_clave'
-		estatus colum:'st_vigente'
+		clave column:'tx_clave'
+		estatus column:'st_vigente'
 	}
 
-    static constraints = {
+	static constraints = {
 		tipoDoumentoEvento nullable: true, maxSize: 100
-    }
+	}
 }

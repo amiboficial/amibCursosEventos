@@ -35,10 +35,12 @@ class Instituto {
 	
 	
 	static hasMany = [telefonos: TelefonoInstituto,
-	                  cambiosAutorizacion: CambioAutorizacion, cursos:Cursos]
+					  cambiosAutorizacion: CambioAutorizacion, cursos:Cursos]
 	static belongsTo = [TipoInstituto]
 
 	static mapping = {
+		
+		
 		table 't001_t_instituto'
 		
 		id generator: "assigned"

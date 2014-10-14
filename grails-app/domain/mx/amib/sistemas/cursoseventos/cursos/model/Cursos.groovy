@@ -5,6 +5,7 @@ import mx.amib.sistemas.cursoseventos.cursos.model.log.CambioStatus
 import mx.amib.sistemas.cursoseventos.cursos.model.Expositor
 import mx.amib.sistemas.cursoseventos.cursos.model.catalogo.DocumentoCursos
 import mx.amib.sistemas.cursoseventos.eventos.model.Evento;
+import mx.amib.sistemas.cursoseventos.institutos.model.Instituto
 
 class Cursos {
 	
@@ -27,10 +28,10 @@ class Cursos {
 	Date fechaModificacion
 	
 	
-	//Instituto instituto
+	Instituto instituto
 	
 	static hasMany = [cambioStatus: CambioStatus, expositores:Expositor, documentoCurso: DocumentoCursos, eventos:Evento]
-	//static belongsTo = [intituto: Instituto]
+
 	
 	static mapping = {
 		table 't006_t_curso'
@@ -53,9 +54,11 @@ class Cursos {
 		status column:'st_estatus'
 		fechaCreacion column:'fh_creacion'
 		fechaModificacion column:'fh_modificacion'
+		
+		instituto column:'id_001_instituto'
 	}
 	
-    static constraints = {
+	static constraints = {
 	
 		nombreDelCurso nullable: true, maxSize: 254
 		siglas nullable: true, maxSize: 4
@@ -73,7 +76,7 @@ class Cursos {
 		fechaCreacion nullable: true
 		fechaModificacion nullable: true
 		
-    }
+	}
 	
 	
 }
