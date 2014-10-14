@@ -19,7 +19,7 @@
 	<g:datePicker name="fechaCreacion" precision="day"  value="${documentoCursosInstance?.fechaCreacion}" default="none" noSelection="['': '']"/>
 
 </div>
-<br>
+<br><!-- 
 <div class="fieldcontain ${hasErrors(bean: documentoCursosInstance, field: 'curso', 'error')} required">
 	<label for="curso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="documentoCursos.curso.label" default="Curso" />
@@ -27,7 +27,7 @@
 	</label>
 	<g:select id="curso" name="curso.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" optionKey="id" required="" value="${documentoCursosInstance?.curso?.id}" class="many-to-one" class ="form-control"/>
 
-</div>
+</div> -->
 <br>
 <div class="fieldcontain ${hasErrors(bean: documentoCursosInstance, field: 'tipoDocumentoCurso', 'error')} required">
 	<label for="tipoDocumentoCurso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">

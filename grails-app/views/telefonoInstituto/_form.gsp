@@ -20,7 +20,7 @@
 	<g:datePicker name="fechaCreacion" precision="day"  value="${telefonoInstitutoInstance?.fechaCreacion}" default="none" noSelection="['': '']" />
 
 </div>
-<br>
+<!--  <br>
 <div class="fieldcontain ${hasErrors(bean: telefonoInstitutoInstance, field: 'instituto', 'error')} required">
 	<label for="instituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="telefonoInstituto.instituto.label" default="Instituto" />
@@ -28,7 +28,7 @@
 	</label>
 	<g:select id="instituto" name="instituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.Instituto.list()}" optionKey="id" required="" value="${telefonoInstitutoInstance?.instituto?.id}" class="many-to-one" class ="form-control"/>
 
-</div>
+</div>-->
 <br>
 <div class="fieldcontain ${hasErrors(bean: telefonoInstitutoInstance, field: 'tipotelefono', 'error')} required">
 	<label for="tipotelefono" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">

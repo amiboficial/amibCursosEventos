@@ -62,7 +62,7 @@
 		<g:message code="cursos.primerApellidoCoordinador.label" default="Primer Apellido Coordinador" />
 		
 	</label>
-	<g:textField name="primerApellidoCoordinador" maxlength="4" value="${cursosInstance?.primerApellidoCoordinador}" class ="form-control"/>
+	<g:textField name="primerApellidoCoordinador" maxlength="254" value="${cursosInstance?.primerApellidoCoordinador}" class ="form-control"/>
 
 </div>
 <br>

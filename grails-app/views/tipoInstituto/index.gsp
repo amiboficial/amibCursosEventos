@@ -69,10 +69,10 @@
 				<g:each in="${tipoInstitutoInstanceList}" status="i" var="tipoInstitutoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${tipoInstitutoInstance.id}">${fieldValue(bean: tipoInstitutoInstance, field: "vigente")}</g:link></td>
+						<td><g:link action="show" id="${tipoInstitutoInstance.id}">${fieldValue(bean: tipoInstitutoInstance, field: "descripcion")}</g:link></td>
 					
-						<td>${fieldValue(bean: tipoInstitutoInstance, field: "descripcion")}</td>
-					
+						<td>${fieldValue(bean: tipoInstitutoInstance, field: "vigente")}</td>
+						
 					</tr>
 				</g:each>
 				</tbody>

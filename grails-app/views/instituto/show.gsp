@@ -291,8 +291,8 @@
 						class="property-label"><g:message
 								code="instituto.tipoInstituto.label" default="Tipo Instituto" /></span>
 
-						<span class="property-value" aria-labelledby="tipoInstituto-label"><g:link
-								controller="tipoInstituto" action="show"
+						<span class="property-value"  aria-labelledby="tipoInstituto-label"><g:link
+								controller="tipoInstituto" action="show" 
 								id="${institutoInstance?.tipoInstituto?.id}">
 								${institutoInstance?.tipoInstituto?.encodeAsHTML()}
 							</g:link></span></li>
