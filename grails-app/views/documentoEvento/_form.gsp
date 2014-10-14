@@ -20,6 +20,7 @@
 
 </div>
 <br>
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: documentoEventoInstance, field: 'evento', 'error')} required">
 	<label for="evento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="documentoEvento.evento.label" default="Evento" />
@@ -28,7 +29,7 @@
 	<g:select id="evento" name="evento.id" from="${mx.amib.sistemas.cursoseventos.eventos.model.Evento.list()}" optionKey="id" required="" value="${documentoEventoInstance?.evento?.id}" class="many-to-one" class ="form-control"/>
 
 </div>
-<br>
+<br> -->
 <div class="fieldcontain ${hasErrors(bean: documentoEventoInstance, field: 'tipoDocumentoEvento', 'error')} required">
 	<label for="tipoDocumentoEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="documentoEvento.tipoDocumentoEvento.label" default="Tipo Documento Evento" />

@@ -38,6 +38,7 @@
 
 </div>
 <br>
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: participanteInstance, field: 'evento', 'error')} required">
 	<label for="evento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="participante.evento.label" default="Evento" />
@@ -45,6 +46,6 @@
 	</label>
 	<g:select id="evento" name="evento.id" from="${mx.amib.sistemas.cursoseventos.eventos.model.Evento.list()}" optionKey="id" required="" value="${participanteInstance?.evento?.id}" class="many-to-one" class ="form-control"/>
 
-</div>
+</div> -->
 <br>
 </div>

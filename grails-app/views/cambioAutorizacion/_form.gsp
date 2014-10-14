@@ -29,6 +29,7 @@
 
 </div>
 <br>
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: cambioAutorizacionInstance, field: 'instituto', 'error')} required">
 	<label for="instituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cambioAutorizacion.instituto.label" default="Instituto" />
@@ -36,6 +37,6 @@
 	</label>
 	<g:select id="instituto" name="instituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.Instituto.list()}" optionKey="id" required="" value="${cambioAutorizacionInstance?.instituto?.id}" class="many-to-one" class ="form-control"/>
 
-</div>
+</div> -->
 
 </div>

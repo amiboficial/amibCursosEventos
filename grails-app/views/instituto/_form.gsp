@@ -16,7 +16,7 @@
 		<g:message code="instituto.siglas.label" default="Siglas" />
 		
 	</label>
-	<g:textField name="siglas" maxlength="4" value="${institutoInstance?.siglas}" class ="form-control"/>
+	<g:textField name="siglas" maxlength="4" value="${institutoInstance?.siglas}" class ="form-control"/><!-- revisar maxlenght -->
 
 </div>
 <br>
@@ -25,7 +25,7 @@
 		<g:message code="instituto.rfc.label" default="Rfc" />
 		
 	</label>
-	<g:textField name="rfc" maxlength="13" value="${institutoInstance?.rfc}" class ="form-control"/>
+	<g:textField name="rfc" maxlength="13" value="${institutoInstance?.rfc}" class ="form-control"/><!-- revisar maxlenght -->
 
 </div>
 <br>
@@ -241,16 +241,46 @@
 <g:link controller="telefonoInstituto" action="create" params="['instituto.id': institutoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'telefonoInstituto.label', default: 'TelefonoInstituto')])}</g:link>
 </li>
 </ul>
-
+</div>
+<!--  -->
+<div class="fieldcontain ${hasErrors(bean: telefonoInstitutoInstance, field: 'telefono', 'error')} ">
+	<label for="telefono" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="telefonoInstituto.telefono.label" default="Telefono" />
+		
+	</label>
+	<g:textField name="telefono" maxlength="50" value="${telefonoInstitutoInstance?.telefono}" class ="form-control"/>
 
 </div>
+<br>
+
+<div class="fieldcontain ${hasErrors(bean: telefonoInstitutoInstance, field: 'fechaCreacion', 'error')} ">
+	<label for="fechaCreacion" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="telefonoInstituto.fechaCreacion.label" default="Fecha Creacion" />
+		
+	</label>
+	<g:datePicker name="instituto.fechaCreacion" precision="day"  value="${telefonoInstitutoInstance?.fechaCreacion}" default="none" noSelection="['': '']" />
+
+</div>
+
+<br>
+<div class="fieldcontain ${hasErrors(bean: telefonoInstitutoInstance, field: 'tipotelefono', 'error')} required">
+	<label for="tipotelefono" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="telefonoInstituto.tipotelefono.label" default="Tipotelefono" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="tipotelefono" name="instituto.tipotelefono.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.TipoTelefono.list()}" optionKey="id" optionValue="descripcion" required="" value="${telefonoInstitutoInstance?.tipotelefono?.id}" class="many-to-one" class ="form-control"/>
+
+</div>
+
+
+
 <br>
 <div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'tipoInstituto', 'error')} required">
 	<label for="tipoInstituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="instituto.tipoInstituto.label" default="Tipo Instituto" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="tipoInstituto" name="tipoInstituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto.list()}" optionKey="id" required="" value="${institutoInstance?.tipoInstituto?.id}" class="many-to-one" class ="form-control"/>
+	<g:select id="tipoInstituto" name="tipoInstituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto.list()}" optionKey="id" optionValue="descripcion" required="" value="${institutoInstance?.tipoInstituto?.id}" class="many-to-one" class ="form-control"/>
 
 </div>
 <br>
