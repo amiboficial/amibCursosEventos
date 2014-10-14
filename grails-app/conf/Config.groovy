@@ -139,6 +139,8 @@ grails.plugin.reveng.excludeTables = [
 grails.plugins.twitterbootstrap.fixtaglib = true
 grails.plugins.twitterbootstrap.defaultBundle = 'bundle_bootstrap'
 
+mx.amib.sistemas.registro.tempDir = 'H:\\Temp\\amibCursosEventos\\'
+
 //INICIA: ESPECIFICACIONES DE RUTAS PARA CONSUMO DE SERVICIOS REST
 //especificaciones de rutas para servicios REST de amibCatalogos
 mx.amib.sistemas.catalogos.general.GrupoFinanciero.getById = 'grupoFinancieroRestful/show/'
