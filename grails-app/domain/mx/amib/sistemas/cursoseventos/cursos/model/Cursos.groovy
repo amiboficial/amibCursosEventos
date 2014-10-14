@@ -36,7 +36,7 @@ class Cursos {
 	static mapping = {
 		table 't006_t_curso'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		nombreDelCurso column:'nb_nombre'

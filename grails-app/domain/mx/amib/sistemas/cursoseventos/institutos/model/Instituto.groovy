@@ -1,5 +1,7 @@
 package mx.amib.sistemas.cursoseventos.institutos.model
 
+
+
 import mx.amib.sistemas.cursoseventos.cursos.model.Cursos;
 import mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto;
 import mx.amib.sistemas.cursoseventos.institutos.model.log.CambioAutorizacion;
@@ -43,7 +45,7 @@ class Instituto {
 		
 		table 't001_t_instituto'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		razonSocial column:'nb_razonsocial'

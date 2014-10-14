@@ -12,7 +12,7 @@ class TipoTelefono {
 		table 't005_c_tptelefono'
 		
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		vigente column:'st_vigente'

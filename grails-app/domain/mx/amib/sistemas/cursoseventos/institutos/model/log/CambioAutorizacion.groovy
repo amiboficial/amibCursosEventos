@@ -15,7 +15,7 @@ class CambioAutorizacion {
 	static mapping = {
 		table 't004_b_cambioautorizacion'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		estatusAutorizacion column:'st_autorizacion'

@@ -10,13 +10,13 @@ class TelefonoInstituto {
 	
 	//falta relacion con instituto y tipo de telefono instituto
 	
-	static hasMany = []
+	
 	static belongsTo = [Instituto, TipoTelefono]
 
 	static mapping = {
 		table 't003_t_telefonoinstituto'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		telefono column:'tx_telefono'

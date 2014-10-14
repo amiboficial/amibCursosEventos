@@ -36,7 +36,7 @@ class Evento {
 	static mapping = {
 		table 't007_t_evento'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		fechaInicio column:'fh_inicio'
 		fechaTermino column:'fh_termino'

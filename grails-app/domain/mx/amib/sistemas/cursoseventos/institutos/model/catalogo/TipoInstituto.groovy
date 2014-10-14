@@ -12,7 +12,7 @@ class TipoInstituto {
 	static mapping = {
 		table 't002_c_tpinstituto'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		vigente column:'st_vigente'
