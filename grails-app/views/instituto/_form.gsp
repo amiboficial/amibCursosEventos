@@ -203,7 +203,7 @@
 
 
 
-<!--  -->
+<!--  
 <div class="fieldcontain ${hasErrors(bean: telefonoInstitutoInstance, field: 'telefono', 'error')} ">
 	<label for="telefono" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="telefonoInstituto.telefono.label" default="Telefono" />
@@ -231,7 +231,7 @@
 	</label>
 	<g:select id="tipotelefono" name="instituto.tipotelefono.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.TipoTelefono.list()}" optionKey="id" optionValue="descripcion" required="" value="${telefonoInstitutoInstance?.tipotelefono?.id}" class="many-to-one" class ="form-control"/>
 
-</div>
+</div>-->
 
 
 

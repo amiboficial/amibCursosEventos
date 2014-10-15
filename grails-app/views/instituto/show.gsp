@@ -294,7 +294,7 @@
 						<span class="property-value"  aria-labelledby="tipoInstituto-label"><g:link
 								controller="tipoInstituto" action="show" 
 								id="${institutoInstance?.tipoInstituto?.id}">
-								${institutoInstance?.tipoInstituto?.encodeAsHTML()}
+								${institutoInstance?.tipoInstituto?.descripcion.encodeAsHTML()}
 							</g:link></span></li>
 				</g:if>
 

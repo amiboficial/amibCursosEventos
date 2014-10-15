@@ -32,22 +32,22 @@ class Instituto {
 	Date fechaCreacion
 	Date fechaModificacion
 	TipoInstituto tipoInstituto
-	
-	
-	
-	
-	static hasMany = [telefonos: TelefonoInstituto,
-					  cambiosAutorizacion: CambioAutorizacion, cursos:Cursos]
+
+
+
+
+	static hasMany = [telefonos : TelefonoInstituto,
+		cambiosAutorizacion: CambioAutorizacion, cursos:Cursos]
 	static belongsTo = [TipoInstituto]
 
 	static mapping = {
-		
-		
+
+
 		table 't001_t_instituto'
-		
+
 		id generator: "identity"
 		version false
-		
+
 		razonSocial column:'nb_razonsocial'
 		siglas column:'nb_siglas'
 		rfc column:'tx_rfc'
@@ -70,7 +70,7 @@ class Instituto {
 		fechaFinVigencia column:'fh_finvigencia'
 		fechaCreacion column:'fh_creacion'
 		fechaModificacion column:'fh_modificacion'
-		
+
 		tipoInstituto column:'id_002_tpinstituto'
 	}
 
@@ -98,6 +98,5 @@ class Instituto {
 		fechaFinVigencia nullable: true
 		fechaCreacion nullable: true
 		fechaModificacion nullable: true
-		
 	}
 }

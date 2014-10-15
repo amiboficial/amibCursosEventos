@@ -6,7 +6,7 @@ class TipoTelefono {
 	String descripcion
 	
 	
-	static hasMany = [telefonos: TelefonoInstituto]
+	static hasMany = [telefono: TelefonoInstituto]
 	
 	static mapping = {
 		table 't005_c_tptelefono'
