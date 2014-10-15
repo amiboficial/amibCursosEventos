@@ -169,7 +169,7 @@
 		<g:message code="instituto.fechaAlta.label" default="Fecha Alta" />
 		
 	</label>
-	<g:datePicker name="fechaAlta" precision="day"  value="${institutoInstance?.fechaAlta}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaAlta" precision="day"  value="${institutoInstance?.fechaAlta}"  />
 
 </div>
 <br>
@@ -178,7 +178,7 @@
 		<g:message code="instituto.fechaFinVigencia.label" default="Fecha Fin Vigencia" />
 		
 	</label>
-	<g:datePicker name="fechaFinVigencia" precision="day"  value="${institutoInstance?.fechaFinVigencia}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaFinVigencia" precision="day"  value="${institutoInstance?.fechaFinVigencia}"  />
 
 </div>
 <br>
@@ -187,7 +187,7 @@
 		<g:message code="instituto.fechaCreacion.label" default="Fecha Creacion" />
 		
 	</label>
-	<g:datePicker name="fechaCreacion" precision="day"  value="${institutoInstance?.fechaCreacion}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaCreacion" precision="day"  value="${institutoInstance?.fechaCreacion}" default="none" />
 
 </div>
 <br>
@@ -196,52 +196,13 @@
 		<g:message code="instituto.fechaModificacion.label" default="Fecha Modificacion" />
 		
 	</label>
-	<g:datePicker name="fechaModificacion" precision="day"  value="${institutoInstance?.fechaModificacion}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaModificacion" precision="day"  value="${institutoInstance?.fechaModificacion}" default="none" />
 
 </div>
 <br>
-<div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'cambiosAutorizacion', 'error')} ">
-	<label for="cambiosAutorizacion" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="instituto.cambiosAutorizacion.label" default="Cambios Autorizacion" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${institutoInstance?.cambiosAutorizacion?}" var="c">
-    <li><g:link controller="cambioAutorizacion" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="cambioAutorizacion" action="create" params="['instituto.id': institutoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'cambioAutorizacion.label', default: 'CambioAutorizacion')])}</g:link>
-</li>
-</ul>
 
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'cursos', 'error')} ">
-	<label for="cursos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="instituto.cursos.label" default="Cursos" />
-		
-	</label>
-	<g:select name="cursos" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" multiple="multiple" optionKey="id" size="5" value="${institutoInstance?.cursos*.id}" class="many-to-many"/>
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'telefonos', 'error')} ">
-	<label for="telefonos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="instituto.telefonos.label" default="Telefonos" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${institutoInstance?.telefonos?}" var="t">
-    <li><g:link controller="telefonoInstituto" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="telefonoInstituto" action="create" params="['instituto.id': institutoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'telefonoInstituto.label', default: 'TelefonoInstituto')])}</g:link>
-</li>
-</ul>
-</div>
 <!--  -->
 <div class="fieldcontain ${hasErrors(bean: telefonoInstitutoInstance, field: 'telefono', 'error')} ">
 	<label for="telefono" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
@@ -258,7 +219,7 @@
 		<g:message code="telefonoInstituto.fechaCreacion.label" default="Fecha Creacion" />
 		
 	</label>
-	<g:datePicker name="instituto.fechaCreacion" precision="day"  value="${telefonoInstitutoInstance?.fechaCreacion}" default="none" noSelection="['': '']" />
+	<g:datePicker name="instituto.fechaCreacion" precision="day"  value="${telefonoInstitutoInstance?.fechaCreacion}"  />
 
 </div>
 
