@@ -174,6 +174,7 @@
 
 </div>
 <br>
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'expositores', 'error')} ">
 	<label for="expositores" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.expositores.label" default="Expositores" />
@@ -190,5 +191,9 @@
 </ul>
 
 </div>
+ -->
+
+
+
 </div>
 

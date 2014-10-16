@@ -3,8 +3,11 @@ package mx.amib.sistemas.cursoseventos.cursos.model
 
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
+import java.util.Date;
+
+import grails.transaction.Transactional
+import grails.converters.JSON
 @Transactional(readOnly = true)
 class CursosController {
 
@@ -20,6 +23,9 @@ class CursosController {
     }
 
     def create() {
+		
+		def cursosInstance = new Cursos(params);
+		
         respond new Cursos(params)
     }
 
@@ -29,6 +35,37 @@ class CursosController {
             notFound()
             return
         }
+		
+		//sacando los expositores
+		def listaExpositoresJson = params.list('expositor')
+		def listaExpositores = new ArrayList<Expositor>()
+		listaExpositoresJson.each{
+			//para cada uno en la lista 
+			def jsEx = JSON.parse(it)
+			Expositor ex = new Expositor()
+			
+			ex.nombreExpositor = jsEx.'nombreExpositor'
+			ex.primerApellidoExpositor = jsEx.'primerApellidoExpositor'
+			ex.segundoApellidoExpositor = jsEx.'segundoApellidoExpositor'
+			ex.fechaCreacion = jsEx.'fechaCreacion'
+			ex.horas = jsEx.'horas'
+			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
+			
+			ex.cursos = cursosInstance
+			listaExpositores.add(ex)
+		}
+		cursosInstance.expositores = listaExpositores
+		
+		println (cursosInstance.expositores as JSON)
+		//String nombreExpositor
+		//String primerApellidoExpositor
+		//String segundoApellidoExpositor
+		
+		//Date fechaCreacion
+		//Integer horas
+		//Cursos curso
+		
+		
 
         if (cursosInstance.hasErrors()) {
             respond cursosInstance.errors, view:'create'
