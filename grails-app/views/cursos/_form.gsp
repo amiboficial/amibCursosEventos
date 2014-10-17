@@ -174,24 +174,26 @@
 
 </div>
 <br>
-<!-- 
-<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'expositores', 'error')} ">
+
+
+
+<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'instituto', 'error')} ">
 	<label for="expositores" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="cursos.expositores.label" default="Expositores" />
+		<g:message code="cursos.institutos.label" default="Instituto" />
 		
 	</label>
 	
 <ul class="one-to-many">
-<g:each in="${cursosInstance?.expositores?}" var="e">
-    <li><g:link controller="expositor" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
+<g:each in="${cursosInstance?.instituto?}" var="i">
+    <li><g:link controller="instituto" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="expositor" action="create" params="['cursos.id': cursosInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'expositor.label', default: 'Expositor')])}</g:link>
+<g:link controller="instituto" action="create" params="['cursos.id': cursosInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'instituto.label', default: 'Istituto')])}</g:link>
 </li>
 </ul>
 
 </div>
- -->
+
 
 
 

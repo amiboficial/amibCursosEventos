@@ -57,16 +57,7 @@ class CursosController {
 		cursosInstance.expositores = listaExpositores
 		
 		println (cursosInstance.expositores as JSON)
-		//String nombreExpositor
-		//String primerApellidoExpositor
-		//String segundoApellidoExpositor
-		
-		//Date fechaCreacion
-		//Integer horas
-		//Cursos curso
-		
-		
-
+			/////////////////
         if (cursosInstance.hasErrors()) {
             respond cursosInstance.errors, view:'create'
             return

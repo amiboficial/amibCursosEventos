@@ -48,12 +48,15 @@
 			<g:form url="[resource:cursosInstance, action:'save']">
 				<fieldset class="form">
 					<g:render template="form" />
-
+	<br>
 
 					<table class="table">
 						<thead>
+						<tr>
+						Expositores
+						</tr>
 							<tr>
-								<th>Nombre Expositores</th>
+								<th>Nombre</th>
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
 								<th>Fecha</th>
@@ -73,11 +76,11 @@
 									<input id="txtNewSegApeExpositor" class="form-control" type="text" />
 								</td>
 								<td>
-									<input id="dateNewFecha" class="form-control" type="text" />
+									<input id="dateNewFecha" class="form-control" type="Date" />
 								</td>
 								
 								<td>
-									<input id="NumNewhora" class="form-control" type="text" />
+									<input id="NumNewhora" class="form-control" type="time" />
 								</td>						
 								<td>
 									<button id="btnAddNewExpositor" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
@@ -94,7 +97,7 @@
 						<td>{{=fechaCreacion}}</td>
 						<td>{{=horas}}</td>
 						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
-							<input type="hidden" name="expositor" value="{  'nombreExpositor' : {{=nombreExpositor}}, 'primerApellidoExpositor' : {{=primerApellidoExpositor}}, 
+							<input type="hidden" name="expositor" value="{ 'id':{{=grailsId}}, 'nombreExpositor' : {{=nombreExpositor}}, 'primerApellidoExpositor' : {{=primerApellidoExpositor}}, 
 							 'segundoApellidoExpositor' : {{=segundoApellidoExpositor}},  'fechaCreacion' : {{=fechaCreacion}}, 'horas' : {{=horas}} } " />
 						</td>
 					</script>
@@ -188,11 +191,11 @@
 					e.preventDefault(); //para que no haga submit... creo...
 
 				//aqui saca los datos del formulario al modelo que vayamos a crear		
-				var _horas = $('#NumNewhora').text();
-				var _fechaCreacion = $('#dateNewFecha').text();
-				var _segundoApellidoExpositor = $('#txtNewSegApeExpositor').text();
-				var _primerApellidoExpositor = $('#txtNewPriApeExpositor').text();
-				var _nombreExpositor = $('#txtNewNomExpositor').text();
+				var _horas = $('#NumNewhora').val();
+				var _fechaCreacion = $('#dateNewFecha').val();
+				var _segundoApellidoExpositor = $('#txtNewSegApeExpositor').val();
+				var _primerApellidoExpositor = $('#txtNewPriApeExpositor').val();
+				var _nombreExpositor = $('#txtNewNomExpositor').val();
 				var _idx = _.size(this.collection) 
 				var expositor = new exWidget.Expositor( { horas: _horas , fechaCreacion: _fechaCreacion , segundoApellidoExpositor: _segundoApellidoExpositor , primerApellidoExpositor: _primerApellidoExpositor , nombreExpositor: _nombreExpositor , idx: _idx } );
 		
@@ -205,7 +208,6 @@
 		});
 
 </script>
-
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />

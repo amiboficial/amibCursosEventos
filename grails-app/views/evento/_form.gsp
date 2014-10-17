@@ -155,6 +155,8 @@
 
 </div>
 <br>
+<!-- 
+
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'horarioEvento', 'error')} ">
 	<label for="horarioEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.horarioEvento.label" default="Horario Evento" />
@@ -173,6 +175,8 @@
 
 </div>
 <br>
+ -->
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'participantes', 'error')} ">
 	<label for="participantes" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.participantes.label" default="Participantes" />
@@ -189,5 +193,7 @@
 </ul>
 <br>
 </div>
+ -->
+
 </div>
 

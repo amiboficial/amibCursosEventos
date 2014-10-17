@@ -3,6 +3,9 @@ package mx.amib.sistemas.cursoseventos.eventos.model
 
 
 import static org.springframework.http.HttpStatus.*
+import grails.converters.JSON
+import java.util.Date;
+
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -29,8 +32,50 @@ class EventoController {
             notFound()
             return
         }
-
-        if (eventoInstance.hasErrors()) {
+		
+		//sacando los participantes
+		def listaParticipantesJson = params.list('participante')
+		def listaParticipantes = new ArrayList<Participante>()
+		listaParticipantesJson.each{
+			//para cada uno en la lista
+			def jsPar = JSON.parse(it)
+			Participante par = new Participante()
+			
+			par.matricula = jsPar.'matricula'
+			par.nombreParticipante = jsPar.'nombreParticipante'
+			par.fechaCreacion = jsPar.'fechaCreacion'
+			par.fechaModificacion = jsPar.'fechaModificacion'
+			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
+			
+			par.evento = eventoInstance
+			listaParticipantes.add(par)
+		}
+		eventoInstance.participantes = listaParticipantes
+		
+		println (eventoInstance.participantes as JSON)
+		///////////////////
+		//sacando los horarios
+		def listaHorarioEventosJson = params.list('horarioEvento')
+		def listaHorarioEventos = new ArrayList<HorarioEvento>()
+		listaHorarioEventosJson.each{
+			//para cada uno en la lista
+			def jsHor = JSON.parse(it)
+			HorarioEvento hor = new HorarioEvento()
+			
+			hor.fechaDia = jsHor.'fechaDia'
+			hor.horaInicio = jsHor.'horaInicio'
+			hor.horafin = jsHor.'horafin'
+			hor.fechaCreacion = jsHor.'fechaCreacion'
+			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
+			
+			hor.evento = eventoInstance
+			listaHorarioEventos.add(hor)
+		}
+		eventoInstance.horarioEventos = listaHorarioEventos
+		
+		println (eventoInstance.horarioEventos as JSON)
+		///////////////////
+	    if (eventoInstance.hasErrors()) {
             respond eventoInstance.errors, view:'create'
             return
         }
