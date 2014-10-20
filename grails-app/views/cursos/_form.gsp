@@ -129,6 +129,7 @@
 
 </div>
 <br>
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'cambioStatus', 'error')} ">
 	<label for="cambioStatus" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.cambioStatus.label" default="Cambio Status" />
@@ -146,6 +147,7 @@
 
 
 </div>
+ -->
 <br>
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'documentoCurso', 'error')} ">
 	<label for="documentoCurso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
@@ -165,6 +167,7 @@
 
 </div>
 <br>
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'eventos', 'error')} ">
 	<label for="eventos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.eventos.label" default="Eventos" />
@@ -174,25 +177,22 @@
 
 </div>
 <br>
-
+ -->
 
 
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'instituto', 'error')} ">
-	<label for="expositores" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+	<label for="Instituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.institutos.label" default="Instituto" />
 		
 	</label>
 	
-<ul class="one-to-many">
-<g:each in="${cursosInstance?.instituto?}" var="i">
-    <li><g:link controller="instituto" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="instituto" action="create" params="['cursos.id': cursosInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'instituto.label', default: 'Istituto')])}</g:link>
-</li>
-</ul>
+<!-- <g:link controller="instituto" action="create" params="['cursos.id': cursosInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'instituto.label', default: 'Instituto')])}</g:link> -->
+<g:select id="instituto" name="instituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.Instituto.list()}" optionKey="id" optionValue="razonSocial" required="" value="${cursosInstance?.instituto?.id}" class="many-to-one" class ="form-control"/>
+
 
 </div>
+
+
 
 
 

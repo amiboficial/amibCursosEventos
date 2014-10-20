@@ -201,24 +201,185 @@
 		});
 		</script>			
 		
-		<table class="table">
+			<!--  -->
+								<table class="table">
 						<thead>
 						<tr>
-						Horario de Eventos
+						Expositores
 						</tr>
 							<tr>
-								<th>Dia</th>
-								<th>Hora de Inicio</th>
-								<th>Hora de Termino</th>
-								<th>Fecha de Creacion</th>
-						
+								<th>Nombre</th>
+								<th>Apellido Paterno</th>
+								<th>Apellido Materno</th>
+								<th>Fecha</th>
+								<th>Horas</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
-						<tbody id="tbdyHorario">
+						<tbody id="tbdyExpositores">
 							<tr>
 								<td>
-									<input id="txtNewDay" class="form-control" type="date" />
+									<input id="txtNewNomExpositor" class="form-control" type="text" />
+								</td>
+								<td>
+									<input id="txtNewPriApeExpositor" class="form-control" type="text" />
+								</td>
+								<td>
+									<input id="txtNewSegApeExpositor" class="form-control" type="text" />
+								</td>
+								<!-- <td>
+									<input id="dateNewFecha" class="form-control" type="text" />
+								</td>
+								 -->
+								<td>
+									<input id="NumNewhora" class="form-control" type="number" />
+								</td>						
+								<td>
+									<button id="btnAddNewExpositor" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+					
+					<script type="text/template" id="expositorTemplate">
+						<td>{{=nombreExpositor}}</td>
+						<td>{{=primerApellidoExpositor}}</td>
+						<td>{{=segundoApellidoExpositor}}</td>
+	
+						<td>{{=horas}}</td>
+						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
+							<input type="hidden" name="expositor" value="{ 'id':{{=grailsId}}, 'nombreExpositor' : {{=nombreExpositor}}, 'primerApellidoExpositor' : {{=primerApellidoExpositor}}, 
+							 'segundoApellidoExpositor' : {{=segundoApellidoExpositor}}, 'horas' : {{=horas}} } " />
+						</td>
+					</script>
+					
+					
+					<script type="text/javascript">
+
+					//definimos un "contexto"
+					var exWidget = exWidget || {}
+
+					//ahi va el modelo
+					exWidget.Expositor = Backbone.Model.extend({
+						defaults: {
+							idx: -1, //el indice de la lista
+							grailsId: -1, //para cuando son nuevos
+							//idTipoTelefono: 0, //la id no va
+							horas: '',
+						
+							segundoApellidoExpositor: '',
+							primerApellidoExpositor: '',
+							nombreExpositor: '',
+							}
+					});
+
+					//se define la "coleccion" correspondiente
+					exWidget.Expositores = Backbone.Collection.extend({
+					model: exWidget.Expositor
+						});
+
+						//hasta ahi ya definimos el modelo;
+						//ahora hay que hacer un prototipo rapido de la vista para ver
+						//como iría quedado; me imagino una parecida a lo de los apoderados no???? si... va
+						//mmm deja pienso...
+
+						//definiendo vista para el modelo de telefono
+						exWidget.ExpositorView = Backbone.View.extend({
+						tagName: 'tr', //el tag con el que estaría representado cada elemento del modelo
+						className: 'expositorRow',
+						template: _.template( $('#expositorTemplate').html() ), //para no estar escribiendo "html" en el javascript, definimos templates
+
+						render: function(){
+						this.$el.html( this.template( this.model.toJSON() ) ); //$el se podría decir que es como la refería al "dom" de este elemento de vista...
+																			   //lo que hariamos aqui es que el html de ese elemento lo rellamos con lo que definimos
+		   																	   //como template que a su vez se va a rellenar con los datos del modelo
+						return this; //faltaba esto...
+						},
+
+					events:{
+						//aqui se podria decir que es donde conecta los callback a lo que en MVC se suele ver como "metodos de controlador"
+						'click .delete':'quitarExpositor' //aqui conectaria al boton de borrar para pueda hacer la accion de quitar telefono
+							},
+
+					quitarExpositor: function(){
+					//Destruye el modelo
+					this.model.destroy(); //el this.model sería el modelo al que esta referenciado la vista; aunque no lo declaramos, se "asigna dinamicamente"
+					//Destruye la vista
+					this.remove(); //con esta accion es que practicamente "desapareceria" del DOM este elemento
+					}
+					});
+
+				//defininedo la vista para la colección
+				exWidget.ExpositoresView = Backbone.View.extend({
+				el: '#tbdyExpositores', //aqui si estamos definiendo a que elemento del DOM corresponde esta vista
+
+					initialize: function( initialExpositores ){
+						this.collection = new exWidget.Expositores(initialExpositores); //initial telefonos puede ser un arreglo de modelos "precargado"
+						this.render();
+						this.listenTo( this.collection, 'add', this.renderExpositor ); //este metodo hace que se "escuche" a los cambios de la colección
+																      //cada que alla un cambio manda a llamar a esa funcion, que se va a
+	      																//encargar de crear una vista de "telefono" y agregarla a la vista
+																		//de la colección
+					},
+
+					render: function(){
+						this.collection.each ( function(item){
+						this.renderExpositor(item)
+						}, this );
+					},
+
+					//aqui manda a "llamar" a que se rendere cada "modelo"
+					renderExpositor: function(item){
+					var expositorView = new exWidget.ExpositorView({model:item});
+					this.$el.append( expositorView.render().el );
+					},
+
+					events:{
+					'click #btnAddNewExpositor': 'agregarExpositor'
+					},
+
+					agregarExpositor: function(e) {
+					e.preventDefault(); //para que no haga submit... creo...
+
+				//aqui saca los datos del formulario al modelo que vayamos a crear		
+				var _horas = $('#NumNewhora').val();
+		
+				var _segundoApellidoExpositor = $('#txtNewSegApeExpositor').val();
+				var _primerApellidoExpositor = $('#txtNewPriApeExpositor').val();
+				var _nombreExpositor = $('#txtNewNomExpositor').val();
+				var _idx = _.size(this.collection) 
+				var expositor = new exWidget.Expositor( { horas: _horas, segundoApellidoExpositor: _segundoApellidoExpositor , primerApellidoExpositor: _primerApellidoExpositor , nombreExpositor: _nombreExpositor , idx: _idx } );
+		
+				this.collection.add(expositor);
+					}
+			});
+
+		$(function(){
+			new exWidget.ExpositoresView();
+		});
+
+</script>
+			<!--  -->
+			
+			<table class="table">
+						<thead>
+						<tr>
+						Horario Evento
+						</tr>
+							<tr>
+								<th>Dia del Evento</th>
+								<th>Hora de Inicio</th>
+								<th>Hora de Termino</th>
+								<th>Fecha de Creacion</th>
+								
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody id="tbdyHorarioeventos">
+							<tr>
+								<td>
+									<input id="txtNewFechaDia" class="form-control" type="date" />
 								</td>
 								<td>
 									<input id="txtNewHoraInicio" class="form-control" type="time" />
@@ -227,36 +388,38 @@
 									<input id="txtNewHoraFin" class="form-control" type="time" />
 								</td>
 								<td>
-									<input id="dateNewFecha" class="form-control" type="date" />
-								</td>
-								
-												
+									<input id="dateNewFechaCreacion" class="form-control" type="date" />
+								</td>						
 								<td>
-									<button id="btnAddNewHorario" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
+									<button id="btnAddNewHorarioevento" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
 								</td>
 							</tr>
 
 						</tbody>
 					</table>
-		
-					<script type="text/template" id="horarioTemplate">
+					
+							
+			
+					
+					<script type="text/template" id="expositorTemplate">
 						<td>{{=fechaDia}}</td>
 						<td>{{=horaInicio}}</td>
 						<td>{{=horafin}}</td>
 						<td>{{=fechaCreacion}}</td>
 						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
-							<input type="hidden" name="horario" value="{ 'id':{{=grailsId}}, 'fechaDia' : {{=fechaDia}}, 'horaInicio' : {{=horaInicio}}, 
-							'horafin' : {{=horafin}}, 'fechaCreacion' : {{=fechaCreacion}} } " />
+							<input type="hidden" name="horarioevento" value="{ 'id':{{=grailsId}}, 'fechaDia' : {{=fechaDia}}, 'horaInicio' : {{=horaInicio}}, 
+							 'horafin' : {{=horafin}},  'fechaCreacion' : {{=fechaCreacion}} } " />
 						</td>
 					</script>
-		
-		<script type="text/javascript">
+					
+					
+					<script type="text/javascript">
 
 					//definimos un "contexto"
-					var horWidget = horWidget || {}
+					var exWidget = exWidget || {}
 
 					//ahi va el modelo
-					horWidget.Horario = Backbone.Model.extend({
+					exWidget.Horarioevento = Backbone.Model.extend({
 						defaults: {
 							idx: -1, //el indice de la lista
 							grailsId: -1, //para cuando son nuevos
@@ -269,8 +432,8 @@
 					});
 
 					//se define la "coleccion" correspondiente
-					horWidget.Horarios = Backbone.Collection.extend({
-					model: horWidget.Horario
+					exWidget.Horarioeventos = Backbone.Collection.extend({
+					model: exWidget.Horarioevento
 						});
 
 						//hasta ahi ya definimos el modelo;
@@ -279,10 +442,10 @@
 						//mmm deja pienso...
 
 						//definiendo vista para el modelo de telefono
-						horWidget.HorarioView = Backbone.View.extend({
+						exWidget.HorarioeventoView = Backbone.View.extend({
 						tagName: 'tr', //el tag con el que estaría representado cada elemento del modelo
-						className: 'horarioRow',
-						template: _.template( $('#horarioTemplate').html() ), //para no estar escribiendo "html" en el javascript, definimos templates
+						className: 'expositorRow',
+						template: _.template( $('#expositorTemplate').html() ), //para no estar escribiendo "html" en el javascript, definimos templates
 
 						render: function(){
 						this.$el.html( this.template( this.model.toJSON() ) ); //$el se podría decir que es como la refería al "dom" de este elemento de vista...
@@ -293,10 +456,10 @@
 
 					events:{
 						//aqui se podria decir que es donde conecta los callback a lo que en MVC se suele ver como "metodos de controlador"
-						'click .delete':'quitarHorario' //aqui conectaria al boton de borrar para pueda hacer la accion de quitar telefono
+						'click .delete':'quitarHorarioevento' //aqui conectaria al boton de borrar para pueda hacer la accion de quitar telefono
 							},
 
-					quitarHorario: function(){
+							quitarHorarioevento: function(){
 					//Destruye el modelo
 					this.model.destroy(); //el this.model sería el modelo al que esta referenciado la vista; aunque no lo declaramos, se "asigna dinamicamente"
 					//Destruye la vista
@@ -305,13 +468,13 @@
 					});
 
 				//defininedo la vista para la colección
-				horWidget.HorariosView = Backbone.View.extend({
-				el: '#tbdyHorario', //aqui si estamos definiendo a que elemento del DOM corresponde esta vista
+				exWidget.HorarioeventosView = Backbone.View.extend({
+				el: '#tbdyHorarioeventos', //aqui si estamos definiendo a que elemento del DOM corresponde esta vista
 
-					initialize: function( initialHorarios ){
-						this.collection = new horWidget.Horarios(initialHorarios); //initial telefonos puede ser un arreglo de modelos "precargado"
+					initialize: function( initialHorarioeventos ){
+						this.collection = new exWidget.Horarioeventos(initialHorarioeventos); //initial telefonos puede ser un arreglo de modelos "precargado"
 						this.render();
-						this.listenTo( this.collection, 'add', this.renderHorario ); //este metodo hace que se "escuche" a los cambios de la colección
+						this.listenTo( this.collection, 'add', this.renderHorarioevento ); //este metodo hace que se "escuche" a los cambios de la colección
 																      //cada que alla un cambio manda a llamar a esa funcion, que se va a
 	      																//encargar de crear una vista de "telefono" y agregarla a la vista
 																		//de la colección
@@ -319,40 +482,45 @@
 
 					render: function(){
 						this.collection.each ( function(item){
-						this.renderHorario(item)
+						this.renderHorarioevento(item)
 						}, this );
 					},
 
 					//aqui manda a "llamar" a que se rendere cada "modelo"
-					renderHorario: function(item){
-					var horarioView = new horWidget.HorarioView({model:item});
-					this.$el.append( horarioView.render().el );
+					renderHorarioevento: function(item){
+					var horarioeventoView = new exWidget.HorarioeventoView({model:item});
+					this.$el.append( horarioeventoView.render().el );
 					},
 
 					events:{
-					'click #btnAddNewHorario': 'agregarHorario'
+					'click #btnAddNewHorarioevento': 'agregarHorarioevento'
 					},
 
-					agregarHorario: function(e) {
+					agregarHorarioevento: function(e) {
 					e.preventDefault(); //para que no haga submit... creo...
 
 				//aqui saca los datos del formulario al modelo que vayamos a crear		
+				//var _horas = $('#NumNewhora').val();
 				var _fechaCreacion = $('#dateNewFecha').val();
-				var _horafin = $('#txtNewHoraFin').val();
-				var _horaInicio = $('#txtNewHoraInicio').val();
-				var _fechaDia = $('#txtNewDay').val();
+				var _horafin = $('#txtNewSegApeExpositor').val();
+				var _horaInicio = $('#txtNewPriApeExpositor').val();
+				var _fechaDia = $('#txtNewNomExpositor').val();
 				var _idx = _.size(this.collection) 
-				var horario = new horWidget.Horario( { fechaCreacion: _fechaCreacion , horafin: _horfin , horaInicio: _horaInicio , fechaDia: _fechaDia , idx: _idx } );
+				var horarioevento = new exWidget.Horarioevento( { fechaDia: _fechaDia , horafin: _horafin , horaInicio: _horaInicio , fechaDia: _fechaDia , idx: _idx } );
 		
-				this.collection.add(horario);
+				this.collection.add(horarioevento);
 					}
 			});
 
 		$(function(){
-			new horWidget.HorarioView();
+			new exWidget.HorarioeventosView();
 		});
 
 </script>
+	
+		
+		
+
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />

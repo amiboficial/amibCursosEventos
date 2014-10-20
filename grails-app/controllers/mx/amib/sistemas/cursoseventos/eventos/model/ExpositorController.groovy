@@ -1,8 +1,9 @@
-package mx.amib.sistemas.cursoseventos.cursos.model
+package mx.amib.sistemas.cursoseventos.eventos.model
 
 
 
 import static org.springframework.http.HttpStatus.*
+import mx.amib.sistemas.cursoseventos.eventos.model.Expositor;
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)

@@ -1,4 +1,6 @@
-package mx.amib.sistemas.cursoseventos.cursos.model
+package mx.amib.sistemas.cursoseventos.eventos.model
+
+import mx.amib.sistemas.cursoseventos.cursos.model.Cursos;
 
 class Expositor {
 	
@@ -14,7 +16,7 @@ class Expositor {
 	
 	static mapping = {
 		table 't009_t_expositor'
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		nombreExpositor column:'nb_nombre'
