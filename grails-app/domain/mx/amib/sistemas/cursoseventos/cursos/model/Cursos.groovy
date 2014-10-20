@@ -2,10 +2,11 @@ package mx.amib.sistemas.cursoseventos.cursos.model
 
 
 import mx.amib.sistemas.cursoseventos.cursos.model.log.CambioStatus
-import mx.amib.sistemas.cursoseventos.cursos.model.Expositor
 import mx.amib.sistemas.cursoseventos.cursos.model.catalogo.DocumentoCursos
 import mx.amib.sistemas.cursoseventos.eventos.model.Evento;
+import mx.amib.sistemas.cursoseventos.eventos.model.Expositor;
 import mx.amib.sistemas.cursoseventos.institutos.model.Instituto
+import mx.amib.sistemas.cursoseventos.cursos.model.catalogo.TipoCurso
 
 class Cursos {
 	
@@ -27,11 +28,12 @@ class Cursos {
 	Date fechaCreacion
 	Date fechaModificacion
 	
-	
+	TipoCurso tipoCruso
 	Instituto instituto
 	
-	static hasMany = [cambioStatus: CambioStatus, expositores:Expositor, documentoCurso: DocumentoCursos, eventos:Evento]
-
+	static hasMany = [cambioStatus: CambioStatus, documentoCurso: DocumentoCursos, eventos:Evento]
+	
+	static belongsTo = [TipoCurso]
 	
 	static mapping = {
 		table 't006_t_curso'
@@ -56,6 +58,7 @@ class Cursos {
 		fechaModificacion column:'fh_modificacion'
 		
 		instituto column:'id_001_instituto'
+		tipoCruso column:'id_017_tpcurso'
 	}
 	
 	static constraints = {

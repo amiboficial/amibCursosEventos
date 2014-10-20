@@ -5,7 +5,7 @@ import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
 
 class DocumentoCursos {
 	
-	Long documentos
+	String documentos
 	Date fechaCreacion
 	
 	Cursos curso
@@ -20,7 +20,7 @@ class DocumentoCursos {
 		id generator: "assigned"
 		version false
 		
-		documentos column:'id_f_doc'
+		documentos column:'uuid_f_doc'
 		fechaCreacion column:'fh_creacion'
 		
 		curso column:'id_006_curso'
@@ -31,7 +31,7 @@ class DocumentoCursos {
 	
 
     static constraints = {
-		documentos nullable: true, maxSize: 100
+		documentos nullable: true, maxSize: 10
 		fechaCreacion nullable: true
     }
 }

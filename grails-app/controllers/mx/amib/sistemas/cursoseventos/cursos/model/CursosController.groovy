@@ -35,29 +35,7 @@ class CursosController {
             notFound()
             return
         }
-		
-		//sacando los expositores
-		def listaExpositoresJson = params.list('expositor')
-		def listaExpositores = new ArrayList<Expositor>()
-		listaExpositoresJson.each{
-			//para cada uno en la lista 
-			def jsEx = JSON.parse(it)
-			Expositor ex = new Expositor()
-			
-			ex.nombreExpositor = jsEx.'nombreExpositor'
-			ex.primerApellidoExpositor = jsEx.'primerApellidoExpositor'
-			ex.segundoApellidoExpositor = jsEx.'segundoApellidoExpositor'
-			ex.fechaCreacion = jsEx.'fechaCreacion'
-			ex.horas = jsEx.'horas'
-			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
-			
-			ex.cursos = cursosInstance
-			listaExpositores.add(ex)
-		}
-		cursosInstance.expositores = listaExpositores
-		
-		println (cursosInstance.expositores as JSON)
-			/////////////////
+				
         if (cursosInstance.hasErrors()) {
             respond cursosInstance.errors, view:'create'
             return

@@ -71,10 +71,36 @@ class EventoController {
 			hor.evento = eventoInstance
 			listaHorarioEventos.add(hor)
 		}
-		eventoInstance.horarioEventos = listaHorarioEventos
+		eventoInstance.horarioEvento = listaHorarioEventos
 		
-		println (eventoInstance.horarioEventos as JSON)
+		println (eventoInstance.horarioEvento as JSON)
 		///////////////////
+		//sacando los expositores
+		def listaExpositoresJson = params.list('expositor')
+		def listaExpositores = new ArrayList<Expositor>()
+		listaExpositoresJson.each{
+			//para cada uno en la lista
+			def jsEx = JSON.parse(it)
+			Expositor ex = new Expositor()
+			
+			ex.nombreExpositor = jsEx.'nombreExpositor'
+			ex.primerApellidoExpositor = jsEx.'primerApellidoExpositor'
+			ex.segundoApellidoExpositor = jsEx.'segundoApellidoExpositor'
+			//ex.fechaCreacion = jsEx.'fechaCreacion'
+			ex.horas = jsEx.'horas'
+						
+			ex.curso = cursosInstance
+			listaExpositores.add(ex)
+		}
+		eventoInstance.expositores = listaExpositores
+		
+		println (eventoInstance.expositores as JSON)
+			/////////////////
+		//////////////////
+		
+		
+		
+		
 	    if (eventoInstance.hasErrors()) {
             respond eventoInstance.errors, view:'create'
             return

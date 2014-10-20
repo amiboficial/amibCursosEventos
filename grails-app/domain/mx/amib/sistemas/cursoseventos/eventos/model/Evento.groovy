@@ -1,6 +1,5 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
-import mx.amib.sistemas.cursoseventos.cursos.model.Expositor;
 import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
 import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.DocumentoEvento
 import mx.amib.sistemas.cursoseventos.eventos.model.log.CambioStatusEvento

@@ -1,6 +1,6 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
-import mx.amib.sistemas.cursoseventos.cursos.model.Cursos;
+import mx.amib.sistemas.cursoseventos.eventos.model.Evento;
 
 class Expositor {
 	
@@ -10,9 +10,9 @@ class Expositor {
 	
 	Date fechaCreacion
 	Integer horas
-	Cursos curso
+	Evento evento
 	
-	static belongsTo = [Cursos]
+	static belongsTo = [Evento]
 	
 	static mapping = {
 		table 't009_t_expositor'
@@ -24,7 +24,7 @@ class Expositor {
 		segundoApellidoExpositor column:'nb_apellido2'
 		horas column:'nu_horas'
 		fechaCreacion column:'fh_creacion'
-		curso column:'id_006_curso'
+		evento column:'id_007_evento'
 	}
 	 
 
