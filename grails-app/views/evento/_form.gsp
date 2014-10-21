@@ -122,17 +122,10 @@
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'cambioEstatusEvento', 'error')} ">
 	<label for="cambioEstatusEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.cambioEstatusEvento.label" default="Cambio Estatus Evento" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${eventoInstance?.cambioEstatusEvento?}" var="c">
-    <li><g:link controller="cambioStatusEvento" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="cambioStatusEvento" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'cambioStatusEvento.label', default: 'CambioStatusEvento')])}</g:link>
-</li>
-</ul>
+<g:select id="cambioStatusEvento" name="cambioStatusEvento.id" from="${mx.amib.sistemas.cursoseventos.eventos.model.log.CambioStatusEvento.list()}" optionKey="id" optionValue="descripcion" required="" value="${eventoInstance?.cambioEstatusEvento?.id}" class="many-to-one" class ="form-control"/>
+
 
 
 </div>
@@ -149,6 +142,7 @@
 </g:each>
 <li class="add">
 <g:link controller="documentoEvento" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'documentoEvento.label', default: 'DocumentoEvento')])}</g:link>
+
 </li>
 </ul>
 

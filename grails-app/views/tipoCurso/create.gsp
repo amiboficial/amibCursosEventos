@@ -6,33 +6,57 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#create-tipoCurso" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
+	<fieldset>
+		<div class="panel panel-default col-lg-12">
+			<div class="panel-heading">
+				<h2 class="panel-title">Acciones</h2>
+			</div>
+			</br>
+			<ul class="nav navbar-nav" role="navigation">
+				
+				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión Tipo de Curso</g:link></li>
+			</ul><br>
 		</div>
-		<div id="create-tipoCurso" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
+		</fieldset>
+	<fieldset>
+		<div class="panel panel-default col-lg-12">
+			<div class="panel-heading">
+				<div class="widgetTitle">
+					<div id="create-tipoCurso" class="content scaffold-create"
+						role="main">
+						<h1>
+							Crear Tipo de Curso
+						</h1>
+						<g:if test="${flash.message}">
+							<div class="message" role="status">
+								${flash.message}
+							</div>
+						</g:if>
+					</div>
+				</div>
+			</div>
+			<br>
+
 			<g:hasErrors bean="${tipoCursoInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${tipoCursoInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
+				<ul class="errors" role="alert">
+					<g:eachError bean="${tipoCursoInstance}" var="error">
+						<li
+							<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+								error="${error}" /></li>
+					</g:eachError>
+				</ul>
 			</g:hasErrors>
-			<g:form url="[resource:tipoCursoInstance, action:'save']" >
+			<g:form url="[resource:tipoCursoInstance, action:'save']">
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="form" />
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
+					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+						&nbsp;
+					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
+				</fieldset><br>
 			</g:form>
 		</div>
-	</body>
+		</fieldset>
+</body>
 </html>

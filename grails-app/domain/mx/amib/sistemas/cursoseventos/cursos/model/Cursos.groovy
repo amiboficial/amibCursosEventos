@@ -28,7 +28,7 @@ class Cursos {
 	Date fechaCreacion
 	Date fechaModificacion
 	
-	TipoCurso tipoCruso
+	TipoCurso tipoCurso
 	Instituto instituto
 	
 	static hasMany = [cambioStatus: CambioStatus, documentoCurso: DocumentoCursos, eventos:Evento]
@@ -58,7 +58,7 @@ class Cursos {
 		fechaModificacion column:'fh_modificacion'
 		
 		instituto column:'id_001_instituto'
-		tipoCruso column:'id_017_tpcurso'
+		tipoCurso column:'id_017_tpcurso'
 	}
 	
 	static constraints = {

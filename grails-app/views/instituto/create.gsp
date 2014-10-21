@@ -188,8 +188,7 @@ $(function(){
 </script>
 					
 					
-					
-					
+		
 					
 					
 				</fieldset>
@@ -201,12 +200,5 @@ $(function(){
 			</g:form>
 		</div>
 		</fieldset>
-		
-		
-		
-		
-		
-		
-		
 </body>
 </html>

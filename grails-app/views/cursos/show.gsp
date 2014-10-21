@@ -205,14 +205,14 @@
 						</g:each></li>
 				</g:if>
 
-				<g:if test="${cursosInstance?.expositores}">
-					<li class="fieldcontain"><span id="expositores-label"
+				<g:if test="${cursosInstance?.tipoCurso}">
+					<li class="fieldcontain"><span id="tipoCurso-label"
 						class="property-label"><g:message
-								code="cursos.expositores.label" default="Expositores" /></span> <g:each
-							in="${cursosInstance.expositores}" var="e">
-							<span class="property-value" aria-labelledby="expositores-label"><g:link
-									controller="expositor" action="show" id="${e.id}">
-									${e?.encodeAsHTML()}
+								code="cursos.tipoCurso.label" default="TipoCruso" /></span> <g:each
+							in="${cursosInstance.tipoCurso}" var="t">
+							<span class="property-value" aria-labelledby="tipoCurso-label"><g:link
+									controller="tipoCurso" action="show" id="${t.id}">
+									${t?.descripcion.encodeAsHTML()}
 								</g:link></span>
 						</g:each></li>
 				</g:if>

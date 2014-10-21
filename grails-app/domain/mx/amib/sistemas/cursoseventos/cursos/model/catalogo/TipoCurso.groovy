@@ -11,6 +11,7 @@ class TipoCurso {
 	static mapping = {
 		
 		table 't017_c_tpcurso'
+		
 		id generator:'identity'
 		version false
 		

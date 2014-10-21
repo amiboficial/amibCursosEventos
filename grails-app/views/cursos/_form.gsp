@@ -179,6 +179,17 @@
 <br>
  -->
 
+<br>
+<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'tipoCurso', 'error')} required">
+	<label for="tipoCurso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="curso.tipoCurso.label" default="Tipo Curso" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="tipoCurso" name="tipoCurso.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.catalogo.TipoCurso.list()}" optionKey="id" optionValue="descripcion" required="" value="${cursosInstance?.tipoCurso?.id}" class="many-to-one" class ="form-control"/>
+
+</div>
+<br>
+
 
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'instituto', 'error')} ">
 	<label for="Instituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">

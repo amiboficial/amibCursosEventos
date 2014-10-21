@@ -17,7 +17,7 @@
 			<ul class="nav navbar-nav navbar-center">
 				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Institutos</g:link></li>
 				
-			</ul>
+			</ul><br>
 		</div>
 		</fieldset>
 
@@ -49,7 +49,7 @@
 						class="property-value" aria-labelledby="razonSocial-label"><g:fieldValue
 								bean="${institutoInstance}" field="razonSocial" /></span></li>
 				</g:if>
-
+				
 				<g:if test="${institutoInstance?.siglas}">
 					<li class="fieldcontain"><span id="siglas-label"
 						class="property-label"><g:message
@@ -315,7 +315,7 @@
 					&nbsp;
 					<g:link class="list btn btn-primary colortitle colorblack"
 						action="index">Regresar</g:link>
-					</li>
+					</li><br>
 				</fieldset>
 				<br>
 			</g:form>
