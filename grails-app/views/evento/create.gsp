@@ -4,6 +4,16 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'evento.label', default: 'Evento')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		<!-- cdn for modernizr, if you haven't included it already -->
+		<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+		<!-- polyfiller file to detect and load polyfills -->
+		<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+		<script>
+ 		 webshims.setOptions('waitReady', false);
+		 webshims.setOptions('forms-ext', {types: 'date'});
+		 webshims.polyfill('forms forms-ext');
+		</script>
+		
 	</head>
 	<body>
 		<fieldset>
@@ -114,10 +124,10 @@
 									<input id="txtNewSegApeExpositor" class="form-control" type="text" />
 								</td>
 								 <td>
-									<input id="dateNewFecha" class="form-control" type="date"  />
+									<input id="dateNewFecha" class="form-control"  type="date" date-date-format="yyyy-mm-dd"  />
 								</td>
 								<td>
-									<input id="NumNewhora" class="form-control" type="number" />
+									<input id="NumNewhora" class="form-control" type="time" />
 								</td>						
 								<td>
 									<button id="btnAddNewExpositor" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
@@ -145,16 +155,16 @@
 						<tbody id="tbdyHorarioeventos">
 							<tr>
 								<td>
-									<input id="txtNewFechaDia" class="form-control" type="date" />
+									<input id="txtNewFechaDia" class="form-control"  type="date" date-date-format="yyyy-mm-dd" />
 								</td>
 								<td>
-									<input id="txtNewHoraInicio" class="form-control" type="number" />
+									<input id="txtNewHoraInicio" class="form-control" type="time" />
 								</td>
 								<td>
-									<input id="txtNewHoraFin" class="form-control" type="number" />
+									<input id="txtNewHoraFin" class="form-control" type="time" />
 								</td>
 								<td>
-									<input id="dateNewFechaCreacion"  class="form-control" type="date"/>
+									<input id="dateNewFechaCreacion"  class="form-control"  type="date" date-date-format="yyyy-mm-dd"/>
 								</td>						
 								<td>
 									<button id="btnAddNewHorarioevento" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
