@@ -7,7 +7,7 @@
 		<g:message code="evento.fechaInicio.label" default="Fecha Inicio" />
 		
 	</label>
-	<g:datePicker name="fechaInicio" precision="day"  value="${eventoInstance?.fechaInicio}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaInicio" precision="day"  value="${eventoInstance?.fechaInicio}"  />
 
 </div>
 <br>
@@ -16,7 +16,7 @@
 		<g:message code="evento.fechaTermino.label" default="Fecha Termino" />
 		
 	</label>
-	<g:datePicker name="fechaTermino" precision="day"  value="${eventoInstance?.fechaTermino}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaTermino" precision="day"  value="${eventoInstance?.fechaTermino}"  />
 
 </div>
 <br>
@@ -115,17 +115,17 @@
 		<g:message code="evento.fechaCreacion.label" default="Fecha Creacion" />
 		
 	</label>
-	<g:datePicker name="fechaCreacion" precision="day"  value="${eventoInstance?.fechaCreacion}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaCreacion" precision="day"  value="${eventoInstance?.fechaCreacion}" />
 
 </div>
 <br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'cambioEstatusEvento', 'error')} ">
+<%--<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'cambioEstatusEvento', 'error')} ">
 	<label for="cambioEstatusEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.cambioEstatusEvento.label" default="Cambio Estatus Evento" />
 		<span class="required-indicator">*</span>
 	</label>
 <g:select id="cambioStatusEvento" name="cambioStatusEvento.id" from="${mx.amib.sistemas.cursoseventos.eventos.model.log.CambioStatusEvento.list()}" optionKey="id" optionValue="descripcion" required="" value="${eventoInstance?.cambioEstatusEvento?.id}" class="many-to-one" class ="form-control"/>
-
+ --%>
 
 
 </div>
@@ -148,8 +148,32 @@
 
 
 </div>
+
+
 <br>
-<!-- 
+
+
+<div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'tipoInstituto', 'error')} required">
+	<label for="tipoInstituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.tipoInstituto.label" default="Tipo Instituto" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="tipoInstituto" name="tipoInstituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto.list()}" optionKey="id" optionValue="descripcion" required="" value="${institutoInstance?.tipoInstituto?.id}" class="many-to-one" class ="form-control"/>
+
+</div>
+<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'tipoInstituto', 'error')} required">
+	<label for="tipoInstituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.tipoInstituto.label" default="Lista de cursos" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="tipoInstituto" name="cursos.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" optionKey="id" optionValue="nombreDelCurso" required="" value="${cursosInstance?.id}" class="many-to-one" class ="form-control"/>
+
+</div>
+
+
+
+<br>
+<%-- 
 
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'horarioEvento', 'error')} ">
 	<label for="horarioEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
@@ -187,7 +211,7 @@
 </ul>
 <br>
 </div>
- -->
+ --%>
 
-</div>
+
 
