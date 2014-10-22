@@ -76,9 +76,9 @@
 					
 						<td>${fieldValue(bean: participanteInstance, field: "nombreParticipante")}</td>
 					
-						<td><g:formatDate date="${participanteInstance.fechaCreacion}" /></td>
+						<td>${participanteInstance.fechaCreacion}"</td>
 					
-						<td><g:formatDate date="${participanteInstance.fechaModificacion}" /></td>
+						<td>${participanteInstance.fechaModificacion}"</td>
 					
 						<td>${fieldValue(bean: participanteInstance, field: "evento")}</td>
 					

@@ -4,8 +4,8 @@ class Participante {
 	
 	Integer matricula
 	String nombreParticipante
-	Date fechaCreacion
-	Date fechaModificacion
+	String fechaCreacion
+	String fechaModificacion
 	Evento evento
 	
 	static belongsTo = [Evento]
@@ -14,7 +14,7 @@ class Participante {
 	static mapping = {
 		table 't010_t_participante'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		matricula column:'nu_matricula'

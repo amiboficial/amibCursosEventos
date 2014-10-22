@@ -25,7 +25,7 @@
 		<g:message code="participante.fechaCreacion.label" default="Fecha Creacion" />
 		
 	</label>
-	<g:datePicker name="fechaCreacion" precision="day"  value="${participanteInstance?.fechaCreacion}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaCreacion" maxlength="100"  value="${participanteInstance?.fechaCreacion}"  />
 
 </div>
 <br>
@@ -34,7 +34,7 @@
 		<g:message code="participante.fechaModificacion.label" default="Fecha Modificacion" />
 		
 	</label>
-	<g:datePicker name="fechaModificacion" precision="day"  value="${participanteInstance?.fechaModificacion}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaModificacion" maxlength="100"  value="${participanteInstance?.fechaModificacion}"  />
 
 </div>
 <br>
