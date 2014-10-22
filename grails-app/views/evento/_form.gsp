@@ -151,22 +151,12 @@
 
 
 <br>
-
-
-<div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'tipoInstituto', 'error')} required">
-	<label for="tipoInstituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="instituto.tipoInstituto.label" default="Tipo Instituto" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="tipoInstituto" name="tipoInstituto.id" from="${mx.amib.sistemas.cursoseventos.institutos.model.catalogo.TipoInstituto.list()}" optionKey="id" optionValue="descripcion" required="" value="${institutoInstance?.tipoInstituto?.id}" class="many-to-one" class ="form-control"/>
-
-</div>
-<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'tipoInstituto', 'error')} required">
-	<label for="tipoInstituto" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'cursos', 'error')} required">
+	<label for="cursos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="instituto.tipoInstituto.label" default="Lista de cursos" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="tipoInstituto" name="cursos.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" optionKey="id" optionValue="nombreDelCurso" required="" value="${cursosInstance?.id}" class="many-to-one" class ="form-control"/>
+	<g:select id="cursos" name="cursos.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" optionKey="id" optionValue="nombreDelCurso" required="" value="${cursosInstance?.id}" class="many-to-one" class ="form-control"/>
 
 </div>
 
