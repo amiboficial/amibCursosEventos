@@ -84,10 +84,10 @@
 									<input id="txtNewNombreParticipante" class="form-control" type="text" />
 								</td>
 								<td>
-									<input id="dateNewFechaCreacion" class="form-control" type="date" date-date-format="yyyy-mm-dd" />
+									<input id="dateNewFechaCreacion" class="form-control" type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
 								</td>
 								<td>
-									<input id="dateNewFechaModificacion" class="form-control" type="date" date-date-format="yyyy-mm-dd" />
+									<input id="dateNewFechaModificacion" class="form-control" type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
 								</td>					
 								<td>
 									<button id="btnAddNewParticipante" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
@@ -124,10 +124,10 @@
 									<input id="txtNewSegApeExpositor" class="form-control" type="text" />
 								</td>
 								 <td>
-									<input id="dateNewFecha" class="form-control"  type="date" date-date-format="yyyy-mm-dd"  />
+									<input id="dateNewFecha" class="form-control"  type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}' />
 								</td>
 								<td>
-									<input id="NumNewhora" class="form-control" type="time" />
+									<input id="NumNewhora" class="form-control" type="number" />
 								</td>						
 								<td>
 									<button id="btnAddNewExpositor" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
@@ -155,16 +155,16 @@
 						<tbody id="tbdyHorarioeventos">
 							<tr>
 								<td>
-									<input id="txtNewFechaDia" class="form-control"  type="date" date-date-format="yyyy-mm-dd" />
+									<input id="txtNewFechaDia" class="form-control"  type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
 								</td>
 								<td>
-									<input id="txtNewHoraInicio" class="form-control" type="time" />
+									<input id="txtNewHoraInicio" class="form-control" type="text" />
 								</td>
 								<td>
-									<input id="txtNewHoraFin" class="form-control" type="time" />
+									<input id="txtNewHoraFin" class="form-control" type="text" />
 								</td>
 								<td>
-									<input id="dateNewFechaCreacion"  class="form-control"  type="date" date-date-format="yyyy-mm-dd"/>
+									<input id="dateNewFechaCreacion"  class="form-control"  type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
 								</td>						
 								<td>
 									<button id="btnAddNewHorarioevento" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>

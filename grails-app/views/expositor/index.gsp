@@ -1,5 +1,5 @@
 
-<%@ page import="mx.amib.sistemas.cursoseventos.cursos.model.Expositor" %>
+<%@ page import="mx.amib.sistemas.cursoseventos.eventos.model.Expositor" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -63,7 +63,7 @@
 					
 						<g:sortableColumn property="fechaCreacion" title="${message(code: 'expositor.fechaCreacion.label', default: 'Fecha Creacion')}" />
 					
-						<th><g:message code="expositor.curso.label" default="Curso" /></th>
+						<th><g:message code="expositor.curso.label" default="Evento" /></th>
 					
 					</tr>
 				</thead>
@@ -81,7 +81,7 @@
 					
 						<td><g:formatDate date="${expositorInstance.fechaCreacion}" /></td>
 					
-						<td>${fieldValue(bean: expositorInstance, field: "curso")}</td>
+						<td>${fieldValue(bean: expositorInstance, field: "evento")}</td>
 					
 					</tr>
 				</g:each>
