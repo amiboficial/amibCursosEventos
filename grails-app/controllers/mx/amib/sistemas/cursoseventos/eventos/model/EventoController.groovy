@@ -4,6 +4,9 @@ package mx.amib.sistemas.cursoseventos.eventos.model
 
 import static org.springframework.http.HttpStatus.*
 import grails.converters.JSON
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat
 import java.util.Date;
 
 import grails.transaction.Transactional
@@ -33,6 +36,11 @@ class EventoController {
             return
         }
 		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/dd/MM HH:mm")
+		
+     
+		DateFormat formatoDia = new SimpleDateFormat("yyyy-MM-dd")
+		
 		//sacando los participantes
 		def listaParticipantesJson = params.list('participante')
 		def listaParticipantes = new ArrayList<Participante>()
@@ -43,7 +51,7 @@ class EventoController {
 			
 			par.matricula = jsPar.'matricula'
 			par.nombreParticipante = jsPar.'nombreParticipante'
-			par.fechaCreacion = jsPar.'fechaCreacion'
+			par.fechaCreacion =  formatoDia.parse(jsPar.'fechaCreacion')
 			par.fechaModificacion = jsPar.'fechaModificacion'
 			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
 			
