@@ -17,7 +17,7 @@
 				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión evento</g:link></li>
 					<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear evento</g:link></li>
-			</ul>
+			</ul><br>
 		</div>
 		</fieldset>
 

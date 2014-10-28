@@ -4,7 +4,7 @@ class Participante {
 	
 	Integer matricula
 	String nombreParticipante
-	String fechaCreacion
+	Date fechaCreacion 
 	String fechaModificacion
 	Evento evento
 	
@@ -29,8 +29,8 @@ class Participante {
 	
 		matricula nullable: true, maxSize: 100
 		nombreParticipante nullable: true, maxSize: 100
-		fechaCreacion nullable: true
-		fechaModificacion nullable: true
+		fechaCreacion nullable: true 
+		fechaModificacion nullable: true 
 		
     }
 }

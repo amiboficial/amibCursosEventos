@@ -16,7 +16,7 @@
 			</br>
 			<ul class="nav navbar-nav navbar-center">
 				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión evento</g:link></li>
-			</ul>
+			</ul><br>
 		</div>
 		</fieldset>
 		<fieldset>
@@ -190,20 +190,33 @@
 							</g:each></li>
 					</g:if>
 
-					<g:if test="${eventoInstance?.horarioEvento}">
-						<li class="fieldcontain"><span id="horarioEvento-label"
+					<g:if test="${eventoInstance?.horarioEventos}">
+						<li class="fieldcontain"><span id="horarioEventos-label"
 							class="property-label"><g:message
-									code="evento.horarioEvento.label" default="Horario Evento" /></span>
+									code="evento.horarioEventos.label" default="Horario Evento" /></span>
 
-							<g:each in="${eventoInstance.horarioEvento}" var="h">
+							<g:each in="${eventoInstance.horarioEventos}" var="h">
 								<span class="property-value"
-									aria-labelledby="horarioEvento-label"><g:link
+									aria-labelledby="horarioEventos-label"><g:link
 										controller="horarioEvento" action="show" id="${h.id}">
 										${h?.encodeAsHTML()}
 									</g:link></span>
 							</g:each></li>
 					</g:if>
 
+					<g:if test="${eventoInstance?.expositores}">
+						<li class="fieldcontain"><span id="expositores-label"
+							class="property-label"><g:message
+									code="evento.expositores.label" default="Expositores" /></span> <g:each
+								in="${eventoInstance.expositores}" var="e">
+								<span class="property-value"
+									aria-labelledby="expositores-label"><g:link
+										controller="expositor" action="show" id="${e.id}">
+										${e?.nombreExpositor.encodeAsHTML()}
+									</g:link></span>
+							</g:each></li>
+					</g:if>
+					
 					<g:if test="${eventoInstance?.participantes}">
 						<li class="fieldcontain"><span id="participantes-label"
 							class="property-label"><g:message

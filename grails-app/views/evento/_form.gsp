@@ -83,6 +83,57 @@
 
 </div>
 <br>
+<div class="fieldcontain" >
+<table style="width: 100%">
+					<tr>
+						<td class="label" style="text-align: right; width: 40%">Código Postal: <span class="required-indicator">*</span></td>
+						<td>
+						<input type="text" id="txtCP" style="float: left;" class ="form-control"></input><button onclick="return window.open('http://www.correosdemexico.gob.mx/ServiciosLinea/Paginas/ccpostales.aspx');" id="btnIconoBuscarCP" style="font-size:small;">&nbsp;Buscar ...</button>
+						<g:hasErrors bean="${eventoInstance}" field="sepomex">
+							<span class="ui-icon-red ui-icon-circle-close" style="float: left; margin-top: .3em"></span>
+						</g:hasErrors>&nbsp;
+						</td>
+					<tr>
+						<td class="label" style="text-align: right">
+						Entidad Federativa:
+						</td>
+						<td>
+						<input type="text" id="txtEntidad" disabled="disabled" value="" class ="form-control"></input>
+						</td>
+					</tr>
+					<br>
+					<tr>
+						<td class="label" style="text-align: right">
+						Delegación ó Municipio:
+						</td>
+						<td>
+						<input type="text" id="txtDelegacion" disabled="disabled" value="" class ="form-control"></input>
+						</td>
+					</tr>
+					<br>
+					<tr>
+						<td class="label" style="text-align: right">
+						Ciudad:
+						</td>
+						<td>
+						<input type="text" id="txtCiudad" disabled="disabled" value="" class ="form-control"></input>
+						</td>
+					</tr>
+					<br>
+					<tr>
+						<td class="label" style="text-align: right">
+						Asentamiento:
+						</td>
+						<td>
+						<select id="selAsentamiento" name="evento.sepomex.id" style="float: left;" required>
+							<option value="">-Seleccione-</option>
+						</select>
+							<g:hasErrors bean="${eventoInstance}" field="sepomex">
+								<span class="ui-icon-red ui-icon-circle-close" style="float: left; margin-top: .3em"></span>
+							</g:hasErrors>
+						</td>
+					</tr>
+
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'domicilioSEDECalle', 'error')} ">
 	<label for="domicilioSEDECalle" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.domicilioSEDECalle.label" default="Domicilio SEDEC alle" />
@@ -101,6 +152,8 @@
 
 </div>
 <br>
+
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'domicilioSEDESepomex', 'error')} ">
 	<label for="domicilioSEDESepomex" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.domicilioSEDESepomex.label" default="Domicilio SEDES epomex" />
@@ -109,7 +162,11 @@
 	<g:field name="domicilioSEDESepomex" type="number" value="${eventoInstance.domicilioSEDESepomex}" class ="form-control"/>
 
 </div>
-<br>
+<br> -->
+</table>
+</div>
+
+
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'fechaCreacion', 'error')} ">
 	<label for="fechaCreacion" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.fechaCreacion.label" default="Fecha Creacion" />

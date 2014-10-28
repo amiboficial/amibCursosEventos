@@ -27,7 +27,7 @@ class Evento {
 	Date fechaCreacion
 	Cursos cursos
 	
-		static hasMany = [participantes:Participante, horarioEvento:HorarioEvento, documentoEvento:DocumentoEvento,
+		static hasMany = [participantes:Participante, horarioEventos:HorarioEvento, documentoEvento:DocumentoEvento,
 		cambioEstatusEvento:CambioStatusEvento,expositores:Expositor]
 	
 	static belongTo = [Cursos]

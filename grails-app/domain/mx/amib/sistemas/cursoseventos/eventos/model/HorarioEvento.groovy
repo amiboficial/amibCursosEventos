@@ -15,7 +15,7 @@ class HorarioEvento {
 	static mapping = {
 		table 't008_t_horarioevento'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
 		fechaDia column:'fh_dia'

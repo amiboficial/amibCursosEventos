@@ -8,6 +8,7 @@ import grails.converters.JSON
 import java.text.DateFormat;
 import java.text.SimpleDateFormat
 import java.util.Date;
+import mx.amib.sistemas.external.catalogos.service.SepomexService
 
 import grails.transaction.Transactional
 
@@ -16,6 +17,8 @@ class EventoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+	SepomexService sepomexService
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Evento.list(params), model:[eventoInstanceCount: Evento.count()]
@@ -36,7 +39,7 @@ class EventoController {
             return
         }
 		
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/dd/MM HH:mm")
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm")
 		
      
 		DateFormat formatoDia = new SimpleDateFormat("yyyy-MM-dd")
@@ -52,7 +55,7 @@ class EventoController {
 			par.matricula = jsPar.'matricula'
 			par.nombreParticipante = jsPar.'nombreParticipante'
 			par.fechaCreacion =  formatoDia.parse(jsPar.'fechaCreacion')
-			par.fechaModificacion = jsPar.'fechaModificacion'
+			par.fechaModificacion =  formatoDia.parse(jsPar.'fechaModificacion')
 			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
 			
 			par.evento = eventoInstance
@@ -70,18 +73,18 @@ class EventoController {
 			def jsHor = JSON.parse(it)
 			HorarioEvento hor = new HorarioEvento()
 			
-			hor.fechaDia = jsHor.'fechaDia'
-			hor.horaInicio = jsHor.'horaInicio'
-			hor.horafin = jsHor.'horafin'
-			hor.fechaCreacion = jsHor.'fechaCreacion'
+			hor.fechaDia =  formatoDia.parse(jsHor.'fechaDia')
+			hor.horaInicio = simpleDateFormat.parse(jsHor.'horaInicio')
+			hor.horafin = simpleDateFormat.parse(jsHor.'horafin')
+			hor.fechaCreacion =  formatoDia.parse(jsHor.'fechaCreacion')
 			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
 			
 			hor.evento = eventoInstance
 			listaHorarioEventos.add(hor)
 		}
-		eventoInstance.horarioEvento = listaHorarioEventos
+		eventoInstance.horarioEventos = listaHorarioEventos
 		
-		println (eventoInstance.horarioEvento as JSON)
+		println (eventoInstance.horarioEventos as JSON)
 		///////////////////
 		//sacando los expositores
 		def listaExpositoresJson = params.list('expositor')
@@ -94,10 +97,10 @@ class EventoController {
 			ex.nombreExpositor = jsEx.'nombreExpositor'
 			ex.primerApellidoExpositor = jsEx.'primerApellidoExpositor'
 			ex.segundoApellidoExpositor = jsEx.'segundoApellidoExpositor'
-			//ex.fechaCreacion = jsEx.'fechaCreacion'
+			ex.fechaCreacion = formatoDia.parse(jsEx.'fechaCreacion')
 			ex.horas = jsEx.'horas'
 						
-			ex.curso = cursosInstance
+			ex.evento = eventoInstance
 			listaExpositores.add(ex)
 		}
 		eventoInstance.expositores = listaExpositores
@@ -180,4 +183,11 @@ class EventoController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	def findSepomex(String id)
+	{
+		def sepomexList = sepomexService.obtenerDatosSepomexPorCodigoPostal(id)
+		
+		render sepomexList as JSON
+	}
 }
