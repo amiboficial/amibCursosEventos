@@ -1,11 +1,15 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
+import java.util.Date;
+
 class Participante {
 	
 	Integer matricula
 	String nombreParticipante
-	Date fechaCreacion 
-	String fechaModificacion
+	
+	Date dateCreated
+	Date lastUpdated
+	
 	Evento evento
 	
 	static belongsTo = [Evento]
@@ -19,8 +23,8 @@ class Participante {
 		
 		matricula column:'nu_matricula'
 		nombreParticipante column:'nb_ncompleto'
-		fechaCreacion column: 'fh_creacion'
-		fechaModificacion column: 'fh_modificacion'
+		dateCreated column: 'fh_creacion'
+		lastUpdated column: 'fh_modificacion'
 		evento column:'id_007_evento'
 		
 	}
@@ -29,8 +33,8 @@ class Participante {
 	
 		matricula nullable: true, maxSize: 100
 		nombreParticipante nullable: true, maxSize: 100
-		fechaCreacion nullable: true 
-		fechaModificacion nullable: true 
+	    dateCreated nullable: true 
+		lastUpdated nullable: true 
 		
     }
 }
