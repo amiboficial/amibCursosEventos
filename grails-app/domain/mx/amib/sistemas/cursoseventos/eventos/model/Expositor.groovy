@@ -1,5 +1,7 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
+import java.util.Date;
+
 import mx.amib.sistemas.cursoseventos.eventos.model.Evento;
 
 class Expositor {
@@ -8,9 +10,12 @@ class Expositor {
 	String primerApellidoExpositor
 	String segundoApellidoExpositor
 	
-	Date fechaCreacion
+	//Date fechaCreacion
 	Integer horas
 	Evento evento
+	
+	Date dateCreated
+	Date lastUpdated
 	
 	static belongsTo = [Evento]
 	
@@ -23,7 +28,9 @@ class Expositor {
 		primerApellidoExpositor column:'nb_apellido1'
 		segundoApellidoExpositor column:'nb_apellido2'
 		horas column:'nu_horas'
-		fechaCreacion column:'fh_creacion'
+		
+		dateCreated column:'fh_creacion'
+		lastUpdated column:'fh_modificacion'
 		evento column:'id_007_evento'
 	}
 	 
@@ -34,6 +41,6 @@ class Expositor {
 		primerApellidoExpositor nullable: true, maxSize: 100
 		segundoApellidoExpositor nullable: true, maxSize: 100
 		horas nullable: true, maxSize: 20
-		fechaCreacion nullable: true
+		//fechaCreacion nullable: true
     }
 }
