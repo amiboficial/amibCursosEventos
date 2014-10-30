@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'evento.label', default: 'Evento')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
-		<!-- cdn for modernizr, if you haven't included it already -->
-		<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
-		<!-- polyfiller file to detect and load polyfills -->
-		<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
-		<script>
+<head>
+<meta name="layout" content="main">
+<g:set var="entityName"
+	value="${message(code: 'evento.label', default: 'Evento')}" />
+<title><g:message code="default.create.label"
+		args="[entityName]" /></title>
+<!-- cdn for modernizr, if you haven't included it already -->
+<script
+	src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+<!-- polyfiller file to detect and load polyfills -->
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+<script>
  		 webshims.setOptions('waitReady', false);
 		 webshims.setOptions('forms-ext', {types: 'date'});
 		 webshims.polyfill('forms forms-ext');
 		</script>
-		
-		<script type="text/javascript">
+
+<script type="text/javascript">
 	$(function() {
 		/* Obtencion de datos desde el código postal */
 		$('#txtCP').change( function(){
@@ -71,30 +74,30 @@
   
 	});
 	</script>
-		
-	</head>
-	<body>
-		<fieldset>
+
+</head>
+<body>
+	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<h2 class="panel-title">Acciones</h2>
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-			
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Eventos</g:link></li>
-			</ul><br>
+
+				<li><g:link class="list btn btn-primary colortitle colorblack"
+						action="index">Gestión de Eventos</g:link></li>
+			</ul>
+			<br>
 		</div>
-		</fieldset>
+	</fieldset>
 
 	<fieldset>
 		<div class="panel panel-default col-lg-12">
 			<div class="panel-heading">
 				<div class="widgetTitle">
 					<div id="create-evento" class="content scaffold-create" role="main">
-						<h1>
-							Crear Eventos
-						</h1>
+						<h1>Crear Eventos</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
 								${flash.message}
@@ -117,89 +120,78 @@
 			<g:form url="[resource:eventoInstance, action:'save']">
 				<fieldset class="form">
 					<g:render template="form" />
-					
+
 					<br>
 
 					<table class="table">
 						<thead>
-						<tr>
-						Participantes
-						</tr>
+							<tr>Participantes
+							</tr>
 							<tr>
 								<th>Matricula</th>
 								<th>Nombre</th>
-								<th>Fecha de creacion</th>
-								<th>Fecha de modificacion</th>
+
 								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody id="tbdyParticipantes">
 							<tr>
+								<td><input id="txtNewMatricula" class="form-control"
+									type="text" /></td>
+								<td><input id="txtNewNombreParticipante"
+									class="form-control" type="text" /></td>
+
 								<td>
-									<input id="txtNewMatricula" class="form-control" type="text" />
-								</td>
-								<td>
-									<input id="txtNewNombreParticipante" class="form-control" type="text" />
-								</td>
-								<td>
-									<input id="dateNewFechaCreacion" class="form-control" type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
-								</td>
-								<td>
-									<input id="dateNewFechaModificacion" class="form-control" type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
-								</td>					
-								<td>
-									<button id="btnAddNewParticipante" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
+									<button id="btnAddNewParticipante"
+										class="add btn btn-success btn-sm">
+										<span class="glyphicon glyphicon-plus"></span> Agregar
+									</button>
 								</td>
 							</tr>
 
 						</tbody>
 					</table>
-					
-					
+
+
 					<table class="table">
 						<thead>
-						<tr>
-						Expositores
-						</tr>
+							<tr>Expositores
+							</tr>
 							<tr>
 								<th>Nombre</th>
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
-								<th>Fecha</th>
+								
 								<th>Horas</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
 						<tbody id="tbdyExpositores">
 							<tr>
+								<td><input id="txtNewNomExpositor" class="form-control"
+									type="text" /></td>
+								<td><input id="txtNewPriApeExpositor" class="form-control"
+									type="text" /></td>
+								<td><input id="txtNewSegApeExpositor" class="form-control"
+									type="text" /></td>
+
+								<td><input id="NumNewhora" class="form-control"
+									type="number" /></td>
 								<td>
-									<input id="txtNewNomExpositor" class="form-control" type="text" />
-								</td>
-								<td>
-									<input id="txtNewPriApeExpositor" class="form-control" type="text" />
-								</td>
-								<td>
-									<input id="txtNewSegApeExpositor" class="form-control" type="text" />
-								</td>
-								 <td>
-									<input id="dateNewFecha" class="form-control"  type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}' />
-								</td>
-								<td>
-									<input id="NumNewhora" class="form-control" type="number" />
-								</td>						
-								<td>
-									<button id="btnAddNewExpositor" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
+									<button id="btnAddNewExpositor"
+										class="add btn btn-success btn-sm">
+										<span class="glyphicon glyphicon-plus"></span> Agregar
+									</button>
 								</td>
 							</tr>
 
 						</tbody>
 					</table>
-					
+
 					<table class="table">
 						<thead>
-						<tr>
-						Horarios
-						</tr>
+							<tr>Horarios
+							</tr>
 							<tr>
 								<th>Dia</th>
 								<th>Hora inicio</th>
@@ -210,37 +202,36 @@
 						</thead>
 						<tbody id="tbdyHorarios">
 							<tr>
-								<td>
-									<input id="txtNewDia" class="form-control" type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}' />
+								<td><input id="txtNewDia" class="form-control" type="date"
+									date-date-format="yyyy-mm-dd" data-date='{"startView": 2}' />
 								</td>
+								<td><input id="txtNewHoraInicio" class="form-control"
+									type="date" date-date-format=" HH:mm" /></td>
+								<td><input id="txtNewHoraFin" class="form-control"
+									type="date" date-date-format=" HH:mm" /></td>
+								<td><input id="dateNewFechaCreacionhor"
+									class="form-control" type="date" date-date-format="yyyy-mm-dd"
+									data-date='{"startView": 2}' /></td>
 								<td>
-									<input id="txtNewHoraInicio" class="form-control" type="date" date-date-format=" HH:mm"/>
-								</td>
-								<td>
-									<input id="txtNewHoraFin" class="form-control" type="date" date-date-format=" HH:mm"/>
-								</td>
-								 <td>
-									<input id="dateNewFechaCreacionhor" class="form-control" type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
-								</td>					
-								<td>
-									<button id="btnAddNewHorarios" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
+									<button id="btnAddNewHorarios"
+										class="add btn btn-success btn-sm">
+										<span class="glyphicon glyphicon-plus"></span> Agregar
+									</button>
 								</td>
 							</tr>
 
 						</tbody>
 					</table>
-					
+
 					<script type="text/template" id="participanteTemplate">
 						<td>{{=matricula}}</td>
 						<td>{{=nombreParticipante}}</td>
-						<td>{{=fechaCreacion}}</td>
-						<td>{{=fechaModificacion}}</td>
+						
 						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
-							<input type="hidden" name="participante" value="{ 'id':{{=grailsId}}, 'matricula' : {{=matricula}}, 'nombreParticipante' : {{=nombreParticipante}}, 
-							 'fechaCreacion' : {{=fechaCreacion}},  'fechaModificacion' : {{=fechaModificacion}} } " />
+							<input type="hidden" name="participante" value="{ 'id':{{=grailsId}}, 'matricula' : {{=matricula}}, 'nombreParticipante' : {{=nombreParticipante}} } " />
 						</td>
 					</script>
-					
+
 					<script type="text/javascript">
 
 					//definimos un "contexto"
@@ -251,8 +242,6 @@
 						defaults: {
 							idx: -1, 
 							grailsId: -1, 
-							fechaModificacion: '',
-							fechaCreacion: '',
 							nombreParticipante: '',
 							matricula: '',
 							}
@@ -320,12 +309,11 @@
 					e.preventDefault(); 
 
 				
-				var _fechaModificacion = $('#dateNewFechaModificacion').val();
-				var _fechaCreacion = $('#dateNewFechaCreacion').val();
+			
 				var _nombreParticipante = $('#txtNewNombreParticipante').val();
 				var _matricula = $('#txtNewMatricula').val();
 				var _idx = _.size(this.collection) 
-				var participante = new parWidget.Participante( { fechaModificacion: _fechaModificacion , fechaCreacion: _fechaCreacion , nombreParticipante: _nombreParticipante , matricula: _matricula , idx: _idx } );
+				var participante = new parWidget.Participante( {  nombreParticipante: _nombreParticipante , matricula: _matricula , idx: _idx } );
 		
 				this.collection.add(participante);
 					}
@@ -334,24 +322,23 @@
 		$(function(){
 			new parWidget.ParticipantesView();
 		});
-		</script>			
-		
-			<!--  -->
-								
-					
+		</script>
+
+
+
 					<script type="text/template" id="expositorTemplate">
 						<td>{{=nombreExpositor}}</td>
 						<td>{{=primerApellidoExpositor}}</td>
 						<td>{{=segundoApellidoExpositor}}</td>
-						<td>{{=fechaCreacion}}</td>
+				
 						<td>{{=horas}}</td>
 						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
 							<input type="hidden" name="expositor" value="{ 'id':{{=grailsId}}, 'nombreExpositor' : {{=nombreExpositor}}, 'primerApellidoExpositor' : {{=primerApellidoExpositor}}, 
-							 'segundoApellidoExpositor' : {{=segundoApellidoExpositor}}, 'fechaCreacion' : {{=fechaCreacion}}, 'horas' : {{=horas}} } " />
+							 'segundoApellidoExpositor' : {{=segundoApellidoExpositor}}, 'horas' : {{=horas}} } " />
 						</td>
 					</script>
-					
-					
+
+
 					<script type="text/javascript">
 
 				
@@ -363,7 +350,7 @@
 							idx: -1, 
 							grailsId: -1, 
 							horas: '',
-							fechaCreacion: '',
+							
 							segundoApellidoExpositor: '',
 							primerApellidoExpositor: '',
 							nombreExpositor: '',
@@ -429,12 +416,12 @@
 					agregarExpositor: function(e) {
 					e.preventDefault();	
 				var _horas = $('#NumNewhora').val();
-				var _fechaCreacion = $('#dateNewFecha').val();
+			
 				var _segundoApellidoExpositor = $('#txtNewSegApeExpositor').val();
 				var _primerApellidoExpositor = $('#txtNewPriApeExpositor').val();
 				var _nombreExpositor = $('#txtNewNomExpositor').val();
 				var _idx = _.size(this.collection) 
-				var expositor = new exWidget.Expositor( { horas: _horas , fechaCreacion: _fechaCreacion , segundoApellidoExpositor: _segundoApellidoExpositor , primerApellidoExpositor: _primerApellidoExpositor , nombreExpositor: _nombreExpositor , idx: _idx } );
+				var expositor = new exWidget.Expositor( { horas: _horas ,  segundoApellidoExpositor: _segundoApellidoExpositor , primerApellidoExpositor: _primerApellidoExpositor , nombreExpositor: _nombreExpositor , idx: _idx } );
 		
 				this.collection.add(expositor);
 					}
@@ -446,7 +433,7 @@
 
 </script>
 
-<script type="text/template" id="horarioEventoTemplate">
+					<script type="text/template" id="horarioEventoTemplate">
 						<td>{{=fechaDia}}</td>
 						<td>{{=horaInicio}}</td>
 						<td>{{=horafin}}</td>
@@ -521,14 +508,18 @@
 		});
 
 </script>
-	
 
-</fieldset>
+
+				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create"
+						class="save btn btn-primary colortitle colorblack"
+						value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
-				</fieldset><br>
+					<g:link class="list btn btn-primary colortitle colorblack"
+						action="index">Regresar</g:link>
+				</fieldset>
+				<br>
 			</g:form>
 		</div>
 </body>
