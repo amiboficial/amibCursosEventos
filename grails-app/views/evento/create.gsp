@@ -26,7 +26,7 @@
 			{
 				$.ajax({
 					dataType: 'json',
-					url: '<g:createLink controller="Evento" action="findSepomex" />' + '/' + $('#txtCP').val(),
+					url: '<g:createLink controller="evento" action="findSepomex" />' + '/' + $('#txtCP').val(),
 					data: 'traditional '
 				}).done(function(data){
 
@@ -41,12 +41,12 @@
 				        }		
 						
 						$('#txtEntidad').val(data[0].asentamiento.municipio.entidadFederativa.nombre);
-						$('#txtDelegacion').val(data[0]asentamiento.municipio.nombre);
-						$('#txtCiudad').val(data[0].ciudad.municipio.nombre);
+						$('#txtDelegacion').val(data[0].asentamiento.municipio.nombre);
+						$('#txtCiudad').val(data[0].ciudad.municipio.entidadFederativa.nombre);
 						//$("#selAsentamiento").removeAttr('disabled');
 						$('#selAsentamiento').html(asentamientos);
 						/* Carga el valor si es que ya lo trae del modelo*/
-						$('#selAsentamiento').val('${eventoInstance?.domicilioSEDESepomex}');
+						$('#selAsentamiento').val('${domicilioSEDESepomex?.clave?.codigoPostal}');
 					}
 					else
 					{
@@ -73,8 +73,16 @@
 		});
   
 	});
-	</script>
 
+	function limpiaDomicilio()
+	{
+		$('#txtEntidad').val('');
+		$('#txtDelegacion').val('');
+		$('#txtCiudad').val('');
+		$('#selAsentamiento').html('<option value="">-Seleccione-</option>');
+	}
+	</script>
+	
 </head>
 <body>
 	<fieldset>
