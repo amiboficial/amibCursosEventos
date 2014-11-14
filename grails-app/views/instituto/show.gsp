@@ -27,7 +27,7 @@
 				<div class="widgetTitle">
 					<div id="show-instituto" class="content scaffold-show" role="main">
 						<h1>
-							Muestra Institutos
+							Muestra Instituto
 						</h1>
 						<g:if test="${flash.message}">
 							<div class="message" role="status">
@@ -40,70 +40,70 @@
 			<br>
 
 
-			<ul class="property-list instituto">
+			<ul class="property-list instituto list-group">
 
 				<g:if test="${institutoInstance?.razonSocial}">
-					<li class="fieldcontain"><span id="razonSocial-label"
+					<li class="fieldcontain list-group-item"><span id="razonSocial-label"
 						class="property-label"><g:message
-								code="instituto.razonSocial.label" default="Razon Social" /></span> <span
+								code="instituto.razonSocial.label" default="Razon Social: " /></span> <span
 						class="property-value" aria-labelledby="razonSocial-label"><g:fieldValue
 								bean="${institutoInstance}" field="razonSocial" /></span></li>
 				</g:if>
 				
 				<g:if test="${institutoInstance?.siglas}">
-					<li class="fieldcontain"><span id="siglas-label"
+					<li class="fieldcontain list-group-item"><span id="siglas-label"
 						class="property-label"><g:message
-								code="instituto.siglas.label" default="Siglas" /></span> <span
+								code="instituto.siglas.label" default="Siglas: " /></span> <span
 						class="property-value" aria-labelledby="siglas-label"><g:fieldValue
 								bean="${institutoInstance}" field="siglas" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.rfc}">
-					<li class="fieldcontain"><span id="rfc-label"
+					<li class="fieldcontain list-group-item"><span id="rfc-label"
 						class="property-label"><g:message
-								code="instituto.rfc.label" default="Rfc" /></span> <span
+								code="instituto.rfc.label" default="Rfc:" /></span> <span
 						class="property-value" aria-labelledby="rfc-label"><g:fieldValue
 								bean="${institutoInstance}" field="rfc" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.correo}">
-					<li class="fieldcontain"><span id="correo-label"
+					<li class="fieldcontain list-group-item"><span id="correo-label"
 						class="property-label"><g:message
-								code="instituto.correo.label" default="Correo" /></span> <span
+								code="instituto.correo.label" default="Correo: " /></span> <span
 						class="property-value" aria-labelledby="correo-label"><g:fieldValue
 								bean="${institutoInstance}" field="correo" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.numeroEscritura}">
-					<li class="fieldcontain"><span id="numeroEscritura-label"
+					<li class="fieldcontain list-group-item"><span id="numeroEscritura-label"
 						class="property-label"><g:message
 								code="instituto.numeroEscritura.label"
-								default="Numero Escritura" /></span> <span class="property-value"
+								default="Numero de Escritura: " /></span> <span class="property-value"
 						aria-labelledby="numeroEscritura-label"><g:fieldValue
 								bean="${institutoInstance}" field="numeroEscritura" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.aniosExperiencia}">
-					<li class="fieldcontain"><span id="aniosExperiencia-label"
+					<li class="fieldcontain list-group-item"><span id="aniosExperiencia-label"
 						class="property-label"><g:message
 								code="instituto.aniosExperiencia.label"
-								default="Anios Experiencia" /></span> <span class="property-value"
+								default="Años de Experiencia: " /></span> <span class="property-value"
 						aria-labelledby="aniosExperiencia-label"><g:fieldValue
 								bean="${institutoInstance}" field="aniosExperiencia" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.urlSitioWeb}">
-					<li class="fieldcontain"><span id="urlSitioWeb-label"
+					<li class="fieldcontain list-group-item"><span id="urlSitioWeb-label"
 						class="property-label"><g:message
-								code="instituto.urlSitioWeb.label" default="Url Sitio Web" /></span> <span
+								code="instituto.urlSitioWeb.label" default="Sitio Web: " /></span> <span
 						class="property-value" aria-labelledby="urlSitioWeb-label"><g:fieldValue
 								bean="${institutoInstance}" field="urlSitioWeb" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.aplicaCobroIva}">
-					<li class="fieldcontain"><span id="aplicaCobroIva-label"
+					<li class="fieldcontain list-group-item"><span id="aplicaCobroIva-label"
 						class="property-label"><g:message
-								code="instituto.aplicaCobroIva.label" default="Aplica Cobro Iva" /></span>
+								code="instituto.aplicaCobroIva.label" default="Aplica Cobro de Iva" /></span>
 
 						<span class="property-value"
 						aria-labelledby="aplicaCobroIva-label"><g:formatBoolean
@@ -111,9 +111,9 @@
 				</g:if>
 
 				<g:if test="${institutoInstance?.repLegalNombre}">
-					<li class="fieldcontain"><span id="repLegalNombre-label"
+					<li class="fieldcontain list-group-item"><span id="repLegalNombre-label"
 						class="property-label"><g:message
-								code="instituto.repLegalNombre.label" default="Rep Legal Nombre" /></span>
+								code="instituto.repLegalNombre.label" default="Nombre del Representante: " /></span>
 
 						<span class="property-value"
 						aria-labelledby="repLegalNombre-label"><g:fieldValue
@@ -121,30 +121,30 @@
 				</g:if>
 
 				<g:if test="${institutoInstance?.repLegalPrimerApellido}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="repLegalPrimerApellido-label" class="property-label"><g:message
 								code="instituto.repLegalPrimerApellido.label"
-								default="Rep Legal Primer Apellido" /></span> <span
+								default="Apellido Paterno: " /></span> <span
 						class="property-value"
 						aria-labelledby="repLegalPrimerApellido-label"><g:fieldValue
 								bean="${institutoInstance}" field="repLegalPrimerApellido" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.repLegalSegundoApellido}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="repLegalSegundoApellido-label" class="property-label"><g:message
 								code="instituto.repLegalSegundoApellido.label"
-								default="Rep Legal Segundo Apellido" /></span> <span
+								default="Apellido Materno: " /></span> <span
 						class="property-value"
 						aria-labelledby="repLegalSegundoApellido-label"><g:fieldValue
 								bean="${institutoInstance}" field="repLegalSegundoApellido" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.domicilioOficialIdSepomex}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="domicilioOficialIdSepomex-label" class="property-label"><g:message
 								code="instituto.domicilioOficialIdSepomex.label"
-								default="Domicilio Oficial Id Sepomex" /></span> <span
+								default="Domicilio Oficial: " /></span> <span
 						class="property-value"
 						aria-labelledby="domicilioOficialIdSepomex-label"><g:fieldValue
 								bean="${institutoInstance}" field="domicilioOficialIdSepomex" /></span>
@@ -153,30 +153,30 @@
 				</g:if>
 
 				<g:if test="${institutoInstance?.domicilioOficialCalle}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="domicilioOficialCalle-label" class="property-label"><g:message
 								code="instituto.domicilioOficialCalle.label"
-								default="Domicilio Oficial Calle" /></span> <span
+								default="Calle: " /></span> <span
 						class="property-value"
 						aria-labelledby="domicilioOficialCalle-label"><g:fieldValue
 								bean="${institutoInstance}" field="domicilioOficialCalle" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.domicilioOficialNumext}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="domicilioOficialNumext-label" class="property-label"><g:message
 								code="instituto.domicilioOficialNumext.label"
-								default="Domicilio Oficial Numext" /></span> <span
+								default="Numero exterior: " /></span> <span
 						class="property-value"
 						aria-labelledby="domicilioOficialNumext-label"><g:fieldValue
 								bean="${institutoInstance}" field="domicilioOficialNumext" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.domicilioFiscalIdSepomex}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="domicilioFiscalIdSepomex-label" class="property-label"><g:message
 								code="instituto.domicilioFiscalIdSepomex.label"
-								default="Domicilio Fiscal Id Sepomex" /></span> <span
+								default="Domicilio Fiscal: " /></span> <span
 						class="property-value"
 						aria-labelledby="domicilioFiscalIdSepomex-label"><g:fieldValue
 								bean="${institutoInstance}" field="domicilioFiscalIdSepomex" /></span>
@@ -185,74 +185,74 @@
 				</g:if>
 
 				<g:if test="${institutoInstance?.domicilioFiscalCalle}">
-					<li class="fieldcontain"><span id="domicilioFiscalCalle-label"
+					<li class="fieldcontain list-group-item"><span id="domicilioFiscalCalle-label"
 						class="property-label"><g:message
 								code="instituto.domicilioFiscalCalle.label"
-								default="Domicilio Fiscal Calle" /></span> <span
+								default="Calle: " /></span> <span
 						class="property-value"
 						aria-labelledby="domicilioFiscalCalle-label"><g:fieldValue
 								bean="${institutoInstance}" field="domicilioFiscalCalle" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.domicilioFiscalNumext}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="domicilioFiscalNumext-label" class="property-label"><g:message
 								code="instituto.domicilioFiscalNumext.label"
-								default="Domicilio Fiscal Numext" /></span> <span
+								default="Numero Exterior: " /></span> <span
 						class="property-value"
 						aria-labelledby="domicilioFiscalNumext-label"><g:fieldValue
 								bean="${institutoInstance}" field="domicilioFiscalNumext" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.statusAutorizacion}">
-					<li class="fieldcontain"><span id="statusAutorizacion-label"
+					<li class="fieldcontain list-group-item"><span id="statusAutorizacion-label"
 						class="property-label"><g:message
 								code="instituto.statusAutorizacion.label"
-								default="Status Autorizacion" /></span> <span class="property-value"
+								default="Estatus de Autorizacion: " /></span> <span class="property-value"
 						aria-labelledby="statusAutorizacion-label"><g:fieldValue
 								bean="${institutoInstance}" field="statusAutorizacion" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.fechaAlta}">
-					<li class="fieldcontain"><span id="fechaAlta-label"
+					<li class="fieldcontain list-group-item"><span id="fechaAlta-label"
 						class="property-label"><g:message
-								code="instituto.fechaAlta.label" default="Fecha Alta" /></span> <span
+								code="instituto.fechaAlta.label" default="Fecha de Alta: " /></span> <span
 						class="property-value" aria-labelledby="fechaAlta-label"><g:formatDate
 								date="${institutoInstance?.fechaAlta}" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.fechaFinVigencia}">
-					<li class="fieldcontain"><span id="fechaFinVigencia-label"
+					<li class="fieldcontain list-group-item"><span id="fechaFinVigencia-label"
 						class="property-label"><g:message
 								code="instituto.fechaFinVigencia.label"
-								default="Fecha Fin Vigencia" /></span> <span class="property-value"
+								default="Fecha de Fin de Vigencia: " /></span> <span class="property-value"
 						aria-labelledby="fechaFinVigencia-label"><g:formatDate
 								date="${institutoInstance?.fechaFinVigencia}" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.fechaCreacion}">
-					<li class="fieldcontain"><span id="fechaCreacion-label"
+					<li class="fieldcontain list-group-item"><span id="fechaCreacion-label"
 						class="property-label"><g:message
-								code="instituto.fechaCreacion.label" default="Fecha Creacion" /></span>
+								code="instituto.fechaCreacion.label" default="Fecha de Creacion" /></span>
 
 						<span class="property-value" aria-labelledby="fechaCreacion-label"><g:formatDate
 								date="${institutoInstance?.fechaCreacion}" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.fechaModificacion}">
-					<li class="fieldcontain"><span id="fechaModificacion-label"
+					<li class="fieldcontain list-group-item"><span id="fechaModificacion-label"
 						class="property-label"><g:message
 								code="instituto.fechaModificacion.label"
-								default="Fecha Modificacion" /></span> <span class="property-value"
+								default="Fecha de Modificacion: " /></span> <span class="property-value"
 						aria-labelledby="fechaModificacion-label"><g:formatDate
 								date="${institutoInstance?.fechaModificacion}" /></span></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.cambiosAutorizacion}">
-					<li class="fieldcontain"><span id="cambiosAutorizacion-label"
+					<li class="fieldcontain list-group-item"><span id="cambiosAutorizacion-label"
 						class="property-label"><g:message
 								code="instituto.cambiosAutorizacion.label"
-								default="Cambios Autorizacion" /></span> <g:each
+								default="Cambios de Autorizacion: " /></span> <g:each
 							in="${institutoInstance.cambiosAutorizacion}" var="c">
 							<span class="property-value"
 								aria-labelledby="cambiosAutorizacion-label"><g:link
@@ -263,33 +263,33 @@
 				</g:if>
 
 				<g:if test="${institutoInstance?.cursos}">
-					<li class="fieldcontain"><span id="cursos-label"
+					<li class="fieldcontain list-group-item"><span id="cursos-label"
 						class="property-label"><g:message
-								code="instituto.cursos.label" default="Cursos" /></span> <g:each
-							in="${institutoInstance.cursos}" var="c">
+								code="instituto.cursos.label" default="Cursos: " /></span> <g:each
+							in="${institutoInstance.cursos}" var="cu">
 							<span class="property-value" aria-labelledby="cursos-label"><g:link
-									controller="cursos" action="show" id="${c.id}">
+									controller="cursos" action="show" id="${cu.id}">
 									${c?.encodeAsHTML()}
 								</g:link></span>
 						</g:each></li>
 				</g:if>
 
 				<g:if test="${institutoInstance?.telefonos}">
-					<li class="fieldcontain"><span id="telefonos-label"
+					<li class="fieldcontain list-group-item"><span id="telefonos-label"
 						class="property-label"><g:message
-								code="instituto.telefonos.label" default="Telefonos" /></span> <g:each
+								code="instituto.telefonos.label" default="Telefonos: " /></span> <g:each
 							in="${institutoInstance.telefonos}" var="t">
 							<span class="property-value" aria-labelledby="telefonos-label"><g:link
 									controller="telefonoInstituto" action="show" id="${t.id}">
-									${t?.encodeAsHTML()}
+									${t?.telefono.encodeAsHTML()}
 								</g:link></span>
 						</g:each></li>
 				</g:if>
-
+				
 				<g:if test="${institutoInstance?.tipoInstituto}">
-					<li class="fieldcontain"><span id="tipoInstituto-label"
+					<li class="fieldcontain list-group-item"><span id="tipoInstituto-label"
 						class="property-label"><g:message
-								code="instituto.tipoInstituto.label" default="Tipo Instituto" /></span>
+								code="instituto.tipoInstituto.label" default="Tipo de Instituto: " /></span>
 
 						<span class="property-value"  aria-labelledby="tipoInstituto-label"><g:link
 								controller="tipoInstituto" action="show" 
@@ -298,7 +298,7 @@
 							</g:link></span></li>
 				</g:if>
 
-			</ul>
+			</ul><br>
 			<g:form url="[resource:institutoInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">

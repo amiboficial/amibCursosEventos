@@ -4,6 +4,140 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'instituto.label', default: 'Instituto')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+	
+	<script type="text/javascript">
+	$(function() {
+		/* Obtencion de datos desde el código postal */
+		$('#txtCP').change( function(){
+			
+			if( $('#txtCP').val().length == 5 )
+			{
+				$.ajax({
+					dataType: 'json',
+					url: '<g:createLink controller="evento" action="findSepomex" />' + '/' + $('#txtCP').val(),
+					data: 'traditional '
+				}).done(function(data){
+
+					if(data.length > 0)
+					{
+						var asentamientos = '<option value="">-Seleccione-</option>';
+						
+						/* Rellena una cadena de opciones con los asentamientos obtenidos */
+				        for(var i = 0; i < data.length;i++)
+				        {
+			                asentamientos += '<option value="'+data[i].id+'">'+data[i].asentamiento.nombre+'</option>';
+				        }		
+						
+						$('#txtEntidad').val(data[0].asentamiento.municipio.entidadFederativa.nombre);
+						$('#txtDelegacion').val(data[0].asentamiento.municipio.nombre);
+						$('#txtCiudad').val(data[0].ciudad.municipio.entidadFederativa.nombre);
+						//$("#selAsentamiento").removeAttr('disabled');
+						$('#selAsentamiento').html(asentamientos);
+						/* Carga el valor si es que ya lo trae del modelo*/
+						$('#selAsentamiento').val('${instituoInstance?.domicilioOficialIdSepomex?.id}');
+					}
+					else
+					{
+						limpiaDomicilio();
+					}
+					
+				});
+			}
+			else
+			{
+				limpiaDomicilio();
+			}
+			
+		});
+
+		/* Carga los valores de sepomex del modelo */
+		$('#txtCP').val('${institutoInstance?.domicilioOficialIdSepomex?.codigoPostal}');
+		$('#txtCP').trigger('change');
+
+		
+		/* Trimeo de campos al perder el focus */
+		$( "form" ).focusout(function() {
+			trimAllFields();
+		});
+  
+	});
+
+	function limpiaDomicilio()
+	{
+		$('#txtEntidad').val('');
+		$('#txtDelegacion').val('');
+		$('#txtCiudad').val('');
+		$('#selAsentamiento').html('<option value="">-Seleccione-</option>');
+	}
+	</script>
+	
+	<script type="text/javascript">
+	$(function() {
+		/* Obtencion de datos desde el código postal */
+		$('#txtCPF').change( function(){
+			
+			if( $('#txtCPF').val().length == 5 )
+			{
+				$.ajax({
+					dataType: 'json',
+					url: '<g:createLink controller="evento" action="findSepomex" />' + '/' + $('#txtCPF').val(),
+					data: 'traditional '
+				}).done(function(data){
+
+					if(data.length > 0)
+					{
+						var asentamientos = '<option value="">-Seleccione-</option>';
+						
+						/* Rellena una cadena de opciones con los asentamientos obtenidos */
+				        for(var i = 0; i < data.length;i++)
+				        {
+			                asentamientos += '<option value="'+data[i].id+'">'+data[i].asentamiento.nombre+'</option>';
+				        }		
+						
+						$('#txtEntidadF').val(data[0].asentamiento.municipio.entidadFederativa.nombre);
+						$('#txtDelegacionF').val(data[0].asentamiento.municipio.nombre);
+						$('#txtCiudadF').val(data[0].ciudad.municipio.entidadFederativa.nombre);
+						//$("#selAsentamiento").removeAttr('disabled');
+						$('#selAsentamientoF').html(asentamientos);
+						/* Carga el valor si es que ya lo trae del modelo*/
+						$('#selAsentamientoF').val('${instituoInstance?.domicilioFiscalIdSepomex?.id}');
+					}
+					else
+					{
+						limpiaDomicilio();
+					}
+					
+				});
+			}
+			else
+			{
+				limpiaDomicilio();
+			}
+			
+		});
+
+		/* Carga los valores de sepomex del modelo */
+		$('#txtCPF').val('${institutoInstance?.domicilioFiscalIdSepomex?.codigoPostal}');
+		$('#txtCPF').trigger('change');
+
+		
+		/* Trimeo de campos al perder el focus */
+		$( "form" ).focusout(function() {
+			trimAllFields();
+		});
+  
+	});
+
+	function limpiaDomicilio()
+	{
+		$('#txtEntidadF).val('');
+		$('#txtDelegacionF').val('');
+		$('#txtCiudadF').val('');
+		$('#selAsentamientoF').html('<option value="">-Seleccione-</option>');
+	}
+	</script>
+	
+	
 	</head>
 	<body>
 		<fieldset>
@@ -186,9 +320,7 @@ $(function(){
 });
 
 </script>
-					
-					
-		
+	
 					
 					
 				</fieldset>
