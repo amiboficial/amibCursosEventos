@@ -101,6 +101,57 @@
 
 </div>
 <br>
+<div class="fieldcontain">
+	<label for="Domicilio oficial">
+		<g:message code="instituto.DomOficial" default="Domicilio oficial de la institutcion" />
+</label>
+</div>
+<br>
+<div class="fieldcontain">
+	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.cp" default="Codigo Postal" />
+	</label>
+	<input type="text" id="txtCP" style="float: left;" class ="form-control"></input><button onclick="return window.open('http://www.correosdemexico.gob.mx/ServiciosLinea/Paginas/ccpostales.aspx');" id="btnIconoBuscarCP" style="font-size:small;">&nbsp;Buscar ...</button>
+		<g:hasErrors bean="${institutoInstance}" field="sepomex">
+			<span class="ui-icon-red ui-icon-circle-close" style="float: left; margin-top: .3em"></span>
+		</g:hasErrors>&nbsp;
+</div>
+<br>
+<div class="fieldcontain">
+	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.ed" default="Entidad Federativa" />
+	</label>
+	<input type="text" id="txtEntidad" disabled="disabled" value="" class ="form-control"></input>
+</div>
+<br>
+<div class="fieldcontain">
+	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.dm" default="Delegación ó Municipio" />
+	</label>
+	<input type="text" id="txtDelegacion" disabled="disabled" value="" class ="form-control"></input>
+</div>
+<br>
+<div class="fieldcontain" >	
+	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.cd" default="Ciudad" />
+	</label>
+	<input type="text" id="txtCiudad" disabled="disabled" value="" class ="form-control"></input>
+</div>
+<br>
+<div class="fieldcontain ${hasErrors(bean: institutoInstance, select: 'domicilioOficialIdSepomex', 'error')}" >
+	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.as" default="Asentamiento" />
+	</label>
+	<select id="selAsentamiento" name="domicilioOficialIdSepomex" style="float: left;" required>
+		<option value=" ">-Seleccione-</option>
+	</select>
+	<g:hasErrors bean="${institutoInstance.domicilioOficialIdSepomex}" field="domicilioOficialIdSepomex">
+		<span class="ui-icon-red ui-icon-circle-close" style="float: left; margin-top: .3em"></span>
+	</g:hasErrors>
+</div>
+<br>
+<br>
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'domicilioOficialIdSepomex', 'error')} ">
 	<label for="domicilioOficialIdSepomex" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="instituto.domicilioOficialIdSepomex.label" default="Domicilio Oficial Id Sepomex" />
@@ -108,7 +159,7 @@
 	</label>
 	<g:field name="domicilioOficialIdSepomex" type="number" value="${institutoInstance.domicilioOficialIdSepomex}" class ="form-control"/>
 
-</div>
+</div>  -->
 <br>
 <div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'domicilioOficialCalle', 'error')} ">
 	<label for="domicilioOficialCalle" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
@@ -128,6 +179,59 @@
 
 </div>
 <br>
+
+
+<div class="fieldcontain">
+	<label for="Domicilio fiscal">
+		<g:message code="instituto.DomOficial" default="Domicilio fiscal de la institutcion" />
+</label>
+</div>
+<br>
+<div class="fieldcontain">
+	<label for="codigoPostalF" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.cpf" default="Codigo Postal" />
+	</label>
+	<input type="text" id="txtCPF" style="float: left;" class ="form-control"></input><button onclick="return window.open('http://www.correosdemexico.gob.mx/ServiciosLinea/Paginas/ccpostales.aspx');" id="btnIconoBuscarCP" style="font-size:small;">&nbsp;Buscar ...</button>
+		<g:hasErrors bean="${institutoInstance}" field="sepomex">
+			<span class="ui-icon-red ui-icon-circle-close" style="float: left; margin-top: .3em"></span>
+		</g:hasErrors>&nbsp;
+</div>
+<br>
+<div class="fieldcontain">
+	<label for="codigoPostalF" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.edf" default="Entidad Federativa" />
+	</label>
+	<input type="text" id="txtEntidadF" disabled="disabled" value="" class ="form-control"></input>
+</div>
+<br>
+<div class="fieldcontain">
+	<label for="codigoPostalF" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.dmf" default="Delegación ó Municipio" />
+	</label>
+	<input type="text" id="txtDelegacionF" disabled="disabled" value="" class ="form-control"></input>
+</div>
+<br>
+<div class="fieldcontain" >	
+	<label for="codigoPostalF" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.cdf" default="Ciudad" />
+	</label>
+	<input type="text" id="txtCiudadF" disabled="disabled" value="" class ="form-control"></input>
+</div>
+<br>
+<div class="fieldcontain ${hasErrors(bean: institutoInstance, select: 'domicilioFiscalIdSepomex', 'error')}" >
+	<label for="codigoPostalF" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.asf" default="Asentamiento" />
+	</label>
+	<select id="selAsentamientoF" name="domicilioFiscalIdSepomex" style="float: left;" required>
+		<option value=" ">-Seleccione-</option>
+	</select>
+	<g:hasErrors bean="${institutoInstance.domicilioFiscalIdSepomex}" field="domicilioFiscalIdSepomex">
+		<span class="ui-icon-red ui-icon-circle-close" style="float: left; margin-top: .3em"></span>
+	</g:hasErrors>
+</div>
+<br>
+<br>
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'domicilioFiscalIdSepomex', 'error')} ">
 	<label for="domicilioFiscalIdSepomex" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="instituto.domicilioFiscalIdSepomex.label" default="Domicilio Fiscal Id Sepomex" />
@@ -136,7 +240,7 @@
 	<g:field name="domicilioFiscalIdSepomex" type="number" value="${institutoInstance.domicilioFiscalIdSepomex}" class ="form-control"/>
 
 </div>
-<br>
+<br> -->
 <div class="fieldcontain ${hasErrors(bean: institutoInstance, field: 'domicilioFiscalCalle', 'error')} ">
 	<label for="domicilioFiscalCalle" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="instituto.domicilioFiscalCalle.label" default="Domicilio Fiscal Calle" />
@@ -187,7 +291,7 @@
 		<g:message code="instituto.fechaCreacion.label" default="Fecha Creacion" />
 		
 	</label>
-	<g:datePicker name="fechaCreacion" precision="day"  value="${institutoInstance?.fechaCreacion}" default="none" />
+	<g:datePicker name="fechaCreacion" precision="day"  value="${institutoInstance?.fechaCreacion}"  />
 
 </div>
 <br>
@@ -196,7 +300,7 @@
 		<g:message code="instituto.fechaModificacion.label" default="Fecha Modificacion" />
 		
 	</label>
-	<g:datePicker name="fechaModificacion" precision="day"  value="${institutoInstance?.fechaModificacion}" default="none" />
+	<g:datePicker name="fechaModificacion" precision="day"  value="${institutoInstance?.fechaModificacion}" />
 
 </div>
 <br>
