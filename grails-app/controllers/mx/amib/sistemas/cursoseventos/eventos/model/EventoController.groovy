@@ -54,9 +54,6 @@ class EventoController {
 			
 			par.matricula = jsPar.'matricula'
 			par.nombreParticipante = jsPar.'nombreParticipante'
-			par.fechaCreacion =  formatoDia.parse(jsPar.'fechaCreacion')
-			par.fechaModificacion =  formatoDia.parse(jsPar.'fechaModificacion')
-			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
 			
 			par.evento = eventoInstance
 			listaParticipantes.add(par)
@@ -74,9 +71,9 @@ class EventoController {
 			HorarioEvento hor = new HorarioEvento()
 			
 			hor.fechaDia =  formatoDia.parse(jsHor.'fechaDia')
-			hor.horaInicio = simpleDateFormat.parse(jsHor.'horaInicio')
-			hor.horafin = simpleDateFormat.parse(jsHor.'horafin')
-			hor.fechaCreacion =  formatoDia.parse(jsHor.'fechaCreacion')
+			hor.horaInicio = jsHor."horaInicio"
+			hor.horafin = jsHor."horafin"
+			
 			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
 			
 			hor.evento = eventoInstance
@@ -97,7 +94,7 @@ class EventoController {
 			ex.nombreExpositor = jsEx.'nombreExpositor'
 			ex.primerApellidoExpositor = jsEx.'primerApellidoExpositor'
 			ex.segundoApellidoExpositor = jsEx.'segundoApellidoExpositor'
-			ex.fechaCreacion = formatoDia.parse(jsEx.'fechaCreacion')
+			//ex.fechaCreacion = formatoDia.parse(jsEx.'fechaCreacion')
 			ex.horas = jsEx.'horas'
 						
 			ex.evento = eventoInstance
