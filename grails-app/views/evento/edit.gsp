@@ -136,8 +136,7 @@
 							<tr>
 								<th>Matricula</th>
 								<th>Nombre</th>
-								<th>Fecha de creacion</th>
-								<th>Fecha de modificacion</th>
+								
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -148,13 +147,7 @@
 								</td>
 								<td>
 									<input id="txtNewNombreParticipante" class="form-control" type="text" />
-								</td>
-								<td>
-									<input id="dateNewFechaCreacion" class="form-control" type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
-								</td>
-								<td>
-									<input id="dateNewFechaModificacion" class="form-control" type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}'/>
-								</td>					
+								</td>			
 								<td>
 									<button id="btnAddNewParticipante" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
 								</td>
@@ -173,7 +166,6 @@
 								<th>Nombre</th>
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
-								<th>Fecha</th>
 								<th>Horas</th>
 								<th>Acciones</th>
 							</tr>
@@ -188,9 +180,6 @@
 								</td>
 								<td>
 									<input id="txtNewSegApeExpositor" class="form-control" type="text" />
-								</td>
-								 <td>
-									<input id="dateNewFecha" class="form-control"  type="date" date-date-format="yyyy-mm-dd" data-date='{"startView": 2}' />
 								</td>
 								<td>
 									<input id="NumNewhora" class="form-control" type="number" />
@@ -241,14 +230,12 @@
 					<script type="text/template" id="participanteTemplate">
 						<td>{{=matricula}}</td>
 						<td>{{=nombreParticipante}}</td>
-						<td>{{=fechaCreacion}}</td>
-						<td>{{=fechaModificacion}}</td>
+						
 						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
-							<input type="hidden" name="participante" value="{ 'id':{{=grailsId}}, 'matricula' : {{=matricula}}, 'nombreParticipante' : {{=nombreParticipante}}, 
-							 'fechaCreacion' : {{=fechaCreacion}},  'fechaModificacion' : {{=fechaModificacion}} } " />
+							<input type="hidden" name="participante" value="{ 'id':{{=grailsId}}, 'matricula' : {{=matricula}}, 'nombreParticipante' : {{=nombreParticipante}} } " />
 						</td>
 					</script>
-					
+
 					<script type="text/javascript">
 
 					//definimos un "contexto"
@@ -259,8 +246,6 @@
 						defaults: {
 							idx: -1, 
 							grailsId: -1, 
-							fechaModificacion: '',
-							fechaCreacion: '',
 							nombreParticipante: '',
 							matricula: '',
 							}
@@ -328,38 +313,44 @@
 					e.preventDefault(); 
 
 				
-				var _fechaModificacion = $('#dateNewFechaModificacion').val();
-				var _fechaCreacion = $('#dateNewFechaCreacion').val();
+			
 				var _nombreParticipante = $('#txtNewNombreParticipante').val();
 				var _matricula = $('#txtNewMatricula').val();
 				var _idx = _.size(this.collection) 
-				var participante = new parWidget.Participante( { fechaModificacion: _fechaModificacion , fechaCreacion: _fechaCreacion , nombreParticipante: _nombreParticipante , matricula: _matricula , idx: _idx } );
+				var participante = new parWidget.Participante( {  nombreParticipante: _nombreParticipante , matricula: _matricula , idx: _idx } );
 		
 				this.collection.add(participante);
 					}
 			});
 
+	//	$(function(){
+		//	new parWidget.ParticipantesView();
+	//	});
 		$(function(){
-			new parWidget.ParticipantesView();
-		});
-		</script>			
+			var partici = [
+				<g:each in="${eventoInstance.participantes}">
+					{ matricula:'${it.matricula}' , nombreParticipante:'${it.nombreParticipante}' },
+				</g:each>
+			];
+			new parWidget.ParticipantesView(partici);
+		});			
+
 		
-			<!--  -->
-								
-					
-					<script type="text/template" id="expositorTemplate">
+		</script>			
+			<!--  -->					
+				<script type="text/template" id="expositorTemplate">
 						<td>{{=nombreExpositor}}</td>
 						<td>{{=primerApellidoExpositor}}</td>
 						<td>{{=segundoApellidoExpositor}}</td>
-						<td>{{=fechaCreacion}}</td>
+				
 						<td>{{=horas}}</td>
 						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
 							<input type="hidden" name="expositor" value="{ 'id':{{=grailsId}}, 'nombreExpositor' : {{=nombreExpositor}}, 'primerApellidoExpositor' : {{=primerApellidoExpositor}}, 
-							 'segundoApellidoExpositor' : {{=segundoApellidoExpositor}}, 'fechaCreacion' : {{=fechaCreacion}}, 'horas' : {{=horas}} } " />
+							 'segundoApellidoExpositor' : {{=segundoApellidoExpositor}}, 'horas' : {{=horas}} } " />
 						</td>
 					</script>
-					
-					
+
+
 					<script type="text/javascript">
 
 				
@@ -371,7 +362,7 @@
 							idx: -1, 
 							grailsId: -1, 
 							horas: '',
-							fechaCreacion: '',
+							
 							segundoApellidoExpositor: '',
 							primerApellidoExpositor: '',
 							nombreExpositor: '',
@@ -437,30 +428,38 @@
 					agregarExpositor: function(e) {
 					e.preventDefault();	
 				var _horas = $('#NumNewhora').val();
-				var _fechaCreacion = $('#dateNewFecha').val();
+			
 				var _segundoApellidoExpositor = $('#txtNewSegApeExpositor').val();
 				var _primerApellidoExpositor = $('#txtNewPriApeExpositor').val();
 				var _nombreExpositor = $('#txtNewNomExpositor').val();
 				var _idx = _.size(this.collection) 
-				var expositor = new exWidget.Expositor( { horas: _horas , fechaCreacion: _fechaCreacion , segundoApellidoExpositor: _segundoApellidoExpositor , primerApellidoExpositor: _primerApellidoExpositor , nombreExpositor: _nombreExpositor , idx: _idx } );
+				var expositor = new exWidget.Expositor( { horas: _horas ,  segundoApellidoExpositor: _segundoApellidoExpositor , primerApellidoExpositor: _primerApellidoExpositor , nombreExpositor: _nombreExpositor , idx: _idx } );
 		
 				this.collection.add(expositor);
 					}
 			});
 
+		//$(function(){
+		//	new exWidget.ExpositoresView();
+		//});
 		$(function(){
-			new exWidget.ExpositoresView();
-		});
-
+			var expositores = [
+				<g:each in="${eventoInstance.expositores}">
+					{ nombreExpositor:'${it.nombreExpositor}' , primerApellidoExpositor:'${it.primerApellidoExpositor}', segundoApellidoExpositor:'${it.segundoApellidoExpositor}' , horas:${it.horas}, idx:'${idx}'  },
+				</g:each>
+			];
+			new exWidget.ExpositoresView(expositores);
+		});			
+				
 </script>
 
 <script type="text/template" id="horarioEventoTemplate">
 						<td>{{=fechaDia}}</td>
 						<td>{{=horaInicio}}</td>
 						<td>{{=horafin}}</td>
-						<td>{{=fechaCreacion}}</td>
+			
 						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
-							<input type="hidden" name="horarioEvento" value="{ 'id':{{=grailsId}}, 'fechaDia' : {{=fechaDia}}, 'horaInicio' : {{=horaInicio}}, 'horafin' : {{=horafin}}, 'fechaCreacion' : {{=fechaCreacion}} } " /></td>
+							<input type="hidden" name="horarioEvento" value="{ 'id':{{=grailsId}}, 'fechaDia' : {{=fechaDia}}, 'horaInicio' : {{=horaInicio}}, 'horafin' : {{=horafin}} } " /></td>
 					</script>
 					<script type="text/javascript">
 					var perWidget = perWidget || {}
@@ -468,12 +467,13 @@
 						defaults: {
 							idx: -1, 
 							grailsId: -1, 
-							fechaCreacion: '',
+							
 							horafin: '',
 							horaInicio: '',
 							fechaDia: '',
 							}
 					});
+					
 					perWidget.HorarioEventos = Backbone.Collection.extend({
 					model: perWidget.HorarioEvento
 						});
@@ -493,6 +493,7 @@
 					this.remove(); 
 					}
 					});
+						
 				perWidget.HorarioEventosView = Backbone.View.extend({
 				el: '#tbdyHorarios', 
 					initialize: function( initialHorarioEventos ){
@@ -514,24 +515,30 @@
 					},
 					agregarHorarioEvento: function(e) {
 					e.preventDefault();	//aqui se ponen las variables a capturar 
-				var _fechaCreacion = $('#dateNewFechaCreacionhor').val();
+
 				var _horafin = $('#txtNewHoraFin').val();
 				var _horaInicio = $('#txtNewHoraInicio').val();
 				var _fechaDia = $('#txtNewDia').val();
 				var _idx = _.size(this.collection) 
-				var horarioEvento = new perWidget.HorarioEvento( { fechaCreacion: _fechaCreacion , horafin: _horafin , horaInicio: _horaInicio , fechaDia: _fechaDia , idx: _idx } );
+				var horarioEvento = new perWidget.HorarioEvento( { horafin: _horafin , horaInicio: _horaInicio , fechaDia: _fechaDia , idx: _idx } );
 		
 				this.collection.add(horarioEvento);
 					}
 			});
+		//$(function(){
+		//	new perWidget.HorarioEventosView();
+		//});
+		
 		$(function(){
-			new perWidget.HorarioEventosView();
-		});
-
+			var horarioEvento = [
+				<g:each in="${eventoInstance.horarioEventos}">
+					{ horafin:'${it.horafin}' , horaInicio:${it.horaInicio}, fechaDia:${it.fechaDia} , idx:'${idx}'  },
+				</g:each>
+			];
+			new perWidget.HorarioEventosView(horarioEvento);
+		});			
+		
 </script>
-					
-					
-					
 				</fieldset>
 				<fieldset class="buttons">
 					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
