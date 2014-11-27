@@ -147,10 +147,6 @@
 		$('#selAsentamientoF').html('<option value="">-Seleccione-</option>');
 	}
 	</script>
-	
-	
-	
-	
 	</head>
 	<body>
 		<fieldset>
@@ -229,13 +225,11 @@
 			<td>{{=tipoTelefono}}</td>
 			<td>
 				<button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button>
-				<button class="edit btn btn-warning  btn-sm"><span class="glyphicon glyphicon-trash"></span> Editar</button>
 				<input type="hidden" name="telefono" value="{ 'id':{{=grailsId}}, 'telefono' : {{=telefono}}, 'idTipoTelefono' : {{=idTipoTelefono}} } " />
 			</td>
 	</script>
 
 		<script type="text/javascript">
-
 //definimos un "contexto"
 var telWidget = telWidget || {}
 
@@ -328,20 +322,15 @@ telWidget.TelefonosView = Backbone.View.extend({
 		this.collection.add(telefono);
 	}
 });
-
 //$(function(){
 	//new telWidget.TelefonosView();
 //});
-
-</script>
-		
-	<!-- script para sacar la lista de telefonos -->
-<script type="text/javascript">
+	// script para sacar la lista de telefonos
 		//Carga datos del modelo
 		$(function(){
 			var telefonos = [
 				<g:each in="${institutoInstance.telefonos}">
-					{ telefono: ${it.telefono} },
+					{ telefono:${it.telefono} , tipoTelefono:'${it.tipotelefono.descripcion}', idx:'${it.id}', idTipoTelefono:'${it.tipotelefono.id}' },
 				</g:each>
 			];
 			new telWidget.TelefonosView(telefonos);

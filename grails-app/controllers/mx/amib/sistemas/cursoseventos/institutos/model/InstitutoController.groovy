@@ -5,12 +5,19 @@ package mx.amib.sistemas.cursoseventos.institutos.model
 import static org.springframework.http.HttpStatus.*
 import grails.converters.JSON
 import grails.transaction.Transactional
+import java.text.SimpleDateFormat
+import java.util.Date;
+import mx.amib.sistemas.cursoseventos.instituto.service.InstitutoService
+import mx.amib.sistemas.external.catalogos.service.SepomexService
 
 @Transactional(readOnly = true)
 class InstitutoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+	//servicios
+	InstitutoService institutoService
+	
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Instituto.list(params), model:[institutoInstanceCount: Instituto.count()]
@@ -48,7 +55,6 @@ class InstitutoController {
 			ti.tipotelefono = TipoTelefono.get( jsTi.'idTipoTelefono'.toInteger() )
 			
 			ti.instituto = institutoInstance
-			
 			listaTelefonos.add(ti)
 		}
 		institutoInstance.telefonos = listaTelefonos
@@ -80,6 +86,7 @@ class InstitutoController {
 
     def edit(Instituto institutoInstance) {
         respond institutoInstance
+		
     }
 
     @Transactional
@@ -88,13 +95,34 @@ class InstitutoController {
             notFound()
             return
         }
-
+			
+		//sacando los telefonos
+		def listaTelefonosJson = params.list('telefono')
+		def listaTelefonos = new ArrayList<TelefonoInstituto>()
+		/*listaTelefonosJson.each{
+			//deja checar algo
+			def jsTi = JSON.parse(it)
+			TelefonoInstituto ti = new TelefonoInstituto()
+			
+			ti.telefono = jsTi.'telefono'
+			ti.tipotelefono = TipoTelefono.get( jsTi.'idTipoTelefono'.toInteger() )
+	
+			ti.instituto = institutoInstance
+			listaTelefonos.add(ti)
+		}
+		institutoInstance.telefonos = listaTelefonos
+		println (institutoInstance.telefonos as JSON)
+		*/
+		
         if (institutoInstance.hasErrors()) {
             respond institutoInstance.errors, view:'edit'
             return
         }
+		
+		
 
-        institutoInstance.save flush:true
+		institutoService.update(institutoInstance, listaTelefonosJson)
+		
 
         request.withFormat {
             form multipartForm {
@@ -138,4 +166,11 @@ class InstitutoController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	def findSepomex(String id)
+	{
+		def sepomexList = sepomexService.obtenerDatosSepomexPorCodigoPostal(id)
+		
+		render sepomexList as JSON
+	}
 }

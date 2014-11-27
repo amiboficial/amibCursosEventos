@@ -5,10 +5,9 @@ class TelefonoInstituto {
 	String telefono
 	Instituto instituto
 	TipoTelefono tipotelefono
+	boolean toBeUpdated
 
-
-
-
+	static transients = ['toBeUpdated']
 	static belongsTo = [Instituto,TipoTelefono]
 
 	static mapping = {

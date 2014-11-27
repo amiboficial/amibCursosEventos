@@ -117,8 +117,8 @@
 		});
 
 		/* Carga los valores de sepomex del modelo */
-		$('#txtCPF').val('${institutoInstance?.domicilioFiscalIdSepomex?.codigoPostal}');
-		$('#txtCPF').trigger('change');
+		$('#txtCP').val('${institutoInstance?.domicilioFiscalIdSepomex?.codigoPostal}');
+		$('#txtCP').trigger('change');
 
 		
 		/* Trimeo de campos al perder el focus */
@@ -130,13 +130,12 @@
 
 	function limpiaDomicilio()
 	{
-		$('#txtEntidadF).val('');
+		$('#txtEntidadF').val('');
 		$('#txtDelegacionF').val('');
 		$('#txtCiudadF').val('');
 		$('#selAsentamientoF').html('<option value="">-Seleccione-</option>');
 	}
 	</script>
-	
 	
 	</head>
 	<body>
@@ -184,7 +183,8 @@
 			<g:form url="[resource:institutoInstance, action:'save']">
 				<fieldset class="form">
 					<g:render template="form" />
-					
+			
+			
 					
 					
 <table class="table">
