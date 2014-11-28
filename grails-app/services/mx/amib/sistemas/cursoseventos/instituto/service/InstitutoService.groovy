@@ -22,8 +22,7 @@ class InstitutoService {
 		}
 		
 		telefonosJson.each{ String _telefonoJson ->
-			TelefonoInstituto telefonoInstituto = null
-			
+			TelefonoInstituto telefonoInstituto = null	
 			def parsedJson = JSON.parse(_telefonoJson)
 			
 			telefonoInstituto = TelefonoInstituto.get(parsedJson.'id')
@@ -35,9 +34,7 @@ class InstitutoService {
 				telefonoInstituto.tipotelefono = TipoTelefono.get(parsedJson.'idTipoTelefono')
 			telefonoInstituto.toBeUpdated = true
 		}
-		
-	
-		
+
 		instituto.telefonos.each{ TelefonoInstituto _t ->
 			if(_t.toBeUpdated == false)
 			telefonoInstitutoToDelete.add(_t)	

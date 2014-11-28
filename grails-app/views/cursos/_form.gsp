@@ -116,7 +116,7 @@
 		<g:message code="cursos.fechaCreacion.label" default="Fecha Creacion" />
 		
 	</label>
-	<g:datePicker name="fechaCreacion" precision="day"  value="${cursosInstance?.fechaCreacion}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaCreacion" precision="day"  value="${cursosInstance?.fechaCreacion}" />
 
 </div>
 <br>
@@ -125,7 +125,7 @@
 		<g:message code="cursos.fechaModificacion.label" default="Fecha Modificacion" />
 		
 	</label>
-	<g:datePicker name="fechaModificacion" precision="day"  value="${cursosInstance?.fechaModificacion}" default="none" noSelection="['': '']" />
+	<g:datePicker name="fechaModificacion" precision="day"  value="${cursosInstance?.fechaModificacion}"  />
 
 </div>
 <br>
@@ -149,6 +149,75 @@
 </div>
  -->
 <br>
+
+<!--  -->
+<fieldset>
+				<legend>Documentos de respaldo</legend>
+				
+				<div id="divDocsCompletos" class="alert alert-danger">
+					<span class="glyphicon glyphicon-ban-circle"></span> Debes incluir un documento de respaldo
+				</div>
+				
+				<div id="divMultiplesDocumentos">
+					
+					<div class="msgProcesando alert alert-info">
+						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
+					</div>
+					<div class="msgErrorPeticion alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Ha habído un error al procesar la petición.
+					</div>
+					<div class="msgErrorTipoNoSel alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Debes seleccionar el tipo de documento a cargar.
+					</div>
+					<div class="msgErrorTipoNoArc alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Debes seleccionar un archivo a cargar.
+					</div>
+					<div class="msgErrorValidadorExt alert alert-danger">
+					</div>
+					
+					<div class="newFileRow row">
+						<div class="archivoInputDiv col-md-5">
+							<label class="control-label col-md-4">Seleccione un archivo:</label>
+							<div class="col-md-8"><input type="file" class="file" id="ZmlsZURvY3VtZW50bw"/></div>
+						</div>
+						<div class="tipoDiv col-md-4">
+							<label class="control-label col-md-4">Tipo:</label>
+							<div class="col-md-8">
+								<select class="tipoDocumento form-control col-md-8">
+									<option value="null">-Seleccione-</option>
+									<g:each in="${viewModelInstance.tipoDocumentoList}">
+										validador.addDocType(${it.id});
+										<option value="${it.id}">${it.tipoDoumentoCurso}</option>
+									</g:each>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3" style="text-align:center;">
+							<button type="button" class="add btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
+						</div>
+					</div>
+					<br/>
+					
+					<div class="listaDocs list-group">						
+					</div>
+					
+				</div>
+				<input type="hidden" id="hdnDocsDeleted" name="idsDocumentosBorrados" value=""/>
+				<input type="hidden" id="hdnDocsIsBusy" value="false"/>
+				
+				<g:if test="${viewModelInstance.validDocumentosCargados == true}">
+					<input type="hidden" id="hdnDocsModelValidatedLoaded" value="true"/>
+				</g:if>
+				<g:else>
+					<input type="hidden" id="hdnDocsModelValidatedLoaded" value="false"/>
+				</g:else>
+				
+				
+				<input type="hidden" id="hdnDocsModelValidated" value="false"/>
+				<input type="hidden" id="hdnDocsModelValidatedMsg" value=""/>
+			</fieldset>
+<!--  -->
+
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'documentoCurso', 'error')} ">
 	<label for="documentoCurso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.documentoCurso.label" default="Documento Curso" />
@@ -167,6 +236,9 @@
 
 </div>
 <br>
+
+
+
 <!-- 
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'eventos', 'error')} ">
 	<label for="eventos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
@@ -202,11 +274,21 @@
 
 
 </div>
-
-
-
-
-
-
 </div>
 
+<!-- INICIA: SCRIPT PARA DOCUMENTOS -->
+		<g:render template="../common/multiDocs"/>
+		<g:javascript src="mx.amib.sistemas.cursoseventos.form.docsMultiWidget.js" />
+		<g:javascript src="mx.amib.sistemas.cursoseventos.cursos.form.docsValidator.js" />
+		<script type="text/javascript">
+		$(function(){
+
+			var docsView = new app.DocsView();
+			docsView.validator = app.DocsValidator;
+
+			docsView.viewModel.set('urlUpload','<g:createLink controller="documento" action="upload" />');
+			docsView.viewModel.set('urlDownloadNew','<g:createLink controller="documento" action="downloadNew"/>');
+			docsView.viewModel.set('urlDeleteNew','<g:createLink controller="documento" action="delete"/>');
+		});
+		</script>
+		<!-- FIN: SCRIPT PARA DOCUMENTOS  -->

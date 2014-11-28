@@ -38,12 +38,12 @@
 			</div>
 			<br>
 
-			<ul class="property-list cursos">
+			<ul class="property-list cursos list-group">
 
 				<g:if test="${cursosInstance?.nombreDelCurso}">
-					<li class="fieldcontain"><span id="nombreDelCurso-label"
+					<li class="fieldcontain list-group-item"><span id="nombreDelCurso-label"
 						class="property-label"><g:message
-								code="cursos.nombreDelCurso.label" default="Nombre Del Curso" /></span>
+								code="cursos.nombreDelCurso.label" default="Nombre Del Curso: " /></span>
 
 						<span class="property-value"
 						aria-labelledby="nombreDelCurso-label"><g:fieldValue
@@ -51,7 +51,7 @@
 				</g:if>
 
 				<g:if test="${cursosInstance?.siglas}">
-					<li class="fieldcontain"><span id="siglas-label"
+					<li class="fieldcontain list-group-item"><span id="siglas-label"
 						class="property-label"><g:message
 								code="cursos.siglas.label" default="Siglas" /></span> <span
 						class="property-value" aria-labelledby="siglas-label"><g:fieldValue
@@ -59,16 +59,16 @@
 				</g:if>
 
 				<g:if test="${cursosInstance?.objetivoDelCurso}">
-					<li class="fieldcontain"><span id="objetivoDelCurso-label"
+					<li class="fieldcontain list-group-item"><span id="objetivoDelCurso-label"
 						class="property-label"><g:message
 								code="cursos.objetivoDelCurso.label"
-								default="Objetivo Del Curso" /></span> <span class="property-value"
+								default="Objetivo Del Curso: " /></span> <span class="property-value"
 						aria-labelledby="objetivoDelCurso-label"><g:fieldValue
 								bean="${cursosInstance}" field="objetivoDelCurso" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.duracionEnHoras}">
-					<li class="fieldcontain"><span id="duracionEnHoras-label"
+					<li class="fieldcontain list-group-item"><span id="duracionEnHoras-label"
 						class="property-label"><g:message
 								code="cursos.duracionEnHoras.label" default="Duracion En Horas" /></span>
 
@@ -78,56 +78,56 @@
 				</g:if>
 
 				<g:if test="${cursosInstance?.observaciones}">
-					<li class="fieldcontain"><span id="observaciones-label"
+					<li class="fieldcontain list-group-item"><span id="observaciones-label"
 						class="property-label"><g:message
-								code="cursos.observaciones.label" default="Observaciones" /></span> <span
+								code="cursos.observaciones.label" default="Observaciones: " /></span> <span
 						class="property-value" aria-labelledby="observaciones-label"><g:fieldValue
 								bean="${cursosInstance}" field="observaciones" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.nombreCoordinador}">
-					<li class="fieldcontain"><span id="nombreCoordinador-label"
+					<li class="fieldcontain list-group-item"><span id="nombreCoordinador-label"
 						class="property-label"><g:message
 								code="cursos.nombreCoordinador.label"
-								default="Nombre Coordinador" /></span> <span class="property-value"
+								default="Nombre Coordinador: " /></span> <span class="property-value"
 						aria-labelledby="nombreCoordinador-label"><g:fieldValue
 								bean="${cursosInstance}" field="nombreCoordinador" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.primerApellidoCoordinador}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="primerApellidoCoordinador-label" class="property-label"><g:message
 								code="cursos.primerApellidoCoordinador.label"
-								default="Primer Apellido Coordinador" /></span> <span
+								default="Apellido Paterno: " /></span> <span
 						class="property-value"
 						aria-labelledby="primerApellidoCoordinador-label"><g:fieldValue
 								bean="${cursosInstance}" field="primerApellidoCoordinador" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.segundoApellidoCordinador}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="segundoApellidoCordinador-label" class="property-label"><g:message
 								code="cursos.segundoApellidoCordinador.label"
-								default="Segundo Apellido Cordinador" /></span> <span
+								default="Apellido Materno" /></span> <span
 						class="property-value"
 						aria-labelledby="segundoApellidoCordinador-label"><g:fieldValue
 								bean="${cursosInstance}" field="segundoApellidoCordinador" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.telefonoFijoCoordinador}">
-					<li class="fieldcontain"><span
+					<li class="fieldcontain list-group-item"><span
 						id="telefonoFijoCoordinador-label" class="property-label"><g:message
 								code="cursos.telefonoFijoCoordinador.label"
-								default="Telefono Fijo Coordinador" /></span> <span
+								default="Telefono: " /></span> <span
 						class="property-value"
 						aria-labelledby="telefonoFijoCoordinador-label"><g:fieldValue
 								bean="${cursosInstance}" field="telefonoFijoCoordinador" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.faxCoordinador}">
-					<li class="fieldcontain"><span id="faxCoordinador-label"
+					<li class="fieldcontain list-group-item"><span id="faxCoordinador-label"
 						class="property-label"><g:message
-								code="cursos.faxCoordinador.label" default="Fax Coordinador" /></span>
+								code="cursos.faxCoordinador.label" default="Fax: " /></span>
 
 						<span class="property-value"
 						aria-labelledby="faxCoordinador-label"><g:fieldValue
@@ -135,15 +135,15 @@
 				</g:if>
 
 				<g:if test="${cursosInstance?.email}">
-					<li class="fieldcontain"><span id="email-label"
+					<li class="fieldcontain list-group-item"><span id="email-label"
 						class="property-label"><g:message code="cursos.email.label"
-								default="Email" /></span> <span class="property-value"
+								default="Email: " /></span> <span class="property-value"
 						aria-labelledby="email-label"><g:fieldValue
 								bean="${cursosInstance}" field="email" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.status}">
-					<li class="fieldcontain"><span id="status-label"
+					<li class="fieldcontain list-group-item"><span id="status-label"
 						class="property-label"><g:message
 								code="cursos.status.label" default="Status" /></span> <span
 						class="property-value" aria-labelledby="status-label"><g:fieldValue
@@ -151,15 +151,15 @@
 				</g:if>
 
 				<g:if test="${cursosInstance?.fechaCreacion}">
-					<li class="fieldcontain"><span id="fechaCreacion-label"
+					<li class="fieldcontain list-group-item"><span id="fechaCreacion-label"
 						class="property-label"><g:message
-								code="cursos.fechaCreacion.label" default="Fecha Creacion" /></span> <span
+								code="cursos.fechaCreacion.label" default="Fecha de Creacion: " /></span> <span
 						class="property-value" aria-labelledby="fechaCreacion-label"><g:formatDate
 								date="${cursosInstance?.fechaCreacion}" /></span></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.fechaModificacion}">
-					<li class="fieldcontain"><span id="fechaModificacion-label"
+					<li class="fieldcontain list-group-item"><span id="fechaModificacion-label"
 						class="property-label"><g:message
 								code="cursos.fechaModificacion.label"
 								default="Fecha Modificacion" /></span> <span class="property-value"
@@ -168,9 +168,9 @@
 				</g:if>
 
 				<g:if test="${cursosInstance?.cambioStatus}">
-					<li class="fieldcontain"><span id="cambioStatus-label"
+					<li class="fieldcontain list-group-item"><span id="cambioStatus-label"
 						class="property-label"><g:message
-								code="cursos.cambioStatus.label" default="Cambio Status" /></span> <g:each
+								code="cursos.cambioStatus.label" default="Cambio de Estatus: " /></span> <g:each
 							in="${cursosInstance.cambioStatus}" var="c">
 							<span class="property-value" aria-labelledby="cambioStatus-label"><g:link
 									controller="cambioStatus" action="show" id="${c.id}">
@@ -180,9 +180,9 @@
 				</g:if>
 
 				<g:if test="${cursosInstance?.documentoCurso}">
-					<li class="fieldcontain"><span id="documentoCurso-label"
+					<li class="fieldcontain list-group-item"><span id="documentoCurso-label"
 						class="property-label"><g:message
-								code="cursos.documentoCurso.label" default="Documento Curso" /></span>
+								code="cursos.documentoCurso.label" default="Documentos del Curso: " /></span>
 
 						<g:each in="${cursosInstance.documentoCurso}" var="d">
 							<span class="property-value"
@@ -194,21 +194,21 @@
 				</g:if>
 
 				<g:if test="${cursosInstance?.eventos}">
-					<li class="fieldcontain"><span id="eventos-label"
+					<li class="fieldcontain list-group-item"><span id="eventos-label"
 						class="property-label"><g:message
-								code="cursos.eventos.label" default="Eventos" /></span> <g:each
+								code="cursos.eventos.label" default="Eventos: " /></span> <g:each
 							in="${cursosInstance.eventos}" var="e">
 							<span class="property-value" aria-labelledby="eventos-label"><g:link
 									controller="evento" action="show" id="${e.id}">
-									${e?.encodeAsHTML()}
+									${e?.nombreCordinador.encodeAsHTML()}
 								</g:link></span>
 						</g:each></li>
 				</g:if>
 
 				<g:if test="${cursosInstance?.tipoCurso}">
-					<li class="fieldcontain"><span id="tipoCurso-label"
+					<li class="fieldcontain list-group-item"><span id="tipoCurso-label"
 						class="property-label"><g:message
-								code="cursos.tipoCurso.label" default="TipoCruso" /></span> <g:each
+								code="cursos.tipoCurso.label" default="Tipo de Cruso: " /></span> <g:each
 							in="${cursosInstance.tipoCurso}" var="t">
 							<span class="property-value" aria-labelledby="tipoCurso-label"><g:link
 									controller="tipoCurso" action="show" id="${t.id}">
@@ -217,7 +217,7 @@
 						</g:each></li>
 				</g:if>
 
-			</ul>
+			</ul><br>
 			<g:form url="[resource:cursosInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
