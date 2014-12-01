@@ -9,7 +9,6 @@ import groovy.json.StringEscapeUtils
 import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
 import mx.amib.sistemas.cursoseventos.cursos.model.catalogo.DocumentoCursos
 import mx.amib.sistemas.external.documentos.service.DocumentoRepositorioTO
-import mx.amib.sistemas.external.documentos.service.DocumentoCursosRepositorioTO
 
 @Transactional
 class CursosService {
@@ -29,11 +28,11 @@ class CursosService {
 			dcc.cursos = cursos
 			cursos.documentoCurso.add(dcc)
 			
-			DocumentoCursosRepositorioTO dc = new DocumentoCursosRepositorioTO()
+			/*DocumentoCursosRepositorioTO dc = new DocumentoCursosRepositorioTO()
 			dc.uuid = parsedJson.'uuid'
 			dc.clave= ''
 			dc.tipoDocumento = TipoDocumentoCurso.get(parsed.'idTipo').tipoDoumentoCurso
-			docsAEnviar.add(dc)
+			docsAEnviar.add(dc)*/
 			
 						
 		}
@@ -53,7 +52,7 @@ class CursosService {
 		
 		DocumentoCursos dcc = null
 		def parsedJson = JSON.parse(_docuemntoJson)
-		DocumentoCursosRepositorioTO dc = new DocumentoCursosRepositorioTO()
+		//DocumentoCursosRepositorioTO dc = new DocumentoCursosRepositorioTO()
 		
 		drr = DocumentoCurso.get(parsedJson.'id')
 		if(dcc == null){
@@ -84,17 +83,13 @@ class CursosService {
 			it.cursos = cursos
 			cursos.documentoCursos.add(it)			
 			}
-			documentoRepositorioService.enviarDocumentosArchivoTemporal(docsAEnviar)
-			documentoRepositorioService.actualizarMetadatosDocumentos(docsAActualizar)
-			documentoRepositorioService.eliminarDocumentos(uuidsDocsABorrar)
+			//documentoRepositorioService.enviarDocumentosArchivoTemporal(docsAEnviar)
+			//documentoRepositorioService.actualizarMetadatosDocumentos(docsAActualizar)
+			//documentoRepositorioService.eliminarDocumentos(uuidsDocsABorrar)
 			
 		}
 
     }
 	
-	
-	
-    def serviceMethod() {
-    }
 	
 }
