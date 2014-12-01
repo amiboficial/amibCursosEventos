@@ -3,11 +3,14 @@ import grails.util.Environment
 beans = {
 	archivoTemporalService(mx.amib.sistemas.util.service.ArchivoTemporalService) {
 		directorioTemporal = application.config.mx.amib.sistemas.registro.tempDir
-		minutosCaducidadPorArchivo = 60
+		minutosCaducidadPorArchivo = 50
 	}
 	documentoRepositorioService(mx.amib.sistemas.external.documentos.service.DocumentoRepositorioService) {
 		saveUrl = "PENDIENTE"
 		documentoPoderSaveUrl = application.config.mx.amib.sistemas.documentos.resthttpURL + application.config.mx.amib.sistemas.documentos.DocumentoPoder.save
+		documentoPoderUpdateUrl = application.config.mx.amib.sistemas.documentos.resthttpURL + application.config.mx.amib.sistemas.documentos.DocumentoPoder.update
+		documentoRevocacionSaveUrl = application.config.mx.amib.sistemas.documentos.resthttpURL + application.config.mx.amib.sistemas.documentos.DocumentoRevocacion.save
+		documentoRevocacionUpdateUrl = application.config.mx.amib.sistemas.documentos.resthttpURL + application.config.mx.amib.sistemas.documentos.DocumentoRevocacion.update
 		saveMultipartUrl = application.config.mx.amib.sistemas.documentos.resthttpURL + application.config.mx.amib.sistemas.documentos.archivo.subirArchivoDocumentoUuid
 		getUrl = application.config.mx.amib.sistemas.documentos.resthttpURL + application.config.mx.amib.sistemas.documentos.Documento.getByUuid
 		downloadUrl = application.config.mx.amib.sistemas.documentos.resthttpURL + application.config.mx.amib.sistemas.documentos.archivo.descargarArchivoDocumentoUuid
