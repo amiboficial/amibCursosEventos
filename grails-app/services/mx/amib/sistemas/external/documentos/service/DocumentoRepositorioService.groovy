@@ -289,6 +289,10 @@ class DocumentoPoderRepositorioTO extends DocumentoRepositorioTO{
 	String jsonGrupoFinanciero
 	String jsonInstitucion
 }
+class  DocumentoCursoRepositorioTO extends DocumentoRepositorioTO{
+	String tipoDocumentoRespaldo
+	
+}
 
 class DocumentoRevocacionRepositorioTO extends DocumentoRepositorioTO{
 	String tipoDocumentoRespaldo

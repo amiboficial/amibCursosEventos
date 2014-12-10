@@ -152,7 +152,7 @@
 
 <!--  -->
 <fieldset>
-				<legend>Documentos de respaldo</legend>
+				<legend>Documentos del curso</legend>
 				
 				<div id="divDocsCompletos" class="alert alert-danger">
 					<span class="glyphicon glyphicon-ban-circle"></span> Debes incluir un documento de respaldo
@@ -216,7 +216,8 @@
 				<input type="hidden" id="hdnDocsModelValidated" value="false"/>
 				<input type="hidden" id="hdnDocsModelValidatedMsg" value=""/>
 			</fieldset>
-<!--  -->
+			
+<!--  
 
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'documentoCurso', 'error')} ">
 	<label for="documentoCurso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
@@ -234,7 +235,8 @@
 </ul>
 
 
-</div>
+</div>-->
+
 <br>
 
 
@@ -275,20 +277,3 @@
 
 </div>
 </div>
-
-<!-- INICIA: SCRIPT PARA DOCUMENTOS -->
-		<g:render template="../common/multiDocs"/>
-		<g:javascript src="mx.amib.sistemas.cursoseventos.form.docsMultiWidget.js" />
-		<g:javascript src="mx.amib.sistemas.cursoseventos.cursos.form.docsValidator.js" />
-		<script type="text/javascript">
-		$(function(){
-
-			var docsView = new app.DocsView();
-			docsView.validator = app.DocsValidator;
-
-			docsView.viewModel.set('urlUpload','<g:createLink controller="documento" action="upload" />');
-			docsView.viewModel.set('urlDownloadNew','<g:createLink controller="documento" action="downloadNew"/>');
-			docsView.viewModel.set('urlDeleteNew','<g:createLink controller="documento" action="delete"/>');
-		});
-		</script>
-		<!-- FIN: SCRIPT PARA DOCUMENTOS  -->

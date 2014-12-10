@@ -47,6 +47,9 @@ app.DocsValidator = {
 			lastSubmitErrorMsg = "";
 		}
 		return valid;
+		//esta validacion esta planeada para hacerse cuando haces submit
+		//por ahorita como no estas validando con JS el submit, igual y no le tendrias que
+		//mover nada
 	},
 	renderLastSubmitValidationMsg: function(){
 		return lastSubmitErrorMsg;
@@ -59,12 +62,13 @@ app.DocsValidator = {
 		var valid = true;
 		collection.forEach(function(item){
 			if(item.get('idTipo') == idTipo){
-				valid = false;
+				valid = true;
 			}
 		}, this);
 		if(valid == false)
 			this.errors.push({ errType: app.DOC_VAL_ERR_TYPE_ALRDY, errMsg: 'Ya hay un documento del mismo tipo' });
 		return valid;
+		//probablemente aqui solo mandarias puro true
 	},
 	renderLastBeforeUploadErrorsHtml: function(){
 		var htmlString = "";

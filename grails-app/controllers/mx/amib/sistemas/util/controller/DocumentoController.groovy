@@ -15,7 +15,7 @@ class DocumentoController {
 		//String uuidAnterior = params.'uuidAnterior'
 		
 		ArchivoTO archivo = null
-		
+		 
 		archivo = archivoTemporalService.guardarArchivoTemporal(session.id, uploadFile)
 		//archivoTemporalService.eliminarArchivoTemporal(uuidAnterior)
 		

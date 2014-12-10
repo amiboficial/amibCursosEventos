@@ -188,7 +188,7 @@
 							<span class="property-value"
 								aria-labelledby="documentoCurso-label"><g:link
 									controller="documentoCursos" action="show" id="${d.id}">
-									${d?.encodeAsHTML()}
+									${d?.tipoDocumentoCurso.tipoDoumentoCurso.encodeAsHTML()}
 								</g:link></span>
 						</g:each></li>
 				</g:if>

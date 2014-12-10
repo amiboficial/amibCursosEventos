@@ -5,11 +5,16 @@ import mx.amib.sistemas.cursoseventos.cursos.model.Cursos
 
 class DocumentoCursos {
 	
-	String documentos
 	Date fechaCreacion
 	
 	Cursos curso
 	TipoDocumentoCurso tipoDocumentoCurso
+	String uuid
+	
+	String nombreDeArchivo
+	boolean toBeUpdated
+	
+	static transients = ['nombreDeArchivo','toBeUpdated']
 	
 	static belongsTo = [Cursos, TipoDocumentoCurso]
 	
@@ -17,21 +22,18 @@ class DocumentoCursos {
 	static mapping = {
 		table 't012_t_doccurso'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
 		
-		documentos column:'uuid_f_doc'
 		fechaCreacion column:'fh_creacion'
+		uuid column:'uuid_f_doc'
 		
 		curso column:'id_006_curso'
 		tipoDocumentoCurso column:'id_013_tpdoccurso'
 	}
 	
 
-	
-
     static constraints = {
-		documentos nullable: true, maxSize: 10
 		fechaCreacion nullable: true
     }
 }

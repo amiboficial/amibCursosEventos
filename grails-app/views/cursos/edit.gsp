@@ -38,8 +38,10 @@
 				</div>
 			</div>
 			<br>
+			
+			
 
-			<g:hasErrors bean="${cursosInstance}">
+			<!--   <g:hasErrors bean="${cursosInstance}">
 				<ul class="errors" role="alert">
 					<g:eachError bean="${cursosInstance}" var="error">
 						<li
@@ -47,7 +49,7 @@
 								error="${error}" /></li>
 					</g:eachError>
 				</ul>
-			</g:hasErrors>
+			</g:hasErrors> -->
 			<g:form url="[resource:cursosInstance, action:'update']" method="PUT">
 				<g:hiddenField name="version" value="${cursosInstance?.version}" />
 				<fieldset class="form">
@@ -61,5 +63,8 @@
 			</g:form>
 		</div>
 		</fieldset>
+
+		<g:render template="formJs" />
+	
 </body>
 </html>
