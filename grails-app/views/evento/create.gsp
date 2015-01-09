@@ -128,10 +128,8 @@
 			<g:form url="[resource:eventoInstance, action:'save']">
 				<fieldset class="form">
 					<g:render template="form" />
-
 					<br>
-
-					<table class="table">
+					<%-- <table class="table">
 						<thead>
 							<tr>Participantes
 							</tr>
@@ -156,11 +154,8 @@
 									</button>
 								</td>
 							</tr>
-
 						</tbody>
-					</table>
-
-
+					</table> --%>
 					<table class="table">
 						<thead>
 							<tr>Expositores
@@ -195,8 +190,7 @@
 
 						</tbody>
 					</table>
-
-					<table class="table">
+						<%--<table class="table">
 						<thead>
 							<tr>Horarios
 							</tr>
@@ -210,16 +204,17 @@
 						</thead>
 						<tbody id="tbdyHorarios">
 							<tr>
-								<td><input id="txtNewDia" class="form-control" type="date"
+							<td><input id="txtNewDia" class="form-control" type="date"
 									date-date-format="yyyy-mm-dd" data-date='{"startView": 2}' />
 								</td>
-								<td><input id="txtNewHoraInicio" class="form-control"
+							 	<td><input id="txtNewHoraInicio" class="form-control"
 									type="date" date-date-format=" HH:mm" /></td>
 								<td><input id="txtNewHoraFin" class="form-control"
 									type="date" date-date-format=" HH:mm" /></td>
 								<td><input id="dateNewFechaCreacionhor"
 									class="form-control" type="date" date-date-format="yyyy-mm-dd"
-									data-date='{"startView": 2}' /></td>
+									data-date='{"startView": 2}' />
+									</td>
 								<td>
 									<button id="btnAddNewHorarios"
 										class="add btn btn-success btn-sm">
@@ -227,11 +222,27 @@
 									</button>
 								</td>
 							</tr>
-
+							
 						</tbody>
-					</table>
+					</table>--%>
 
-					<script type="text/template" id="participanteTemplate">
+
+			</fieldset>
+				<fieldset class="buttons">
+					<g:submitButton name="create"
+						class="save btn btn-primary colortitle colorblack"
+						value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					&nbsp;
+					<g:link class="list btn btn-primary colortitle colorblack"
+						action="index">Regresar</g:link>
+				</fieldset>
+				<br>
+			</g:form>
+		</div>
+		<g:render template="formjs"/>
+</body>
+
+		<%-- 			<script type="text/template" id="participanteTemplate">
 						<td>{{=matricula}}</td>
 						<td>{{=nombreParticipante}}</td>
 						
@@ -330,10 +341,7 @@
 		$(function(){
 			new parWidget.ParticipantesView();
 		});
-		</script>
-
-
-
+		</script>--%>
 					<script type="text/template" id="expositorTemplate">
 						<td>{{=nombreExpositor}}</td>
 						<td>{{=primerApellidoExpositor}}</td>
@@ -345,14 +353,8 @@
 							 'segundoApellidoExpositor' : {{=segundoApellidoExpositor}}, 'horas' : {{=horas}} } " />
 						</td>
 					</script>
-
-
 					<script type="text/javascript">
-
-				
 					var exWidget = exWidget || {}
-
-				
 					exWidget.Expositor = Backbone.Model.extend({
 						defaults: {
 							idx: -1, 
@@ -364,15 +366,9 @@
 							nombreExpositor: '',
 							}
 					});
-
-			
 					exWidget.Expositores = Backbone.Collection.extend({
 					model: exWidget.Expositor
 						});
-
-					
-
-					
 						exWidget.ExpositorView = Backbone.View.extend({
 						tagName: 'tr', 
 						className: 'expositorRow',
@@ -381,21 +377,14 @@
 						this.$el.html( this.template( this.model.toJSON() ) ); 
 						return this; 
 						},
-
 					events:{
-					
 						'click .delete':'quitarExpositor' 
 							},
-
 					quitarExpositor: function(){
-				
 					this.model.destroy(); 
-					
 					this.remove(); 
 					}
 					});
-
-			
 				exWidget.ExpositoresView = Backbone.View.extend({
 				el: '#tbdyExpositores', 
 
@@ -516,19 +505,4 @@
 		});
 
 </script>
-
-
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create"
-						class="save btn btn-primary colortitle colorblack"
-						value="${message(code: 'default.button.create.label', default: 'Create')}" />
-					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack"
-						action="index">Regresar</g:link>
-				</fieldset>
-				<br>
-			</g:form>
-		</div>
-</body>
 </html>

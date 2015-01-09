@@ -180,7 +180,143 @@
 
 </div>
 <br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'documentoEvento', 'error')} ">
+	  <%-- <fieldset>
+				<legend>Documentos de respaldo</legend>
+				
+				<div id="divDocsCompletos" class="alert alert-danger">
+					<span class="glyphicon glyphicon-ban-circle"></span> Debes incluir un documento de respaldo
+				</div>
+				
+				<div id="divMultiplesDocumentos">
+					
+					<div class="msgProcesando alert alert-info">
+						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
+					</div>
+					<div class="msgErrorPeticion alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Ha habído un error al procesar la petición.
+					</div>
+					<div class="msgErrorTipoNoSel alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Debes seleccionar el tipo de documento a cargar.
+					</div>
+					<div class="msgErrorTipoNoArc alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Debes seleccionar un archivo a cargar.
+					</div>
+					<div class="msgErrorValidadorExt alert alert-danger">
+					</div>
+					
+					<div class="newFileRow row">
+						<div class="archivoInputDiv col-md-5">
+							<label class="control-label col-md-4">Seleccione un archivo:</label>
+							<div class="col-md-8"><input type="file" class="file" id="ZmlsZURvY3VtZW50bw"/></div>
+						</div>
+						<div class="tipoDiv col-md-4">
+							<label class="control-label col-md-4">Tipo:</label>
+							<div class="col-md-8">
+								<select class="tipoDocumento form-control col-md-8">
+									<option value="null">-Seleccione-</option>
+									 <g:each in="${viewModelInstance.tipoDocumentoList}">
+										validador.addDocType(${it.id});
+										<option value="${it.id}">${it.tipoDoumentoEvento}</option>
+									</g:each> 
+								</select>
+							</div> 
+						</div>
+						<div class="col-md-3" style="text-align:center;">
+							<button type="button" class="add btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</button>
+						</div>
+					</div>
+					<br/>
+					
+					<div class="listaDocs list-group">						
+					</div>
+					
+				</div>
+				<input type="hidden" id="hdnDocsDeleted" name="idsDocumentosBorrados" value=""/>
+				<input type="hidden" id="hdnDocsIsBusy" value="false"/>
+				
+				<g:if test="${viewModelInstance.validDocumentosCargados == true}">
+					<input type="hidden" id="hdnDocsModelValidatedLoaded" value="true"/>  
+				</g:if> 
+				<g:else>
+					<input type="hidden" id="hdnDocsModelValidatedLoaded" value="false"/>
+				</g:else>
+				
+				
+				<input type="hidden" id="hdnDocsModelValidated" value="false"/>
+				<input type="hidden" id="hdnDocsModelValidatedMsg" value=""/>
+			</fieldset>
+--%>
+<br>
+
+
+
+<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'cursos', 'error')} required">
+	<label for="cursos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
+		<g:message code="instituto.tipoInstituto.label" default="Lista de cursos" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="cursos" name="cursos.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" optionKey="id" optionValue="nombreDelCurso" required="" value="${cursosInstance?.id}" class="many-to-one" class ="form-control"/>
+
+</div>
+<br>
+<fieldset>
+				<legend>Datos de participantes</legend>
+				
+				<div id="divParticipantes">
+				<div id="divMsgMatriculaYaEnLista" class="alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Matrícula <strong>ya agregada</strong>.
+					</div>
+					<div id="divMsgMatriculaNoEncontrada" class="alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Matrícula <strong>no encontrada</strong>.
+					</div>
+					<div id="divMsgErrorSolicitud" class="alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Error al procesar la solicitud</strong>.
+					</div>
+					<div id="divMsgProcesandoAutorizado" class="alert alert-info">
+						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
+					</div>
+					<div id="divMsgAlMenosUnAutorizado" class="alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Se requiere ingresar <strong>al menos un autorizado</strong>.
+					</div>
+
+					<table class="table">
+						<thead>
+							<tr>
+								<th style='width:20%;'>Matrícula</th>
+								<th>Nombre completo</th>
+								<th style='width:8%'>...</th>
+							</tr>
+						</thead>
+						<tbody id="tbdyParticipantes">
+							
+							
+						</tbody>
+					</table>
+					
+				</div>
+				
+				<input type="hidden" id="hdnParticipantesWidgetLoadedCount" value="${eventoInstance?.participantes?.size()}"/>
+				<input type="hidden" id="hdnParticipantesWidgetCount" />
+			</fieldset>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'documentoEvento', 'error')} ">
 	<label for="documentoEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.documentoEvento.label" default="Documento Evento" />
 		
@@ -196,35 +332,13 @@
 </li>
 </ul>
 
+</div>--%>
 
-</div>
-
-
-<br>
-<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'cursos', 'error')} required">
-	<label for="cursos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="instituto.tipoInstituto.label" default="Lista de cursos" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="cursos" name="cursos.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" optionKey="id" optionValue="nombreDelCurso" required="" value="${cursosInstance?.id}" class="many-to-one" class ="form-control"/>
-
-</div>
-
-
-
-<br>
-
-
-
-
-<%-- 
-
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'horarioEvento', 'error')} ">
 	<label for="horarioEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.horarioEvento.label" default="Horario Evento" />
-		
 	</label>
-	
 <ul class="one-to-many">
 <g:each in="${eventoInstance?.horarioEvento?}" var="h">
     <li><g:link controller="horarioEvento" action="show" id="${h.id}">${h?.encodeAsHTML()}</g:link></li>
@@ -233,18 +347,12 @@
 <g:link controller="horarioEvento" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'horarioEvento.label', default: 'HorarioEvento')])}</g:link>
 </li>
 </ul>
-
-
 </div>
 <br>
- -->
-<!-- 
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'participantes', 'error')} ">
 	<label for="participantes" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.participantes.label" default="Participantes" />
-		
 	</label>
-	
 <ul class="one-to-many">
 <g:each in="${eventoInstance?.participantes?}" var="p">
     <li><g:link controller="participante" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
@@ -255,7 +363,7 @@
 </ul>
 <br>
 </div>
- --%>
+ -->
 
 
 
