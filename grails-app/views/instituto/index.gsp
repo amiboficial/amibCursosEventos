@@ -21,7 +21,7 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear Instituto</g:link></li>
+				<li><g:link class="create btn btn-default btn-primary" action="create">Crear Instituto</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>

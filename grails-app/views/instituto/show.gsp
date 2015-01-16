@@ -15,7 +15,7 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Institutos</g:link></li>
+				<li><g:link class="list btn btn-default btn-primary" action="index">Gestión de Institutos</g:link></li>
 				
 			</ul><br>
 		</div>
@@ -302,18 +302,18 @@
 			<g:form url="[resource:institutoInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit btn btn-primary colortitle colorblack"
+					<g:link class="edit btn btn-default btn-primary"
 						action="edit" resource="${institutoInstance}">
 						<g:message code="default.button.edit.label" default="Edit" />
 					</g:link>
 					&nbsp;
 					<g:actionSubmit
-						class="delete btn btn-primary colortitle colorblack"
+						class="delete btn btn-default btn-primary"
 						action="delete"
 						value="${message(code: 'default.button.delete.label', default: 'Delete')}"
 						onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack"
+					<g:link class="list btn btn-default btn-primary"
 						action="index">Regresar</g:link>
 					</li><br>
 				</fieldset>

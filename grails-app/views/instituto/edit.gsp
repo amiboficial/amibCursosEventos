@@ -156,9 +156,9 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Institutos</g:link></li>
+				<li><g:link class="list btn btn-default btn-primary" action="index">Gestión de Institutos</g:link></li>
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear institutos</g:link></li>
+				<li><g:link class="create btn btn-default btn-primary" action="create">Crear institutos</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -339,9 +339,9 @@ telWidget.TelefonosView = Backbone.View.extend({
 
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="save btn btn-default btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
+					<g:link class="list btn btn-default btn-primary" action="index">Regresar</g:link></li>
 				</fieldset><br>
 			</g:form>
 		</div>

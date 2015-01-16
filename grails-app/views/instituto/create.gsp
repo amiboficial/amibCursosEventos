@@ -146,7 +146,7 @@
 			</div>
 			<br>
 			<ul class="nav navbar-nav" role="navigation">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión de Institutos</g:link></li>
+				<li><g:link class="btn btn-default btn-primary" action="index">Gestión de Institutos</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -325,9 +325,9 @@ $(function(){
 					
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save btn btn-default btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
+					<g:link class="btn btn-default btn-primary" action="index">Regresar</g:link>
 				</fieldset><br>
 			</g:form>
 		</div>

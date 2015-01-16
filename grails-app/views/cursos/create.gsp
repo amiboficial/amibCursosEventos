@@ -13,7 +13,7 @@
 			</div>
 			<br>
 			<ul class="nav navbar-nav" role="navigation">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión cursos</g:link></li>
+				<li><g:link class="list btn btn-default btn-primary" action="index">Gestión cursos</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -48,12 +48,14 @@
 			<g:form url="[resource:cursosInstance, action:'save']">
 				<fieldset class="form">
 					<g:render template="form" />
-	<br>
+					<br>
+					<g:render template="formJs"/>
+					<br>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save btn btn-primary colortitle colorblack" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save btn btn-default btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link>
+					<g:link class="list btn btn-default btn-primary" action="index">Regresar</g:link>
 				</fieldset><br>
 			</g:form>
 		</div>

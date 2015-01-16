@@ -15,7 +15,7 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list btn btn-default btn-primary" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -221,14 +221,37 @@
 			<g:form url="[resource:cursosInstance, action:'delete']"
 				method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit  btn btn-primary colortitle colorblack" action="edit" resource="${cursosInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit  btn btn-default btn-primary" action="edit" resource="${cursosInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 						&nbsp;
-					<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit class="delete btn btn-default btn-primary" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 						&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
+					<g:link class="list btn btn-default btn-primary" action="index">Regresar</g:link></li>
 				</fieldset><br>
 			</g:form>
 		</div>
 		</fieldset>
+		
+		<!-- INCIA: SCRIPTS ESPECIFICOS DE VISTA -->
+	<script>
+	function btnNuevaRevoc_click(){
+		window.location.href = "<g:createLink controller="cursos" action="create" />";
+	}
+	function btnRevisarRevoc_click(id){
+		window.location.href = "<g:createLink controller="cursos" action="editVerify" />/"+id;
+	}
+	function btnEditarRevoc_click(id){
+		window.location.href = "<g:createLink controller="cursos" action="edit" />/"+id;
+	}
+	function btnEliminarRevoc_click(id){
+		var url = '<g:createLink controller="cursos" action="delete" />/'+id
+		var r = confirm("¿Desea eliminar el elemento seleccionado?");
+		if(r == true)
+			window.location.href = url;
+	}
+	function btnDescargar_click(uuid){
+		window.open("<g:createLink controller="documentoCursos" action="download" />/"+uuid);
+	}
+	</script>
+	<!-- FIN: SCRIPTS ESPECIFICOS DE VISTA -->
 </body>
 </html>

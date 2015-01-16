@@ -23,18 +23,3 @@ $(function(){
 });
 </script>
 <!-- FIN: SCRIPT PARA DOCUMENTOS  -->
-<script>
-//functiones solo para este template
-function cleanValidationMsgs(){
-	//mensajes de validación en documentos
-	$('#divMsgRevAlMenosUno').hide();
-	$('#divMsgRevEditando').hide();
-	
-	$('#divDocsCompletos').hide();
-}
-
-//fixes a ejecutarse al inicio
-$(function(){
-	cleanValidationMsgs();
-});
-</script>

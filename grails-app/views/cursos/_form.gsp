@@ -3,7 +3,7 @@
 <div class="form-inline" role="form">
 
 
-<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'nombreDelCurso', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'nombreDelCurso', 'error')}  ">
 	<label for="nombreDelCurso" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="cursos.nombreDelCurso.label" default="Nombre Del Curso" />
 		
@@ -154,9 +154,9 @@
 <fieldset>
 				<legend>Documentos del curso</legend>
 				
-				<div id="divDocsCompletos" class="alert alert-danger">
+				<%--<div id="divDocsCompletos" class="alert alert-danger">
 					<span class="glyphicon glyphicon-ban-circle"></span> Debes incluir un documento de respaldo
-				</div>
+				</div> --%>
 				
 				<div id="divMultiplesDocumentos">
 					
