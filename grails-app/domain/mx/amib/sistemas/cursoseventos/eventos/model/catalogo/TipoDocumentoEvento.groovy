@@ -4,7 +4,7 @@ import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.DocumentoEvento
 
 class TipoDocumentoEvento {
 	
-	String tipoDoumentoEvento
+	String tipoDocumentoEvento
 	String clave
 	Boolean estatus
 	
@@ -16,12 +16,12 @@ class TipoDocumentoEvento {
 		id generator: "assigned"
 		version false
 		
-		tipoDoumentoEvento column:'ds_tpdocevento'
+		tipoDocumentoEvento column:'ds_tpdocevento'
 		clave column:'tx_clave'
 		estatus column:'st_vigente'
 	}
 
 	static constraints = {
-		tipoDoumentoEvento nullable: true, maxSize: 100
+		tipoDocumentoEvento nullable: true, maxSize: 100
 	}
 }

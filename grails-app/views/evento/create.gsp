@@ -93,7 +93,7 @@
 			</br>
 			<ul class="nav navbar-nav" role="navigation">
 
-				<li><g:link class="list btn btn-primary colortitle colorblack"
+				<li><g:link class="list btn btn-default btn-primary"
 						action="index">Gestión de Eventos</g:link></li>
 			</ul>
 			<br>
@@ -129,33 +129,7 @@
 				<fieldset class="form">
 					<g:render template="form" />
 					<br>
-					<%-- <table class="table">
-						<thead>
-							<tr>Participantes
-							</tr>
-							<tr>
-								<th>Matricula</th>
-								<th>Nombre</th>
 
-								<th>Acciones</th>
-							</tr>
-						</thead>
-						<tbody id="tbdyParticipantes">
-							<tr>
-								<td><input id="txtNewMatricula" class="form-control"
-									type="text" /></td>
-								<td><input id="txtNewNombreParticipante"
-									class="form-control" type="text" /></td>
-
-								<td>
-									<button id="btnAddNewParticipante"
-										class="add btn btn-success btn-sm">
-										<span class="glyphicon glyphicon-plus"></span> Agregar
-									</button>
-								</td>
-							</tr>
-						</tbody>
-					</table> --%>
 					<table class="table">
 						<thead>
 							<tr>Expositores
@@ -230,118 +204,17 @@
 			</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create"
-						class="save btn btn-primary colortitle colorblack"
+						class="save btn btn-default btn-primary"
 						value="${message(code: 'default.button.create.label', default: 'Create')}" />
 					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack"
+					<g:link class="list btn btn-default btn-primary"
 						action="index">Regresar</g:link>
 				</fieldset>
 				<br>
 			</g:form>
 		</div>
-		<g:render template="formjs"/>
+		<g:render template="formJs"/>
 </body>
-
-		<%-- 			<script type="text/template" id="participanteTemplate">
-						<td>{{=matricula}}</td>
-						<td>{{=nombreParticipante}}</td>
-						
-						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
-							<input type="hidden" name="participante" value="{ 'id':{{=grailsId}}, 'matricula' : {{=matricula}}, 'nombreParticipante' : {{=nombreParticipante}} } " />
-						</td>
-					</script>
-
-					<script type="text/javascript">
-
-					//definimos un "contexto"
-					var parWidget = parWidget || {}
-
-					//ahi va el modelo
-					parWidget.Participante = Backbone.Model.extend({
-						defaults: {
-							idx: -1, 
-							grailsId: -1, 
-							nombreParticipante: '',
-							matricula: '',
-							}
-					});
-
-				
-					parWidget.Participantes = Backbone.Collection.extend({
-					model: parWidget.Participante
-						});
-
-						
-
-					
-						parWidget.ParticipanteView = Backbone.View.extend({
-						tagName: 'tr', 
-						className: 'participanteRow',
-						template: _.template( $('#participanteTemplate').html() ), 
-
-						render: function(){
-						this.$el.html( this.template( this.model.toJSON() ) ); 
-						return this; 
-						},
-
-					events:{
-						
-						'click .delete':'quitarParticipante' 
-							},
-
-					quitarParticipante: function(){
-					
-					this.model.destroy(); 
-					
-					this.remove(); 
-					}
-					});
-
-		
-				parWidget.ParticipantesView = Backbone.View.extend({
-				el: '#tbdyParticipantes', 
-
-					initialize: function( initialParticipantes ){
-						this.collection = new parWidget.Participantes(initialParticipantes); 
-						this.render();
-						this.listenTo( this.collection, 'add', this.renderParticipante ); 
-																     
-					},
-
-					render: function(){
-						this.collection.each ( function(item){
-						this.renderParticipante(item)
-						}, this );
-					},
-
-				
-					renderParticipante: function(item){
-					var participanteView = new parWidget.ParticipanteView({model:item});
-					this.$el.append( participanteView.render().el );
-					},
-
-					events:{
-					'click #btnAddNewParticipante': 'agregarParticipante'
-					},
-
-					agregarParticipante: function(e) {
-					e.preventDefault(); 
-
-				
-			
-				var _nombreParticipante = $('#txtNewNombreParticipante').val();
-				var _matricula = $('#txtNewMatricula').val();
-				var _idx = _.size(this.collection) 
-				var participante = new parWidget.Participante( {  nombreParticipante: _nombreParticipante , matricula: _matricula , idx: _idx } );
-		
-				this.collection.add(participante);
-					}
-			});
-
-		$(function(){
-			new parWidget.ParticipantesView();
-		});
-		</script>--%>
 					<script type="text/template" id="expositorTemplate">
 						<td>{{=nombreExpositor}}</td>
 						<td>{{=primerApellidoExpositor}}</td>

@@ -1,15 +1,17 @@
 package mx.amib.sistemas.cursoseventos.eventos.model
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.converters.JSON
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat
 import java.util.Date;
+import java.util.List;
+import mx.amib.sistemas.external.documentos.service.DocumentoRepositorioService
+import mx.amib.sistemas.cursoseventos.cursos.model.catalogo.TipoDocumentoCurso;
+import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.TipoDocumentoEvento
 import mx.amib.sistemas.external.catalogos.service.SepomexService
-
+import mx.amib.sistemas.external.expediente.service.SustentanteService
+import mx.amib.sistemas.cursoseventos.eventos.service.EventoService
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -17,105 +19,92 @@ class EventoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-	SepomexService sepomexService
+	def sepomexService
+	def sustentanteService
+	def eventoService
+	def documentoRepositorioService
 	
     def index(Integer max) {
+		/*def result = null
+		def resultList = null
+		long resultListCount = 0
+		
         params.max = Math.min(max ?: 10, 100)
-        respond Evento.list(params), model:[eventoInstanceCount: Evento.count()]
+		params.offest = params.offset?:0
+		params.fltType = params.fltType?:''
+		EventoIndexViewModel eivm = this.getIndexViewModel(params)
+		*/
+		/*if(params.fltType == ''){
+			resultList = Evento.list(params)
+			resultList = Evento.count()
+		}
+		else if (params.fltType == 'PMAT'){
+			params.ftlPMat = params.flaPMat?:'-1'
+			result = eventoService.searchByMatricula(params.max, params.offset.toInteger(), params.sort, params.order, params.fltPMat.toInteger())
+			resultList = result.list
+			resultListCount = result.count
+		}
+		else if(params.fltType == 'PNOM'){
+			params.fltPNom = params.fltPNom?:""
+			result = evento.searchByNombre(params.max, params.offset.toInteger(), paramas.sort, params.order, params.fltPNom)
+			resultList = result.list
+			resultListCount = result.count
+		}*/
+		
+		//respond resultList, model:[eventoInstanceCount: resultListCount, viewModelInstance:eivm]
+        respond Evento.list(params), model:[eventoInstanceCount: Evento.count()] //resultListCount, viewModelInstance:evm 
     }
+	/*private EventoIndexViewModel getIndexViewModel(def params){
+		EventoIndexViewModel eivm = new EventoIndexViewModel()
+		
+		eivm.fltAMat = (params.fltAMat==null || !params.fltAMat.isNumber())?-1:(params.fltAmat.toIteger())
+		eivm.fltANom = (params.fltAmat==null || params.fltAMat=='null')?"":params.fltANom
+		return eivm	
+		
+	}*/
 
     def show(Evento eventoInstance) {
+		eventoInstance.documentoEvento.each{
+			it.nombreDeArchivo = documentoRepositorioService.obtenerMetadatosDocumento(it.uuid)?.nombre;
+		}
         respond eventoInstance
     }
 
     def create() {
-        respond new Evento(params)
+		def eventoInstance = new Evento(params);
+        respond new Evento(params), model:[viewModelInstance: this.getCreateVewModel()]
     }
+	
+	private EventoViewModel getCreateVewModel(){
+		EventoViewModel eventoVewModel = new EventoViewModel()
+		eventoVewModel.tipoDocumentoList = TipoDocumentoEvento.list()
+		eventoVewModel.validDocumentosCargados = false
+		return eventoVewModel
+	}
 
     @Transactional
-    def save(Evento eventoInstance) {
+    def save(Evento evento) {
+		
+		def documentosToBind = params.list('documento')
+		def documentosToEraseStrParam = params.'idDocumentosBorrados'
+		def documentosToErase = null
+		def eventoInstance = evento
+		def jsonStrLstParticipantes = params.list('participante')
+
         if (eventoInstance == null) {
             notFound()
             return
         }
-		
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm")
-		
-     
-		DateFormat formatoDia = new SimpleDateFormat("yyyy-MM-dd")
-		
-		//sacando los participantes
-		def listaParticipantesJson = params.list('participante')
-		def listaParticipantes = new ArrayList<Participante>()
-		listaParticipantesJson.each{
-			//para cada uno en la lista
-			def jsPar = JSON.parse(it)
-			Participante par = new Participante()
-			
-			par.matricula = jsPar.'matricula'
-			par.nombreParticipante = jsPar.'nombreParticipante'
-			
-			par.evento = eventoInstance
-			listaParticipantes.add(par)
-		}
-		eventoInstance.participantes = listaParticipantes
-		
-		println (eventoInstance.participantes as JSON)
-		///////////////////
-		//sacando los horarios
-		def listaHorarioEventosJson = params.list('horarioEvento')
-		def listaHorarioEventos = new ArrayList<HorarioEvento>()
-		listaHorarioEventosJson.each{
-			//para cada uno en la lista
-			def jsHor = JSON.parse(it)
-			HorarioEvento hor = new HorarioEvento()
-			
-			hor.fechaDia =  formatoDia.parse(jsHor.'fechaDia')
-			hor.horaInicio = jsHor."horaInicio"
-			hor.horafin = jsHor."horafin"
-			
-			//ex.curso = Curso.get( jsEx.'idCurso'.toInteger() )
-			
-			hor.evento = eventoInstance
-			listaHorarioEventos.add(hor)
-		}
-		eventoInstance.horarioEventos = listaHorarioEventos
-		
-		println (eventoInstance.horarioEventos as JSON)
-		///////////////////
-		//sacando los expositores
-		def listaExpositoresJson = params.list('expositor')
-		def listaExpositores = new ArrayList<Expositor>()
-		listaExpositoresJson.each{
-			//para cada uno en la lista
-			def jsEx = JSON.parse(it)
-			Expositor ex = new Expositor()
-			
-			ex.nombreExpositor = jsEx.'nombreExpositor'
-			ex.primerApellidoExpositor = jsEx.'primerApellidoExpositor'
-			ex.segundoApellidoExpositor = jsEx.'segundoApellidoExpositor'
-			//ex.fechaCreacion = formatoDia.parse(jsEx.'fechaCreacion')
-			ex.horas = jsEx.'horas'
-						
-			ex.evento = eventoInstance
-			listaExpositores.add(ex)
-		}
-		eventoInstance.expositores = listaExpositores
-		
-		println (eventoInstance.expositores as JSON)
-			/////////////////
-		//////////////////
+		eventoService.save(eventoInstance, jsonStrLstParticipantes, documentosToBind)//documentosToBind
 		
 		
-		
-		
-	    if (eventoInstance.hasErrors()) {
+	    /*if (eventoInstance.hasErrors()) {
             respond eventoInstance.errors, view:'create'
             return
         }
 
         eventoInstance.save flush:true
-
+		*/
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'evento.label', default: 'Evento'), eventoInstance.id])
@@ -126,23 +115,50 @@ class EventoController {
     }
 
     def edit(Evento eventoInstance) {
-        respond eventoInstance
+		//EventoViewModel eventoViewModel = this.editViewModel()
+		//eventoInstance = this.cargaNombresArchivo(eventoInstance)
+        respond eventoInstance//, model:[viewModelInstance: eventoViewModel]
     }
+	/*private EventoViewModel editViewModel(){
+		EventoViewModel eventoViewModel = new EventoViewModel()
+		eventoViewModel.tipoDocumentoList = TipoDocumentoEvento.list()
+		eventoViewModel.validDocumentosCargados = true
+		return eventoViewModel
+	}
+	private Evento cargaNombresArchivo(Evento eventoInstance){
+		eventoInstance.documentoEvento.each{
+			it.nombreDeArchivo = documentoRepositorioService.obtenerMetadatosDocumento(it.uuid).nombre
+		}
+		return eventoInstance
+	}*/
+	
 
     @Transactional
-    def update(Evento eventoInstance) {
+    def update(Evento evento) {
+		def eventoInstance = evento
+		//def documentosToBind = params.list('documento')
+		//def documentosToEraseStrParam = params.'idsDocumentosBorrados'
+
+		def jsonStrLstParticipantes = params.list('participante')
         if (eventoInstance == null) {
             notFound()
             return
         }
-
-        if (eventoInstance.hasErrors()) {
+       /* if (eventoInstance.hasErrors()) {
             respond eventoInstance.errors, view:'edit'
             return
-        }
-
-        eventoInstance.save flush:true
-
+        }*/
+		//los miembros restantes ??
+		// te refieres a horario y expositores?
+		// si
+		// asta ahorita solo me he dado cuenta que el list de documentos es el que truena todo los demas no los he checado 
+		// pero ahorita esta tronando por eso mismo, no estas pasando todos los list correspondientes
+		// aaaaaa ok ok entocnes si ya te entendiok entonces deja le seigo 
+		// sale pues
+		eventoService.update(eventoInstance, jsonStrLstParticipantes) //, documentosToBind
+		//eventoInstance = tr.instance
+        //eventoInstance.save flush:true
+		//if(tr.valid == true){
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Evento.label', default: 'Evento'), eventoInstance.id])
@@ -150,27 +166,41 @@ class EventoController {
             }
             '*'{ respond eventoInstance, [status: OK] }
         }
+    //}
+	/*else{
+		request.withFormat{
+			'*'{
+				respond eventoInstance, model:[errorMessage:tr.errMsg],view:"edit"
+			}
+		}
+	}*/
     }
-
     @Transactional
     def delete(Evento eventoInstance) {
-
         if (eventoInstance == null) {
             notFound()
             return
         }
-
         eventoInstance.delete flush:true
-
+		def tr = eventoInstance.delete(eventoInstance)
+		//if(tr.valid == true){
         request.withFormat {
-            form multipartForm {
+            form multipartForm '*'{
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Evento.label', default: 'Evento'), eventoInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
+    //}
+		/*else{
+			request.whitFormat{
+				'*'{
+					flash.errorMessage = tr.errMsg
+					redirect action:"index", method:"GET"
+				}
+			}
+		}*/
     }
-
     protected void notFound() {
         request.withFormat {
             form multipartForm {
@@ -187,4 +217,36 @@ class EventoController {
 		
 		render sepomexList as JSON
 	}
+	//el id es la matricula
+	def obtenerSustentantePorMatricula(int id){
+		def sustentante = sustentanteService.obtenerPorMatricula(id)
+		def res = null
+		if(sustentante != null){
+			res = [ status: 'OK' , object: sustentante ]
+		}
+		else{
+			res = [ status: 'NOT_FOUND' ]
+		}
+		render res as JSON
+	}
+	
+}
+class EventoViewModel{
+	List<TipoDocumentoEvento> tipoDocumentoList
+	boolean validDocumentosCargados
+}
+
+class EventoIndexViewModel{
+	String fltType //'DO','AMAT','ANOM'
+	
+	//String fltDODga
+	//Integer fltDOFhDelDay
+	//Integer fltDOFhDelMonth
+	//Integer fltDOFhDelYear
+	//Integer fltDOFhAlDay
+	//Integer fltDOFhAlMonth
+	//Integer fltDOFhAlYear
+	
+	Integer fltAMat
+	String fltANom
 }

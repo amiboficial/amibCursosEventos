@@ -12,8 +12,8 @@ app.AUT_SERVER_ERROR = 3;
 app.Participante = Backbone.Model.extend({
 	defaults: {
 		grailsId:-1,
-		matricula:0,
-		nombreParticipante:''
+		numeroMatricula:0,
+		nombreCompleto:''
 	}
 });
 
@@ -48,7 +48,7 @@ app.ParticipantesView =  Backbone.View.extend({
 	ajaxUrl: '',
 	
 	_newMatricula: '',
-	_nombreParticipante: '',
+	_newNombreCompleto: '',
 	
 	template: _.template( $('#newParticipanteTemplate').html() ),
 	
@@ -138,12 +138,12 @@ app.ParticipantesView =  Backbone.View.extend({
 	
 	agregarParticipante: function(e){
 		e.preventDefault();
-		var participante = new app.Participante({matricula:this._newMatricula,nombreParticipante:this._newNombreCompleto});
+		var participante = new app.Participante({numeroMatricula:this._newMatricula,nombreCompleto:this._newNombreCompleto});
 		this.collection.add(participante);
 		
 		// Assign new comparator
 		this.collection.comparator = function( model ) {
-			return model.get( 'matricula' );
+			return model.get( 'numeroMatricula' );
 		}
 		// Resort collection
 		this.collection.sort();

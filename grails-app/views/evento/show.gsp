@@ -15,7 +15,7 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav navbar-center">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión evento</g:link></li>
+				<li><g:link class="list btn btn-default btn-primary" action="index">Gestión evento</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -36,8 +36,6 @@
 					</div>
 				</div>
 				<br>
-
-
 				<ul class="property-list evento list-group">
 
 					<g:if test="${eventoInstance?.fechaInicio}">
@@ -215,7 +213,7 @@
 										${e?.nombreExpositor.encodeAsHTML()}
 									</g:link></span>
 							</g:each></li>
-					</g:if>
+					</g:if><br>
 					<fieldset>
 			<legend><i>Datos de Participantes</i></legend>
 			
@@ -229,15 +227,15 @@
 				<tbody>
 					<g:each in="${eventoInstance?.participantes}">
 						<tr>
-							<td>${it.matricula}</td>
-							<td>${it.nombreParticipante}</td>
+							<td>${it.numeroMatricula}</td>
+							<td>${it.nombreCompleto}</td>
 						</tr>
 					</g:each>
 				</tbody>
 			</table>
 			
 		</fieldset>
-					<g:if test="${eventoInstance?.participantes}">
+				<%-- 	<g:if test="${eventoInstance?.participantes}">
 						<li class="fieldcontain list-group-item"><span id="participantes-label"
 							class="property-label"><g:message
 									code="evento.participantes.label" default="Participantes: " /></span> <g:each
@@ -245,20 +243,20 @@
 								<span class="property-value"
 									aria-labelledby="participantes-label"><g:link
 										controller="participante" action="show" id="${p.id}">
-										${p?.nombreParticipante.encodeAsHTML()}
+										${p?.nombreCompleto.encodeAsHTML()}
 									</g:link></span>
 							</g:each></li>
-					</g:if>
+					</g:if>--%>
 
 				</ul><br>
 				<g:form url="[resource:eventoInstance, action:'delete']"
 					method="DELETE">
 					<fieldset class="buttons">
-						<g:link class="edit btn btn-primary colortitle colorblack" action="edit" resource="${eventoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:link class="edit btn btn-default btn-primary" action="edit" resource="${eventoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 							&nbsp;
-						<g:actionSubmit class="delete btn btn-primary colortitle colorblack" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+						<g:actionSubmit class="delete btn btn-default btn-primary" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 							&nbsp;
-						<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
+						<g:link class="list btn btn-default btn-primary" action="index">Regresar</g:link></li>
 					</fieldset><br>
 				</g:form>
 			</div></body>

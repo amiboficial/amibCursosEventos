@@ -10,7 +10,7 @@ import mx.amib.sistemas.cursoseventos.eventos.model.log.CambioStatusEvento
 class Evento {
 	
 	
-	//detalles del curso
+	//detalles del evento
 	Date fechaInicio
 	Date fechaTermino
 	//Detalles del coordinador
@@ -27,7 +27,7 @@ class Evento {
 	Date fechaCreacion
 	Cursos cursos
 	
-		static hasMany = [participantes:Participante, horarioEventos:HorarioEvento, documentoEvento:DocumentoEvento,
+		static hasMany = [participantes:Participante, horarioEvento:HorarioEvento, documentoEvento:DocumentoEvento,
 		cambioEstatusEvento:CambioStatusEvento,expositores:Expositor]
 	
 	static belongTo = [Cursos]

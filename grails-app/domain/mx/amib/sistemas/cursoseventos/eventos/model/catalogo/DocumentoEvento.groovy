@@ -5,20 +5,27 @@ import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.TipoDocumentoEvento
 
 class DocumentoEvento {
 	
-	String documentos
-	Date fechaCreacion
 	
+	
+	Date fechaCreacion
 	Evento evento
 	TipoDocumentoEvento tipoDocumentoEvento
+	
+	String uuid
+	
+	String nombreDeArchivo
+	boolean toBeUpdate
+	
+	static transients = ['nombreDeArchivo','toBeUpdate']
 	
 	static belongTo = [Evento, TipoDocumentoEvento]
 	
 	static mapping = {
 		table 't014_t_docevento'
 		
-		id generator: "assigned"
+		id generator: "identity"
 		version false
-		documentos column:'uuid_f_doc'
+		uuid column:'uuid_f_doc'
 		evento column:'id_007_evento'
 		tipoDocumentoEvento column:'id_015_tpdocevento'
 		fechaCreacion column:'fh_creacion'
@@ -26,7 +33,7 @@ class DocumentoEvento {
 	}
 
     static constraints = {
-		documentos nullable: true, maxSize: 100
+		uuid nullable: true, maxSize: 100
 		fechaCreacion nullable: true
     }
 }

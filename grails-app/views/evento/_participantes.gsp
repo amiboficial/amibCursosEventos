@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 		<script type="text/template" id="participanteTemplate">
-			<td>{{=matricula}}</td>
-			<td>{{=nombreParticipante}}</td>
+			<td>{{=numeroMatricula}}</td>
+			<td>{{=nombreCompleto}}</td>
 			<td>
 				<button class="delete btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span><span class="hidden-xs hidden-sm">  Borrar</span></button> 
-				<input type="hidden" name="participante" value="{ id:{{=grailsId}}, matricula:{{=matricula}}, nombreParticipante:'{{=nombreParticipante}}' }" />
+				<input type="hidden" name="participante" value="{ id:{{=grailsId}}, numeroMatricula:{{=numeroMatricula}}, nombreCompleto:'{{=nombreCompleto}}' }" />
 			</td>
 		</script>
 		<script type="text/template" id="newParticipanteTemplate">

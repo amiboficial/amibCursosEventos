@@ -180,16 +180,17 @@
 
 </div>
 <br>
-	  <%-- <fieldset>
+<div class="fieldcontain">
+	   <fieldset>
 				<legend>Documentos de respaldo</legend>
 				
-				<div id="divDocsCompletos" class="alert alert-danger">
+				<%--<div id="divDocsCompletos" class="alert alert-danger">
 					<span class="glyphicon glyphicon-ban-circle"></span> Debes incluir un documento de respaldo
-				</div>
+				</div> --%>
 				
 				<div id="divMultiplesDocumentos">
 					
-					<div class="msgProcesando alert alert-info">
+					<%--<div class="msgProcesando alert alert-info">
 						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
 					</div>
 					<div class="msgErrorPeticion alert alert-danger">
@@ -202,7 +203,7 @@
 						<span class="glyphicon glyphicon-ban-circle"></span> Debes seleccionar un archivo a cargar.
 					</div>
 					<div class="msgErrorValidadorExt alert alert-danger">
-					</div>
+					</div> --%>
 					
 					<div class="newFileRow row">
 						<div class="archivoInputDiv col-md-5">
@@ -216,7 +217,7 @@
 									<option value="null">-Seleccione-</option>
 									 <g:each in="${viewModelInstance.tipoDocumentoList}">
 										validador.addDocType(${it.id});
-										<option value="${it.id}">${it.tipoDoumentoEvento}</option>
+										<option value="${it.id}">${it.tipoDocumentoEvento}</option>
 									</g:each> 
 								</select>
 							</div> 
@@ -239,13 +240,13 @@
 				</g:if> 
 				<g:else>
 					<input type="hidden" id="hdnDocsModelValidatedLoaded" value="false"/>
-				</g:else>
+				</g:else> 
 				
-				
+			
 				<input type="hidden" id="hdnDocsModelValidated" value="false"/>
 				<input type="hidden" id="hdnDocsModelValidatedMsg" value=""/>
 			</fieldset>
---%>
+</div>
 <br>
 
 
@@ -275,9 +276,9 @@
 					<div id="divMsgProcesandoAutorizado" class="alert alert-info">
 						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
 					</div>
-					<div id="divMsgAlMenosUnAutorizado" class="alert alert-danger">
+					<%--<div id="divMsgAlMenosUnAutorizado" class="alert alert-danger">
 						<span class="glyphicon glyphicon-ban-circle"></span> Se requiere ingresar <strong>al menos un autorizado</strong>.
-					</div>
+					</div> --%>
 
 					<table class="table">
 						<thead>
@@ -332,9 +333,8 @@
 </li>
 </ul>
 
-</div>--%>
+</div>
 
-<!-- 
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'horarioEvento', 'error')} ">
 	<label for="horarioEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.horarioEvento.label" default="Horario Evento" />
@@ -363,7 +363,7 @@
 </ul>
 <br>
 </div>
- -->
+--%>
 
 
 

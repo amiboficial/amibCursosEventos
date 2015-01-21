@@ -127,8 +127,8 @@
 				<g:hiddenField name="version" value="${eventoInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form" />
-					
-					<table class="table">
+					<g:render template="formJs"/>
+						<%--<table class="table">
 						<thead>
 						<tr>
 						Participantes
@@ -140,7 +140,7 @@
 								<th>Acciones</th>
 							</tr>
 						</thead>
-						<tbody id="tbdyParticipantes">
+					 <tbody id="tbdyParticipantes">
 							<tr>
 								<td>
 									<input id="txtNewMatricula" class="form-control" type="text" />
@@ -153,7 +153,7 @@
 								</td>
 							</tr>
 
-						</tbody>
+						</tbody>--%>
 					</table>
 					
 					
@@ -227,116 +227,7 @@
 						</tbody>
 					</table>
 					
-					<script type="text/template" id="participanteTemplate">
-						<td>{{=matricula}}</td>
-						<td>{{=nombreParticipante}}</td>
-						
-						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
-							<input type="hidden" name="participante" value="{ 'id':{{=grailsId}}, 'matricula' : {{=matricula}}, 'nombreParticipante' : {{=nombreParticipante}} } " />
-						</td>
-					</script>
-
-					<script type="text/javascript">
-
-					//definimos un "contexto"
-					var parWidget = parWidget || {}
-
-					//ahi va el modelo
-					parWidget.Participante = Backbone.Model.extend({
-						defaults: {
-							idx: -1, 
-							grailsId: -1, 
-							nombreParticipante: '',
-							matricula: '',
-							}
-					});
-
-				
-					parWidget.Participantes = Backbone.Collection.extend({
-					model: parWidget.Participante
-						});
-
-						
-
 					
-						parWidget.ParticipanteView = Backbone.View.extend({
-						tagName: 'tr', 
-						className: 'participanteRow',
-						template: _.template( $('#participanteTemplate').html() ), 
-
-						render: function(){
-						this.$el.html( this.template( this.model.toJSON() ) ); 
-						return this; 
-						},
-
-					events:{
-						
-						'click .delete':'quitarParticipante' 
-							},
-
-					quitarParticipante: function(){
-					
-					this.model.destroy(); 
-					
-					this.remove(); 
-					}
-					});
-
-		
-				parWidget.ParticipantesView = Backbone.View.extend({
-				el: '#tbdyParticipantes', 
-
-					initialize: function( initialParticipantes ){
-						this.collection = new parWidget.Participantes(initialParticipantes); 
-						this.render();
-						this.listenTo( this.collection, 'add', this.renderParticipante ); 
-																     
-					},
-
-					render: function(){
-						this.collection.each ( function(item){
-						this.renderParticipante(item)
-						}, this );
-					},
-
-				
-					renderParticipante: function(item){
-					var participanteView = new parWidget.ParticipanteView({model:item});
-					this.$el.append( participanteView.render().el );
-					},
-
-					events:{
-					'click #btnAddNewParticipante': 'agregarParticipante'
-					},
-
-					agregarParticipante: function(e) {
-					e.preventDefault(); 
-
-				
-			
-				var _nombreParticipante = $('#txtNewNombreParticipante').val();
-				var _matricula = $('#txtNewMatricula').val();
-				var _idx = _.size(this.collection) 
-				var participante = new parWidget.Participante( {  nombreParticipante: _nombreParticipante , matricula: _matricula , idx: _idx } );
-		
-				this.collection.add(participante);
-					}
-			});
-
-	//	$(function(){
-		//	new parWidget.ParticipantesView();
-	//	});
-		$(function(){
-			var partici = [
-				<g:each in="${eventoInstance.participantes}">
-					{ matricula:'${it.matricula}' , nombreParticipante:'${it.nombreParticipante}' },
-				</g:each>
-			];
-			new parWidget.ParticipantesView(partici);
-		});			
-
-		
-		</script>			
 			<!--  -->					
 				<script type="text/template" id="expositorTemplate">
 						<td>{{=nombreExpositor}}</td>
@@ -531,7 +422,7 @@
 		
 		$(function(){
 			var horarioEvento = [
-				<g:each in="${eventoInstance.horarioEventos}">
+				<g:each in="${eventoInstance.horarioEvento}">
 					{ horafin:'${it.horafin}' , horaInicio:${it.horaInicio}, fechaDia:${it.fechaDia} , idx:'${idx}'  },
 				</g:each>
 			];
