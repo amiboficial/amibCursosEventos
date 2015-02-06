@@ -38,9 +38,6 @@
 				</div>
 			</div>
 			<br>
-			
-			
-
 			<!--   <g:hasErrors bean="${cursosInstance}">
 				<ul class="errors" role="alert">
 					<g:eachError bean="${cursosInstance}" var="error">

@@ -179,7 +179,7 @@
 						</g:each></li>
 				</g:if>
 
-				<g:if test="${cursosInstance?.documentoCurso}">
+				<%-- <g:if test="${cursosInstance?.documentoCurso}">
 					<li class="fieldcontain list-group-item"><span id="documentoCurso-label"
 						class="property-label"><g:message
 								code="cursos.documentoCurso.label" default="Documentos del Curso: " /></span>
@@ -191,7 +191,7 @@
 									${d?.tipoDocumentoCurso.tipoDoumentoCurso.encodeAsHTML()}
 								</g:link></span>
 						</g:each></li>
-				</g:if>
+				</g:if>--%>
 
 				<g:if test="${cursosInstance?.eventos}">
 					<li class="fieldcontain list-group-item"><span id="eventos-label"
@@ -216,6 +216,27 @@
 								</g:link></span>
 						</g:each></li>
 				</g:if>
+				
+<fieldset>
+	<legend><i>Datos de Documentos</i></legend>
+			<table class="table">
+				<thead>
+					<tr>
+						<th style='width:20%;'>Nombre</th>
+						<th style='width:20%;'>Tipo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<g:each in="${cursosInstance?.documentoCurso}">
+						<tr>
+							<td>${it.nombreDeArchivo}</td>
+							<td>${it.tipoDocumentoCurso?.tipoDoumentoCurso}</td>
+
+						</tr>
+					</g:each>
+				</tbody>
+			</table>
+</fieldset>
 
 			</ul><br>
 			<g:form url="[resource:cursosInstance, action:'delete']"
@@ -230,6 +251,11 @@
 			</g:form>
 		</div>
 		</fieldset>
+		
+
+			
+			
+		
 		
 		<!-- INCIA: SCRIPTS ESPECIFICOS DE VISTA -->
 	<script>

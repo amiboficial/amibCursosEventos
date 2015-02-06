@@ -1,6 +1,8 @@
 package mx.amib.sistemas.cursoseventos.cursos.service
 
 import grails.transaction.Transactional
+import groovy.time.TimeCategory
+import groovy.time.TimeDuration
 import java.util.List;
 
 import grails.converters.JSON
@@ -113,7 +115,33 @@ class CursosService {
 		
 	}
 	
-}
 	
+	/*fecha creacion 
+	 * fecha actual
+	 * si fecha actual - fecha creacion = a 3 a–os
+	 * anular curso 
+	 * en caso contrario 
+	 * cruso activo
+	 * 
+	 * */
+/*
+	Date fechaCreacion = new Date()
+	Date fechaActual = new Date()
+	
+	TimeDuration tiempo = TimeCategory(fechaCreacion, fechaActual)
+		def resta(fechaCreacion, fechaActual){
+		resta = fechaActual - fechaCreacion
+		return resta
+	}
+		int anio = 3.Years
+		if (resta == anio){
+			desactivar curso
+		}else{
+		activar curso
+		}
+	
+	*/	
+}
+
 	
 

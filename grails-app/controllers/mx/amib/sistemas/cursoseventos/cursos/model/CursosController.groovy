@@ -65,13 +65,11 @@ class CursosController {
         if (cursosInstance.hasErrors()) {
             respond cursosInstance.errors, view:'create'
             return
-            ...seguramente hay un error por aca y esta mandando de nuevo al create,
-            pero este vez al mandar al create no esta mandando todos los "modelos" que debe
         }
 		*/
 		
 		cursosService.save(cursosInstance, documentosToBind)
-        //<- este de aca
+     
 
         request.withFormat {
             form multipartForm {
@@ -156,10 +154,12 @@ class CursosController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
 }
 
 class CursoViewModel{
 	List<TipoDocumentoCurso> tipoDocumentoList
 	
 	boolean validDocumentosCargados
+	
 }

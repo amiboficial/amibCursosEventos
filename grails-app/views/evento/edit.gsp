@@ -87,9 +87,9 @@
 			</div>
 			</br>
 			<ul class="nav navbar-nav" role="vavBar">
-				<li><g:link class="list btn btn-primary colortitle colorblack" action="index">Gestión evento</g:link></li>
+				<li><g:link class="list btn btn-default btn-primary" action="index">Gestión evento</g:link></li>
 					<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><g:link class="create btn btn-primary colortitle colorblack" action="create">Crear evento</g:link></li>
+				<li><g:link class="create btn btn-default btn-primary" action="create">Crear evento</g:link></li>
 			</ul><br>
 		</div>
 		</fieldset>
@@ -114,7 +114,7 @@
 			<br>
 
 
-			<g:hasErrors bean="${eventoInstance}">
+			<%--<g:hasErrors bean="${eventoInstance}">
 				<ul class="errors" role="alert">
 					<g:eachError bean="${eventoInstance}" var="error">
 						<li
@@ -122,7 +122,7 @@
 								error="${error}" /></li>
 					</g:eachError>
 				</ul>
-			</g:hasErrors>
+			</g:hasErrors> --%>
 			<g:form url="[resource:eventoInstance, action:'update']" method="PUT">
 				<g:hiddenField name="version" value="${eventoInstance?.version}" />
 				<fieldset class="form">
@@ -153,44 +153,10 @@
 								</td>
 							</tr>
 
-						</tbody>--%>
-					</table>
-					
-					
-					<table class="table">
-						<thead>
-						<tr>
-						Expositores
-						</tr>
-							<tr>
-								<th>Nombre</th>
-								<th>Apellido Paterno</th>
-								<th>Apellido Materno</th>
-								<th>Horas</th>
-								<th>Acciones</th>
-							</tr>
-						</thead>
-						<tbody id="tbdyExpositores">
-							<tr>
-								<td>
-									<input id="txtNewNomExpositor" class="form-control" type="text" />
-								</td>
-								<td>
-									<input id="txtNewPriApeExpositor" class="form-control" type="text" />
-								</td>
-								<td>
-									<input id="txtNewSegApeExpositor" class="form-control" type="text" />
-								</td>
-								<td>
-									<input id="NumNewhora" class="form-control" type="number" />
-								</td>						
-								<td>
-									<button id="btnAddNewExpositor" class="add btn btn-success btn-sm"> <span class="glyphicon glyphicon-plus"></span> Agregar </button>
-								</td>
-							</tr>
-
 						</tbody>
 					</table>
+					
+				
 					
 					<table class="table">
 						<thead>
@@ -226,123 +192,8 @@
 
 						</tbody>
 					</table>
-					
-					
-			<!--  -->					
-				<script type="text/template" id="expositorTemplate">
-						<td>{{=nombreExpositor}}</td>
-						<td>{{=primerApellidoExpositor}}</td>
-						<td>{{=segundoApellidoExpositor}}</td>
-				
-						<td>{{=horas}}</td>
-						<td><button class="delete btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</button> 
-							<input type="hidden" name="expositor" value="{ 'id':{{=grailsId}}, 'nombreExpositor' : {{=nombreExpositor}}, 'primerApellidoExpositor' : {{=primerApellidoExpositor}}, 
-							 'segundoApellidoExpositor' : {{=segundoApellidoExpositor}}, 'horas' : {{=horas}} } " />
-						</td>
-					</script>
+					--%>	
 
-
-					<script type="text/javascript">
-
-				
-					var exWidget = exWidget || {}
-
-				
-					exWidget.Expositor = Backbone.Model.extend({
-						defaults: {
-							idx: -1, 
-							grailsId: -1, 
-							horas: '',
-							
-							segundoApellidoExpositor: '',
-							primerApellidoExpositor: '',
-							nombreExpositor: '',
-							}
-					});
-
-			
-					exWidget.Expositores = Backbone.Collection.extend({
-					model: exWidget.Expositor
-						});
-
-					
-
-					
-						exWidget.ExpositorView = Backbone.View.extend({
-						tagName: 'tr', 
-						className: 'expositorRow',
-						template: _.template( $('#expositorTemplate').html() ), 
-						render: function(){
-						this.$el.html( this.template( this.model.toJSON() ) ); 
-						return this; 
-						},
-
-					events:{
-					
-						'click .delete':'quitarExpositor' 
-							},
-
-					quitarExpositor: function(){
-				
-					this.model.destroy(); 
-					
-					this.remove(); 
-					}
-					});
-
-			
-				exWidget.ExpositoresView = Backbone.View.extend({
-				el: '#tbdyExpositores', 
-
-					initialize: function( initialExpositores ){
-						this.collection = new exWidget.Expositores(initialExpositores); 
-						this.render();
-						this.listenTo( this.collection, 'add', this.renderExpositor ); 
-					},
-
-					render: function(){
-						this.collection.each ( function(item){
-						this.renderExpositor(item)
-						}, this );
-					},
-
-				
-					renderExpositor: function(item){
-					var expositorView = new exWidget.ExpositorView({model:item});
-					this.$el.append( expositorView.render().el );
-					},
-
-					events:{
-					'click #btnAddNewExpositor': 'agregarExpositor'
-					},
-
-					agregarExpositor: function(e) {
-					e.preventDefault();	
-				var _horas = $('#NumNewhora').val();
-			
-				var _segundoApellidoExpositor = $('#txtNewSegApeExpositor').val();
-				var _primerApellidoExpositor = $('#txtNewPriApeExpositor').val();
-				var _nombreExpositor = $('#txtNewNomExpositor').val();
-				var _idx = _.size(this.collection) 
-				var expositor = new exWidget.Expositor( { horas: _horas ,  segundoApellidoExpositor: _segundoApellidoExpositor , primerApellidoExpositor: _primerApellidoExpositor , nombreExpositor: _nombreExpositor , idx: _idx } );
-		
-				this.collection.add(expositor);
-					}
-			});
-
-		//$(function(){
-		//	new exWidget.ExpositoresView();
-		//});
-		$(function(){
-			var expositores = [
-				<g:each in="${eventoInstance.expositores}">
-					{ nombreExpositor:'${it.nombreExpositor}' , primerApellidoExpositor:'${it.primerApellidoExpositor}', segundoApellidoExpositor:'${it.segundoApellidoExpositor}' , horas:${it.horas}, idx:'${idx}'  },
-				</g:each>
-			];
-			new exWidget.ExpositoresView(expositores);
-		});			
-				
-</script>
 
 <script type="text/template" id="horarioEventoTemplate">
 						<td>{{=fechaDia}}</td>
@@ -432,9 +283,9 @@
 </script>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save btn btn-primary colortitle colorblack" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="save btn btn-default btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					&nbsp;
-					<g:link class="list btn btn-primary colortitle colorblack" action="index">Regresar</g:link></li>
+					<g:link class="list btn btn-default btn-primary" action="index">Regresar</g:link></li>
 				</fieldset><br>
 			</g:form>
 		</div>

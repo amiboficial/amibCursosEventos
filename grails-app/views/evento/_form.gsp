@@ -182,7 +182,7 @@
 <br>
 <div class="fieldcontain">
 	   <fieldset>
-				<legend>Documentos de respaldo</legend>
+				<legend>Documentos del Evento</legend>
 				
 				<%--<div id="divDocsCompletos" class="alert alert-danger">
 					<span class="glyphicon glyphicon-ban-circle"></span> Debes incluir un documento de respaldo
@@ -190,7 +190,7 @@
 				
 				<div id="divMultiplesDocumentos">
 					
-					<%--<div class="msgProcesando alert alert-info">
+					  <div class="msgProcesando alert alert-info">
 						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
 					</div>
 					<div class="msgErrorPeticion alert alert-danger">
@@ -203,8 +203,7 @@
 						<span class="glyphicon glyphicon-ban-circle"></span> Debes seleccionar un archivo a cargar.
 					</div>
 					<div class="msgErrorValidadorExt alert alert-danger">
-					</div> --%>
-					
+					</div>
 					<div class="newFileRow row">
 						<div class="archivoInputDiv col-md-5">
 							<label class="control-label col-md-4">Seleccione un archivo:</label>
@@ -248,8 +247,6 @@
 			</fieldset>
 </div>
 <br>
-
-
 
 <div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'cursos', 'error')} required">
 	<label for="cursos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
@@ -301,22 +298,56 @@
 			</fieldset>
 
 <br>
+<fieldset>
+				<legend>Datos de expositores</legend>
+				
+				<div id="divExpositores">
+				<%--<div id="divMsgMatriculaYaEnLista" class="alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Matrícula <strong>ya agregada</strong>.
+					</div>
+					<div id="divMsgMatriculaNoEncontrada" class="alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Matrícula <strong>no encontrada</strong>.
+					</div>
+					<div id="divMsgErrorSolicitud" class="alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Error al procesar la solicitud</strong>.
+					</div>
+					<div id="divMsgProcesandoAutorizado" class="alert alert-info">
+						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
+					</div>
+					<div id="divMsgAlMenosUnAutorizado" class="alert alert-danger">
+						<span class="glyphicon glyphicon-ban-circle"></span> Se requiere ingresar <strong>al menos un autorizado</strong>.
+					</div> --%>
 
+					<table class="table">
+						<thead>
+							<tr>
+								<th style='width:20%;'>Nombre</th>
+								<th style='width:20%;'>Apellido Paterno</th>
+								<th style='width:20%;'>Apellido Materno</th>
+								<th style='width:20%;'>Horas</th>
+								<th style='width:8%'>...</th>
+							</tr>
+						</thead>
+						<tbody id="tbdyExpositores">
+							<tr>
+							<td><input id="txtNewNomExpositor" class="form-control" type="text" /></td>
+							<td><input id="txtNewPriApeExpositor" class="form-control" type="text"/></td>
+							<td><input id="txtNewSegApeExpositor" class="form-control" type="text" /></td>
+							<td><input id="NumNewhora" class="form-control" type="number" /></td>
+							</td>
+							<td><button id="btnAddNewExpositor" class="add btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Agregar</button></td>
+						</tr>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+				
+				<input type="hidden" id="hdnExpositoresWidgetLoadedCount" value="${eventoInstance?.expositores?.size()}"/>
+				<input type="hidden" id="hdnExpositoresWidgetCount" />
+			</fieldset>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br>
 <%-- <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'documentoEvento', 'error')} ">
 	<label for="documentoEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.documentoEvento.label" default="Documento Evento" />

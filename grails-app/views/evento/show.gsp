@@ -174,7 +174,7 @@
 							</g:each></li>
 					</g:if>
 
-					<g:if test="${eventoInstance?.documentoEvento}">
+					<%--<g:if test="${eventoInstance?.documentoEvento}">
 						<li class="fieldcontain list-group-item"><span id="documentoEvento-label"
 							class="property-label"><g:message
 									code="evento.documentoEvento.label" default="Documentos del Evento: " /></span>
@@ -183,10 +183,10 @@
 								<span class="property-value"
 									aria-labelledby="documentoEvento-label"><g:link
 										controller="documentoEvento" action="show" id="${d.id}">
-										${d?.encodeAsHTML()}
+										${d?.tipoDocumentoEvento.tipoDocumentoEvento.encodeAsHTML()}
 									</g:link></span>
 							</g:each></li>
-					</g:if>
+					</g:if> --%>
 
 					<g:if test="${eventoInstance?.horarioEvento}">
 						<li class="fieldcontain list-group-item"><span id="horarioEvento-label"
@@ -202,7 +202,7 @@
 							</g:each></li>
 					</g:if>
 
-					<g:if test="${eventoInstance?.expositores}">
+					<%--<g:if test="${eventoInstance?.expositores}">
 						<li class="fieldcontain list-group-item"><span id="expositores-label"
 							class="property-label"><g:message
 									code="evento.expositores.label" default="Expositores: " /></span> <g:each
@@ -213,7 +213,33 @@
 										${e?.nombreExpositor.encodeAsHTML()}
 									</g:link></span>
 							</g:each></li>
-					</g:if><br>
+					</g:if><br> --%>
+					<br>
+					<fieldset>
+					
+					<legend><i>Datos de Documentos</i></legend>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th style='width:20%;'>Nombre</th>
+						<th style='width:20%;'>Tipo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<g:each in="${eventoInstance?.documentoEvento}">
+						<tr>
+							<td>${it.nombreDeArchivo}</td>
+							<td>${it.tipoDocumentoEvento?.tipoDocumentoEvento}</td>
+
+						</tr>
+					</g:each>
+				</tbody>
+			</table>
+						</fieldset>
+						
+			<br>
+					
 					<fieldset>
 			<legend><i>Datos de Participantes</i></legend>
 			
@@ -235,6 +261,32 @@
 			</table>
 			
 		</fieldset>
+		<br><br>
+		<fieldset>			
+			<legend><i>Datos de Expositores</i></legend>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th style='width:20%;'>Nombre</th>
+						<th style='width:20%;'>Apellido Paterno</th>
+						<th style='width:20%;'>Apellido Materno</th>
+						<th style='width:20%;'>horas</th>
+					</tr>
+				</thead>
+				<tbody>
+					<g:each in="${eventoInstance?.expositores}">
+						<tr>
+							<td>${it.nombreExpositor}</td>
+							<td>${it.primerApellidoExpositor}</td>
+							<td>${it.segundoApellidoExpositor}</td>
+							<td>${it.horas}</td>
+						</tr>
+					</g:each>
+				</tbody>
+			</table>
+			
+	</fieldset>
 				<%-- 	<g:if test="${eventoInstance?.participantes}">
 						<li class="fieldcontain list-group-item"><span id="participantes-label"
 							class="property-label"><g:message
@@ -259,5 +311,28 @@
 						<g:link class="list btn btn-default btn-primary" action="index">Regresar</g:link></li>
 					</fieldset><br>
 				</g:form>
-			</div></body>
+			</div>
+			
+			<script>
+	function btnNuevaRevoc_click(){
+		window.location.href = "<g:createLink controller="evento" action="create" />";
+	}
+	function btnRevisarRevoc_click(id){
+		window.location.href = "<g:createLink controller="evento" action="editVerify" />/"+id;
+	}
+	function btnEditarRevoc_click(id){
+		window.location.href = "<g:createLink controller="evento" action="edit" />/"+id;
+	}
+	function btnEliminarRevoc_click(id){
+		var url = '<g:createLink controller="cursos" action="delete" />/'+id
+		var r = confirm("¿Desea eliminar el elemento seleccionado?");
+		if(r == true)
+			window.location.href = url;
+	}
+	function btnDescargar_click(uuid){
+		window.open("<g:createLink controller="documentoEvento" action="download" />/"+uuid);
+	}
+	</script>
+	<!-- FIN: SCRIPTS ESPECIFICOS DE VISTA -->
+			</body>
 </html>

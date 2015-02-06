@@ -8,7 +8,7 @@
 		$(function(){
 			var docs = [
 			<g:each in="${eventoInstance.documentoEvento}">
-				{ grailsId: ${it.id}, uuid:'${it.uuid}', idTipo:${it.tipoDocumentoEvento.id}, dsTipo:'${it.tipoDocumentoEvento.tipoDocumentoEvento}', nombre:'${it.nombreDeArchivo}', _urlDown:'<g:createLink controller="documento" action="download" id="${it.uuid}"/>',_urlDelete:'' },
+				{ grailsId: ${it.id}, uuid:'${it.uuid}', idTipo:${it.tipoDocumentoEvento.id}, dsTipo:'${it.tipoDocumentoEvento.tipoDocumentoEvento}', nombre:'${it.nombreDeArchivo}',_urlDown:'<g:createLink controller="documento" action="download" id="${it.uuid}"/>',_urlDelete:'' },
 			</g:each> ];
 			
 			<g:each in="${viewModelInstance.tipoDocumentoList}">
@@ -25,7 +25,7 @@
 		</script>
 		<!-- FIN: SCRIPT PARA DOCUMENTOS  -->
 	 
-	<!-- INICIA: SCRIPT PARA FUNCIONAMIENTO DE AUTORIZADOS -->
+	<!-- INICIA: SCRIPT PARA FUNCIONAMIENTO DE PARTICIPANTES -->
 	<g:render template="participantes"/>
 	<g:javascript src="mx.amib.sistemas.registro.evento.form.participantesWidget.js" />
 	<script type="text/javascript">
@@ -40,6 +40,23 @@
 		});
 	</script>
 	<!-- FIN: SCRIPT PARA FUNCIONAMIENTO DE AUTORIZADOS -->
+	
+	<!-- INICIA: SCRIPT PARA FUNCIONAMIENTO DE EXPOSITORES -->
+	<g:render template="expositores"/>
+	<g:javascript src="mx.amib.sistemas.registro.evento.form.expositoresWidget.js" />
+	<script type="text/javascript">
+		$(function(){ 
+			var expositores = [
+				<g:each in="${eventoInstance?.expositores?}">
+					{  grailsId: ${it.id}, nombreExpositor:'${it.nombreExpositor}', primerApellidoExpositor:'${it.primerApellidoExpositor}', segundoApellidoExpositor:'${it.segundoApellidoExpositor}', horas:${it.horas} },
+				</g:each>
+			];
+			var expositoresView = new app.ExpositoresView(expositores);
+			//expositoresView.ajaxUrl = '<g:createLink action="obtenerSustentantePorMatricula"/>';
+		
+		});
+	</script>
+	<!-- FIN: SCRIPT PARA FUNCIONAMIENTO DE EXPOSITORES -->
 	
 	<!-- INICIO: SCRIPT PARA VISTA -->
 	<g:javascript src="mx.amib.sistemas.cursoseventos.oficioCNBV.form.js" />

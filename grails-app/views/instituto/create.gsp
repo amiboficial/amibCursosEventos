@@ -5,6 +5,7 @@
 		<g:set var="entityName" value="${message(code: 'instituto.label', default: 'Instituto')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	
+	
 	<script type="text/javascript">
 	$(function() {
 		/* Obtencion de datos desde el código postal */
@@ -189,6 +190,7 @@
 					
 <table class="table">
 	<thead>
+	<h4>Telefonos del Instituto</h4>
 		<tr>
 			<th>Número de teléfono</th>
 			<th>Tipo</th>
@@ -210,6 +212,12 @@
 		
 	</tbody>
 </table>
+<script type="text/javascript">
+		valor = document.getElementById("txtNewNumTelefono").value;
+			if( isNaN(valor) ) {
+ 			 return false;
+			}
+</script>
 
 <script type="text/template" id="telefonoTemplate">
 			<td>{{=telefono}}</td>
@@ -221,7 +229,6 @@
 </script>
 
 <script type="text/javascript">
-
 //definimos un "contexto"
 var telWidget = telWidget || {}
 
@@ -320,9 +327,6 @@ $(function(){
 });
 
 </script>
-	
-					
-					
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save btn btn-default btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />

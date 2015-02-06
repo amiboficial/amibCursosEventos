@@ -6,11 +6,10 @@ import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.TipoDocumentoEvento
 class DocumentoEvento {
 	
 	
-	
 	Date fechaCreacion
+	
 	Evento evento
 	TipoDocumentoEvento tipoDocumentoEvento
-	
 	String uuid
 	
 	String nombreDeArchivo
@@ -33,7 +32,6 @@ class DocumentoEvento {
 	}
 
     static constraints = {
-		uuid nullable: true, maxSize: 100
 		fechaCreacion nullable: true
     }
 }

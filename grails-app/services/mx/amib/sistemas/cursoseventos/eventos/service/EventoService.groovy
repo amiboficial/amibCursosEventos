@@ -6,18 +6,18 @@ import java.util.List;
 import grails.converters.JSON
 import grails.transaction.Transactional
 import groovy.json.StringEscapeUtils
-
 import mx.amib.sistemas.cursoseventos.eventos.model.Evento
 import mx.amib.sistemas.cursoseventos.eventos.model.Expositor
 import mx.amib.sistemas.cursoseventos.eventos.model.HorarioEvento
 import mx.amib.sistemas.cursoseventos.eventos.model.Participante
 import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.DocumentoEvento
 import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.TipoDocumentoEvento
-
+import mx.amib.sistemas.external.documentos.service.DocumentoRepositorioService
 import mx.amib.sistemas.external.documentos.service.DocumentoRepositorioTO
 
 @Transactional
 class EventoService {
+	def documentoRepositorioService
 	def serviceMethod() {
 		
 		}
@@ -27,7 +27,7 @@ class EventoService {
 		String errMsg
 	}
 	
-	def save(Evento eventoInstance, List<String> participantesJson, List<String> documentosJson){ //List<String> documentosJson,
+	def save(Evento eventoInstance, List<String> participantesJson, List<String> documentosJson, List<String> ExpositoresJson){ //List<String> documentosJson,
 		List<DocumentoRepositorioTO> docsAEnviar = new ArrayList<DocumentoRepositorioTO>()
 		
 		eventoInstance.documentoEvento = new ArrayList<DocumentoEvento>()
@@ -61,6 +61,21 @@ class EventoService {
 		eventoInstance.fechaCreacion = new Date()
 		//eventoInstance.fechaModificacion = new Date()
 		
+		eventoInstance.expositores = new ArrayList<Expositor>()
+		ExpositoresJson.each{
+			def parsedJson = JSON.parse(it)
+			
+			Expositor expositor = new Expositor()
+			expositor.nombreExpositor = parsedJson.'nombreExpositor'
+			expositor.primerApellidoExpositor = parsedJson.'primerApellidoExpositor'
+			expositor.segundoApellidoExpositor = parsedJson.'segundoApellidoExpositor'
+			expositor.horas = parsedJson.'horas'
+			
+			expositor.evento = eventoInstance
+			eventoInstance.expositores.add(expositor)
+			
+		}
+		
 			
 		eventoInstance.validate()
 		eventoInstance.save(flush:true, failOnError:true)
@@ -70,44 +85,42 @@ class EventoService {
 		
 	}
 	
-	def update(Evento eventoInstance, List<String> participantesJson){//, List<String> expositorJson, List<String> documentosJson, List<String> horarioEventoJson
+	def update(Evento eventoInstance, List<String> participantesJson, List<String> documentosJson,  List<String> expositorJson){//, List<String> expositorJson, List<String> documentosJson, List<String> horarioEventoJson
 	//// update para Expositores
-		/*List<Expositor> expositorToDelete = new ArrayList<Expositor>()
+		List<Expositor> expositorToDelete = new ArrayList<Expositor>()
 		List<Expositor> expositorToAdd = new ArrayList<Expositor>()
 		
-		evento.expositores.each{ Expositor _e ->
-			_e.toBeUpdate = false
-		}
-		
+		eventoInstance.expositores.each{
+			it.toBeUpdated = false
+		}	
 		expositorJson.each{ String _expositorJson ->
 			Expositor expositor = null
 			def parsedJson = JSON.parse(_expositorJson)
-			
+	
 			expositor = Expositor.get(parsedJson.'id')
 				if(expositor == null){
-					expositor = Expositor()
+					expositor = new Expositor()
 					expositorToAdd.add(expositor)
 				}
 				expositor.nombreExpositor = parsedJson.'nombreExpositor'
 				expositor.primerApellidoExpositor = parsedJson.'primerApellidoExpositor'
 				expositor.segundoApellidoExpositor = parsedJson.'segundoApellidoExpositor'
 				expositor.horas = parsedJson.'horas'
-			expositor.toBeUpdated = true
-				
+			expositor.toBeUpdated = true		
+		}
+		eventoInstance.expositores.each{ 
+			if(it.toBeUpdated == false)
+			expositorToDelete.add(it)
+		}
+		expositorToDelete.each{ 
+			eventoInstance.removeFromExpositores(it)
+			it.delete(flush:true)
+		}
+		expositorToAdd.each{ 
+			it.evento = eventoInstance
+			eventoInstance.expositores.add(it)
 		}
 		
-		evento.expositores.each{ Expositor _e ->
-			if(_e.toBeUpdated == false)
-			expostorToDelete.add(_e)
-		}
-		expositorToDelete.each{ Expositor _e ->
-			evento.removeFromExpositores(_e)
-			_e.delete(flush:true)
-		}
-		expositorToAdd.each{ Expositor _e ->
-			_e.evento = evento
-			evento.expositores.add(_e)
-		}*/
 		////update para participantes
 		TransactionResult tr = new TransactionResult()
 		StringBuilder errMsgSb = new StringBuilder()
@@ -135,24 +148,25 @@ class EventoService {
 			if(it.toBeDeleted == true){
 				participanteToDelete.add(it)
 			}
-			
 		}
-		/*participanteToDelete.each{ 
-			evento.removeFromParticipantes(it)
+		participanteToDelete.each{ 
+			eventoInstance.removeFromParticipantes(it)
 			it.delete(flush:true)
-		}*/
+		}
 		participanteToAdd.each{
 			it.evento = eventoInstance
 			eventoInstance.participantes.add(it)
 		}
-		eventoInstance.save(flush:true, failOnError:true)
-		return eventoInstance
+		//eventoInstance.save(flush:true, failOnError:true)
+		//return eventoInstance
 	
 		//evento.dateCreated = new Date()
 		//evento.lastUpdated = new Date()
 		
+		
+		
 
- 		
+ 	
 		//// update para horario evento
 		/*List<HorarioEvento> horarioEventoToDelete = new ArrayList<HorarioEvento>()
 		List<HorarioEvento> horarioEventoToAdd = new ArrayList<HorarioEvento>()
@@ -188,7 +202,7 @@ class EventoService {
 		horarioEventoToAdd.each{HorarioEvento _h ->
 			_h.evento = evento
 			evento.horarioEvento.add(_h)
-		}
+		}*/
 		
 		
 		List<DocumentoRepositorioTO> docsAEnviar = new ArrayList<DocumentoRepositorioTO>()
@@ -197,8 +211,8 @@ class EventoService {
 		List<DocumentoEvento> deeABorrar = new ArrayList<DocumentoEvento>()
 		List<DocumentoEvento> deeAAgregar = new ArrayList<DocumentoEvento>()
 		
-		evento.documentoEvento.each{
-			it.toBeUpdated = false
+		eventoInstance.documentoEvento.each{
+			it.toBeUpdate = false
 		}
 		documentosJson.each{ String _documentoJson ->
 			DocumentoEvento dee = null
@@ -219,29 +233,49 @@ class EventoService {
 			}
 			de.uuid = parsedJson.'uuid'
 			de.clave = ''
-			dee.toBeUpdated = true
+			dee.toBeUpdate = true
 		}
-		evento.documentoEvento.each{
-			if(it.toBeUpdated == false){
-				uuidsDocsABorrar.add(it.documentos)
+		eventoInstance.documentoEvento.each{
+			if(it.toBeUpdate == false){
+				uuidsDocsABorrar.add(it.uuid)
 				deeABorrar.add(it)
 			}
 		}
 		
 		deeABorrar.each{
-			evento.removeFromDocumentoEvento(it)
+			eventoInstance.removeFromDocumentoEvento(it)
 			it.delete(flush:true)
 		}
 		deeAAgregar.each{
-			it.evento = evento
-			curso.documentoEvento.add(it)
-		}*/
-		//eventoInstance.validate()
+			it.evento = eventoInstance
+			eventoInstance.documentoEvento.add(it)
+		}
+		eventoInstance.validate()
 		
-		//documentoRepositorioService.enviarDocumentosArchivoTemporal(docsAEnviar)//envia documentos al repositorio
-		//documentoRepositorioService.actualizaMetadatosDocumentos(docsAActualizar) por ahorita no lo mandamos nada porque no estamos adjuntado datos al repo.
-		//documentoRepositorioService.eliminarDocumentos(uuidsDocsABorrar)
+		eventoInstance.save(flush:true, failOnError:true)
+		return eventoInstance
+		documentoRepositorioService.enviarDocumentosArchivoTemporal(docsAEnviar)//envia documentos al repositorio
+		//documentoRepositorioService.actualizaMetadatosDocumentos(docsAActualizar) //por ahorita no lo mandamos nada porque no estamos adjuntado datos al repo.
+		documentoRepositorioService.eliminarDocumentos(uuidsDocsABorrar)
 			
+	}
+	
+	def delete(Evento eventoInstance){
+		List<String>expositorToDelete = new ArrayList<String>()
+		eventoInstance.expositores.each{
+			expositorToDelete.add(it.nombreExpositor)
+		}
+		List<String>uuidsDocsABorrar = new ArrayList<String>()
+		eventoInstance.documentoEvento.each{
+			uuidsDocsABorrar.add(it.uuid)
+		}
+		List<String>participanteToDelete = new ArrayList<String>()
+		eventoInstance.participantes.each{
+			participanteToDelete.add(it.numeroMatricula)
+		}
+		
+		eventoInstance.delete(flush:true,failOnError:true)
+		documentoRepositorioService.eliminarDocumentos(uuidsDocsABorrar)
 	}
 	
 }

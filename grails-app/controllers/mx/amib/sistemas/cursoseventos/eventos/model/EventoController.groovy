@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat
 import java.util.Date;
 import java.util.List;
 import mx.amib.sistemas.external.documentos.service.DocumentoRepositorioService
-import mx.amib.sistemas.cursoseventos.cursos.model.catalogo.TipoDocumentoCurso;
 import mx.amib.sistemas.cursoseventos.eventos.model.catalogo.TipoDocumentoEvento
 import mx.amib.sistemas.external.catalogos.service.SepomexService
 import mx.amib.sistemas.external.expediente.service.SustentanteService
@@ -18,51 +17,19 @@ import grails.transaction.Transactional
 class EventoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+	
+	//servicios
 	def sepomexService
 	def sustentanteService
 	def eventoService
 	def documentoRepositorioService
 	
     def index(Integer max) {
-		/*def result = null
-		def resultList = null
-		long resultListCount = 0
+		params.max = Math.min(max ?: 10, 100)
 		
-        params.max = Math.min(max ?: 10, 100)
-		params.offest = params.offset?:0
-		params.fltType = params.fltType?:''
-		EventoIndexViewModel eivm = this.getIndexViewModel(params)
-		*/
-		/*if(params.fltType == ''){
-			resultList = Evento.list(params)
-			resultList = Evento.count()
-		}
-		else if (params.fltType == 'PMAT'){
-			params.ftlPMat = params.flaPMat?:'-1'
-			result = eventoService.searchByMatricula(params.max, params.offset.toInteger(), params.sort, params.order, params.fltPMat.toInteger())
-			resultList = result.list
-			resultListCount = result.count
-		}
-		else if(params.fltType == 'PNOM'){
-			params.fltPNom = params.fltPNom?:""
-			result = evento.searchByNombre(params.max, params.offset.toInteger(), paramas.sort, params.order, params.fltPNom)
-			resultList = result.list
-			resultListCount = result.count
-		}*/
-		
-		//respond resultList, model:[eventoInstanceCount: resultListCount, viewModelInstance:eivm]
         respond Evento.list(params), model:[eventoInstanceCount: Evento.count()] //resultListCount, viewModelInstance:evm 
     }
-	/*private EventoIndexViewModel getIndexViewModel(def params){
-		EventoIndexViewModel eivm = new EventoIndexViewModel()
-		
-		eivm.fltAMat = (params.fltAMat==null || !params.fltAMat.isNumber())?-1:(params.fltAmat.toIteger())
-		eivm.fltANom = (params.fltAmat==null || params.fltAMat=='null')?"":params.fltANom
-		return eivm	
-		
-	}*/
-
+	
     def show(Evento eventoInstance) {
 		eventoInstance.documentoEvento.each{
 			it.nombreDeArchivo = documentoRepositorioService.obtenerMetadatosDocumento(it.uuid)?.nombre;
@@ -90,21 +57,19 @@ class EventoController {
 		def documentosToErase = null
 		def eventoInstance = evento
 		def jsonStrLstParticipantes = params.list('participante')
+		def jsonStrLstExpositores = params.list('expositor')
 
         if (eventoInstance == null) {
             notFound()
             return
         }
-		eventoService.save(eventoInstance, jsonStrLstParticipantes, documentosToBind)//documentosToBind
-		
-		
 	    /*if (eventoInstance.hasErrors()) {
             respond eventoInstance.errors, view:'create'
             return
         }
-
         eventoInstance.save flush:true
 		*/
+		eventoService.save(eventoInstance, jsonStrLstParticipantes, documentosToBind, jsonStrLstExpositores)
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'evento.label', default: 'Evento'), eventoInstance.id])
@@ -115,11 +80,11 @@ class EventoController {
     }
 
     def edit(Evento eventoInstance) {
-		//EventoViewModel eventoViewModel = this.editViewModel()
-		//eventoInstance = this.cargaNombresArchivo(eventoInstance)
-        respond eventoInstance//, model:[viewModelInstance: eventoViewModel]
+		EventoViewModel eventoViewModel = this.editViewModel()
+		eventoInstance = this.cargaNombresArchivo(eventoInstance)
+        respond eventoInstance, model:[viewModelInstance: eventoViewModel]
     }
-	/*private EventoViewModel editViewModel(){
+	private EventoViewModel editViewModel(){
 		EventoViewModel eventoViewModel = new EventoViewModel()
 		eventoViewModel.tipoDocumentoList = TipoDocumentoEvento.list()
 		eventoViewModel.validDocumentosCargados = true
@@ -130,14 +95,14 @@ class EventoController {
 			it.nombreDeArchivo = documentoRepositorioService.obtenerMetadatosDocumento(it.uuid).nombre
 		}
 		return eventoInstance
-	}*/
+	}
 	
-
     @Transactional
     def update(Evento evento) {
 		def eventoInstance = evento
-		//def documentosToBind = params.list('documento')
-		//def documentosToEraseStrParam = params.'idsDocumentosBorrados'
+		def documentosToBind = params.list('documento')
+		def documentosToEraseStrParam = params.'idsDocumentosBorrados'
+		def jsonStrLstExpositores = params.list('expositor')
 
 		def jsonStrLstParticipantes = params.list('participante')
         if (eventoInstance == null) {
@@ -148,14 +113,8 @@ class EventoController {
             respond eventoInstance.errors, view:'edit'
             return
         }*/
-		//los miembros restantes ??
-		// te refieres a horario y expositores?
-		// si
-		// asta ahorita solo me he dado cuenta que el list de documentos es el que truena todo los demas no los he checado 
-		// pero ahorita esta tronando por eso mismo, no estas pasando todos los list correspondientes
-		// aaaaaa ok ok entocnes si ya te entendiok entonces deja le seigo 
-		// sale pues
-		eventoService.update(eventoInstance, jsonStrLstParticipantes) //, documentosToBind
+		
+		eventoService.update(eventoInstance, jsonStrLstParticipantes, documentosToBind, jsonStrLstExpositores) //
 		//eventoInstance = tr.instance
         //eventoInstance.save flush:true
 		//if(tr.valid == true){
@@ -183,23 +142,23 @@ class EventoController {
         }
         eventoInstance.delete flush:true
 		def tr = eventoInstance.delete(eventoInstance)
-		//if(tr.valid == true){
+		if(tr.valid == true){
         request.withFormat {
-            form multipartForm '*'{
+            '*'{// form multipartForm
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Evento.label', default: 'Evento'), eventoInstance.id])
                 redirect action:"index", method:"GET"
             }
-            '*'{ render status: NO_CONTENT }
+           // '*'{ render status: NO_CONTENT }
         }
-    //}
-		/*else{
+    }
+		else{
 			request.whitFormat{
 				'*'{
 					flash.errorMessage = tr.errMsg
 					redirect action:"index", method:"GET"
 				}
 			}
-		}*/
+		}
     }
     protected void notFound() {
         request.withFormat {
@@ -211,6 +170,10 @@ class EventoController {
         }
     }
 	
+	
+	
+	
+	//busca por codigo postal
 	def findSepomex(String id)
 	{
 		def sepomexList = sepomexService.obtenerDatosSepomexPorCodigoPostal(id)

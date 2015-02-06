@@ -195,8 +195,8 @@
 				<g:hiddenField name="version" value="${institutoInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form" />
-					<table class="table">
-	<thead>
+<table class="table">
+<thead><h4>Telefonos del Instituto</h4>
 		<tr>
 			<th>Número de teléfono</th>
 			<th>Tipo</th>
@@ -336,8 +336,13 @@ telWidget.TelefonosView = Backbone.View.extend({
 			new telWidget.TelefonosView(telefonos);
 		});			
 	</script>
-
+					
+				
+				
+				
 				</fieldset>
+				
+				
 				<fieldset class="buttons">
 					<g:actionSubmit class="save btn btn-default btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 					&nbsp;

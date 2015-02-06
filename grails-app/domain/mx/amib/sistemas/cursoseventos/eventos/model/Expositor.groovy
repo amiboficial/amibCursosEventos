@@ -17,6 +17,9 @@ class Expositor {
 	Date dateCreated
 	Date lastUpdated
 	
+	boolean toBeUpdated
+	static transients = ['toBeUpdated']
+	
 	static belongsTo = [Evento]
 	
 	static mapping = {
