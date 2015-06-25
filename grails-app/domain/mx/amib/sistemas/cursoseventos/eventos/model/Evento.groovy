@@ -9,8 +9,9 @@ import mx.amib.sistemas.cursoseventos.eventos.model.log.CambioStatusEvento
 
 class Evento {
 	
-	
+
 	//detalles del evento
+	String nombreEvento
 	Date fechaInicio
 	Date fechaTermino
 	//Detalles del coordinador
@@ -37,6 +38,7 @@ class Evento {
 		
 		id generator: "identity"
 		version false
+		nombreEvento column:'nb_evento'
 		fechaInicio column:'fh_inicio'
 		fechaTermino column:'fh_termino'
 		nombreCordinador column:'nb_coordi_nombre'

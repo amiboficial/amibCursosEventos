@@ -37,6 +37,15 @@
 				</div>
 				<br>
 				<ul class="property-list evento list-group">
+				
+				<g:if test="${eventoInstance?.nombreEvento}">
+						<li class="fieldcontain list-group-item"><span id="nombreEvento-label"
+							class="property-label"><g:message
+									code="evento.nombreEvento.label"
+									default="Nombre del Evento: " /></span> <span class="property-value"
+							aria-labelledby="nombreEvento-label"><g:fieldValue
+									bean="${eventoInstance}" field="nombreEvento" /></span></li>
+					</g:if>
 
 					<g:if test="${eventoInstance?.fechaInicio}">
 						<li class="fieldcontain list-group-item"><span id="fechaInicio-label"

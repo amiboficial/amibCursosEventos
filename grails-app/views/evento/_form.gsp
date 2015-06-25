@@ -3,163 +3,275 @@
 
 
 <div class="form-inline" role="form">
+	<fieldset>
+		<legend>Datos del Evento</legend>
 
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'fechaInicio', 'error')} ">
-	<label for="fechaInicio" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.fechaInicio.label" default="Fecha Inicio" />
+		<div
+				class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'nombreEvento', 'error')} required">
+				<label for="nombreEvento" class="col-md-3 col-sm-3 control-label"> <g:message
+						code="evento.nombreEvento.label" default="Nombre" />
+				</label>
+				<div class="col-md-9 col-sm-9 control-label">
+					<g:textField required="" name="nombreEvento" maxlength="100"
+						value="${eventoInstance?.nombreEvento}" class="form-control" />
+				</div>
+			</div>
+
+
+	
+			<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'fechaInicio', 'error')} ">
+				<label class="col-md-3 col-sm-3 col-lg-3 control-label"> <g:message
+						code="evento.fechaInicio.label" default="Fecha Inicio" />
+				</label>
+
+				<div class="col-md-9 col-sm-9 col-lg-9 control-label">
+					<g:datePicker name="fechaInicio" precision="day"
+						value="${eventoInstance?.fechaInicio}" />
+				</div>
+			</div>
 		
-	</label>
-	<g:datePicker name="fechaInicio" precision="day"  value="${eventoInstance?.fechaInicio}"  />
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'fechaTermino', 'error')} ">
-	<label for="fechaTermino" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.fechaTermino.label" default="Fecha Termino" />
+	
+			<div
+				class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'fechaTermino', 'error')} ">
+				<label class="col-md-3 col-sm-3 control-label"> <g:message
+						code="evento.fechaTermino.label" default="Fecha Termino" />
+				</label>
+				<div class="col-md-9 col-sm-9 control-label">
+					<g:datePicker name="fechaTermino" precision="day"
+						value="${eventoInstance?.fechaTermino}" />
+				</div>
+			</div>
+	
+	</fieldset>
+
+	<fieldset>
+		<legend>Datos del Coordinador</legend>
 		
-	</label>
-	<g:datePicker name="fechaTermino" precision="day"  value="${eventoInstance?.fechaTermino}"  />
-
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'nombreCordinador', 'error')} ">
-	<label for="nombreCordinador" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.nombreCordinador.label" default="Nombre Cordinador" />
+			<div
+				class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'nombreCordinador', 'error')} required">
+				<label for="nombreCordinador" class="col-md-3 col-sm-3 control-label"> <g:message
+						code="evento.nombreCordinador.label" default="Nombre" />
+				</label>
+				<div class="col-md-9 col-sm-9 control-label">
+					<g:textField required="" name="nombreCordinador" maxlength="100"
+						value="${eventoInstance?.nombreCordinador}" class="form-control" />
+				</div>
+			</div>
 		
-	</label>
-	<g:textField name="nombreCordinador" maxlength="100" value="${eventoInstance?.nombreCordinador}" class ="form-control"/>
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'primerApellidoCoordinador', 'error')} ">
-	<label for="primerApellidoCoordinador" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.primerApellidoCoordinador.label" default="Primer Apellido Coordinador" />
+
+			<div
+				class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'primerApellidoCoordinador', 'error')} required">
+				<label for="primerApellidoCoordinador" class="col-md-3 col-sm-3 control-label"> <g:message
+						code="evento.primerApellidoCoordinador.label"
+						default="Ap. Paterno" />
+				</label>
+				<div class="col-md-9 col-sm-9 control-label">
+					<g:textField required="" name="primerApellidoCoordinador" maxlength="100"
+						value="${eventoInstance?.primerApellidoCoordinador}"
+						class="form-control" />
+				</div>
 		
-	</label>
-	<g:textField name="primerApellidoCoordinador" maxlength="100" value="${eventoInstance?.primerApellidoCoordinador}" class ="form-control"/>
+		</div>
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'segundoApellidoCoordinador', 'error')} ">
-	<label for="segundoApellidoCoordinador" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.segundoApellidoCoordinador.label" default="Segundo Apellido Coordinador" />
 		
-	</label>
-	<g:textField name="segundoApellidoCoordinador" maxlength="100" value="${eventoInstance?.segundoApellidoCoordinador}"class ="form-control"/>
+			<div
+				class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'segundoApellidoCoordinador', 'error')} required">
+				<label for="segundoApellidoCoordinador" class="col-md-3 col-sm-3 control-label"> <g:message
+						code="evento.segundoApellidoCoordinador.label"
+						default="Ap. Materno" />
+				</label>
+				<div class="col-md-9 col-sm-9">
+					<g:textField required="" name="segundoApellidoCoordinador" maxlength="100"
+						value="${eventoInstance?.segundoApellidoCoordinador}"
+						class="form-control" />
+				</div>
+			</div>
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'telefonoFijoCoordinador', 'error')} ">
-	<label for="telefonoFijoCoordinador" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.telefonoFijoCoordinador.label" default="Telefono Fijo Coordinador" />
+
 		
-	</label>
-	<g:textField name="telefonoFijoCoordinador" maxlength="20" value="${eventoInstance?.telefonoFijoCoordinador}" class ="form-control"/>
-
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'faxCoordinador', 'error')} ">
-	<label for="faxCoordinador" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.faxCoordinador.label" default="Fax Coordinador" />
+			<div
+				class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'telefonoFijoCoordinador', 'error')} required" type="number">
+				<label for="telefonoFijoCoordinador" class="col-md-3 col-sm-3 control-label"> <g:message
+						code="evento.telefonoFijoCoordinador.label"
+						default="Telefono" />
+				</label>
+				<div class="col-md-9 col-sm-9">
+					<g:field type="number" required="" name="telefonoFijoCoordinador" maxlength="20"
+						value="${eventoInstance?.telefonoFijoCoordinador}"
+						class="form-control" />
+				</div>
+		</div>
 		
-	</label>
-	<g:textField name="faxCoordinador" maxlength="20" value="${eventoInstance?.faxCoordinador}" class ="form-control"/>
+			<div
+				class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'faxCoordinador', 'error')} required">
+				<label for="faxCoordinador" class="col-md-3 col-sm-3 control-label">
+					<g:message code="evento.faxCoordinador.label"
+						default="Fax" />
+				</label>
+				<div class="col-md-9 col-sm-9">
+					<g:field type="number" required="" name="faxCoordinador" maxlength="20"
+						value="${eventoInstance?.faxCoordinador}" class="form-control" />
+				</div>
+			</div>
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'email', 'error')} required">
-	<label for="email" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.email.label" default="Email" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="email" name="email" required="" value="${eventoInstance?.email}" class ="form-control"/>
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'estatus', 'error')} ">
-	<label for="estatus" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.estatus.label" default="Estatus" />
-		
-	</label>
-	<g:textField name="estatus" value="${eventoInstance?.estatus}" class ="form-control"/>
 
-</div>
-<br>
- 
-<div class="fieldcontain">
-	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.cp" default="Codigo Postal" />
-	</label>
-	<input type="text" id="txtCP" style="float: left;" class ="form-control"></input><button onclick="return window.open('http://www.correosdemexico.gob.mx/ServiciosLinea/Paginas/ccpostales.aspx');" id="btnIconoBuscarCP" style="font-size:small;">&nbsp;Buscar ...</button>
-		<g:hasErrors bean="${eventoInstance}" field="sepomex">
-			<span class="ui-icon-red ui-icon-circle-close" style="float: left; margin-top: .3em"></span>
-		</g:hasErrors>&nbsp;
-</div>
-<br>
-<div class="fieldcontain">
-	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.ed" default="Entidad Federativa" />
-	</label>
-	<input type="text" id="txtEntidad" disabled="disabled" value="" class ="form-control"></input>
-</div>
-<br>
-<div class="fieldcontain">
-	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.dm" default="Delegación ó Municipio" />
-	</label>
-	<input type="text" id="txtDelegacion" disabled="disabled" value="" class ="form-control"></input>
-</div>
-<br>
-<div class="fieldcontain" >	
-	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.cd" default="Ciudad" />
-	</label>
-	<input type="text" id="txtCiudad" disabled="disabled" value="" class ="form-control"></input>
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, select: 'domicilioSEDESepomex', 'error')}" >
-	<label for="codigoPostal" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.as" default="Asentamiento" />
-	</label>
-	<select id="selAsentamiento" name="domicilioSEDESepomex" style="float: left;" required>
-		<option value=" ">-Seleccione-</option>
-	</select>
-	<g:hasErrors bean="${eventoInstance.domicilioSEDESepomex}" field="domicilioSEDESepomex">
-		<span class="ui-icon-red ui-icon-circle-close" style="float: left; margin-top: .3em"></span>
-	</g:hasErrors>
-</div>
-<br>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'domicilioSEDECalle', 'error')} ">
-	<label for="domicilioSEDECalle" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.domicilioSEDECalle.label" default="Domicilio SEDEC alle" />
-		
-	</label>
-	<g:textField name="domicilioSEDECalle" maxlength="100" value="${eventoInstance?.domicilioSEDECalle}" class ="form-control"/>
+			<div
+				class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'email', 'error')} required">
+				<label for="email" class="col-md-3 col-sm-3 control-label">
+					<g:message code="evento.email.label" default="Email" /> <span
+					class="required-indicator">*</span>
+				</label>
+				<div class="col-md-9 col-sm-9">
+					<g:field type="email" name="email" required="" value="${eventoInstance?.email}" class="form-control" />
+				</div>
+			</div>
 
-</div>
-<br>
-<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'domicilioSEDENumero', 'error')} ">
-	<label for="domicilioSEDENumero" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="evento.domicilioSEDENumero.label" default="Domicilio SEDEN umero" />
-		
-	</label>
-	<g:textField name="domicilioSEDENumero" maxlength="20" value="${eventoInstance?.domicilioSEDENumero}" class ="form-control"/>
+</fieldset>
 
-</div>
-<br>
+<fieldset>
+		<legend>Domicilio de la Sede</legend>
 
-<!-- 
+		<div class="fieldcontain required">
+			<label for="codigoPostal" class="col-md-3 col-sm-3 control-label">
+				<g:message code="evento.cp" default="Codigo Postal" />
+			</label>
+			<div class="col-md-9 col-sm-9">
+				<input required="" type="text" id="txtCP" style="float: left;"
+					class="form-control"></input>
+				<button
+					onclick="return window.open('http://www.correosdemexico.gob.mx/ServiciosLinea/Paginas/ccpostales.aspx');"
+					id="btnIconoBuscarCP" style="font-size: small;">&nbsp;Buscar
+					...</button><br>
+				<g:hasErrors bean="${eventoInstance}" field="sepomex">
+					<span class="ui-icon-red ui-icon-circle-close"
+						style="float: left; margin-top: .3em"></span>
+				</g:hasErrors>
+				&nbsp;
+			</div>
+		</div>
+</fieldset>
+<fieldset>
+		<div class="fieldcontain">
+			<label for="codigoPostal" class="col-md-3 col-sm-3 control-label">
+				<g:message code="evento.ed" default="Entidad " />
+			</label>
+			<div class="col-md-9 col-sm-9">
+				<input type="text" id="txtEntidad" disabled="disabled" value=""
+					class="form-control"></input>
+			</div>
+		</div>
+
+		<div class="fieldcontain">
+			<label for="codigoPostal" class="col-md-3 col-sm-3 control-label">
+				<g:message code="evento.dm" default="Municipio" />
+			</label>
+			<div class="col-md-9 col-sm-9">
+				<input type="text" id="txtDelegacion" disabled="disabled" value=""
+					class="form-control"></input>
+			</div>
+		</div>
+
+		<div class="fieldcontain">
+			<label for="codigoPostal" class="col-md-3 col-sm-3 control-label">
+				<g:message code="evento.cd" default="Ciudad" />
+			</label>
+			<div class="col-md-9 col-sm-9">
+				<input type="text" id="txtCiudad" disabled="disabled" value=""
+					class="form-control"></input>
+			</div>
+		</div>
+</fieldset>
+<fieldset>
+		<div
+			class="fieldcontain ${hasErrors(bean: eventoInstance, select: 'domicilioSEDESepomex', 'error')}">
+			<label for="codigoPostal" class="col-md-3 col-sm-3 control-label">
+				<g:message code="evento.as" default="Asentamiento" />
+			</label>
+			<div class="col-md-9 col-sm-9">
+				<select id="selAsentamiento" name="domicilioSEDESepomex"
+					style="float: left;" required>
+					<option value=" ">-Seleccione-</option>
+				</select>
+				<g:hasErrors bean="${eventoInstance.domicilioSEDESepomex}"
+					field="domicilioSEDESepomex">
+					<span class="ui-icon-red ui-icon-circle-close"
+						style="float: left; margin-top: .3em"></span>
+				</g:hasErrors>	
+			</div>
+		</div>	
+</fieldset>
+<fieldset>
+		<div
+			class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'domicilioSEDECalle', 'error')} required">
+			<label for="domicilioSEDECalle"
+				class="col-md-3 col-sm-3 control-label"> <g:message
+					code="evento.domicilioSEDECalle.label"
+					default="Calle" />
+			</label>
+			<div class="col-md-9 col-sm-9">
+				<g:textField required="" name="domicilioSEDECalle" maxlength="100"
+					value="${eventoInstance?.domicilioSEDECalle}" class="form-control" />
+			</div>
+		</div>
+		<br>
+
+		<div
+			class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'domicilioSEDENumero', 'error')} required">
+			<label for="domicilioSEDENumero"
+				class="col-md-3 col-sm-3 control-label"> <g:message
+					code="evento.domicilioSEDENumero.label"
+					default="Numero" />
+			</label>
+			<div class="col-md-9 col-sm-9">
+				<g:textField required="" name="domicilioSEDENumero" maxlength="20"
+					value="${eventoInstance?.domicilioSEDENumero}" class="form-control" />
+			</div>
+		</div>
+		<br>
+
+	<div
+		class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'estatus', 'error')} required">
+		<label for="estatus" class="col-md-3 col-sm-3 control-label">
+			<g:message code="evento.estatus.label" default="Estatus" />
+		</label>
+		<div class="col-md-9 col-sm-9">
+			<g:field type="number" required="" name="estatus" value="${eventoInstance?.estatus}"
+				class="form-control" />
+		</div>
+	</div>
+</fieldset>
+	<fieldset>
+
+		<div
+			class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'cursos', 'error')} required">
+			<label for="cursos" class="col-md-3 col-sm-3 control-label">
+				<g:message code="instituto.tipoInstituto.label"
+					default="Cursos" /> <span class="required-indicator">*</span>
+			</label>
+			<div class="col-md-9 col-sm-9">
+				<g:select id="cursos" name="cursos.id"
+					from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}"
+					optionKey="id" optionValue="nombreDelCurso" required=""
+					value="${cursosInstance?.id}" class="many-to-one"
+					class="form-control" />
+			</div>
+		</div>
+	</fieldset>
+
+
+	<!-- 
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'domicilioSEDESepomex', 'error')} ">
 	<label for="domicilioSEDESepomex" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.domicilioSEDESepomex.label" default="Domicilio SEDES epomex" />
 	</label>
 	<g:field name="domicilioSEDESepomex" type="number" value="${eventoInstance.domicilioSEDESepomex}" class ="form-control"/>
-
 </div>
 <br> 
  -->
-
+<!-- 
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'fechaCreacion', 'error')} ">
 	<label for="fechaCreacion" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.fechaCreacion.label" default="Fecha Creacion" />
@@ -167,7 +279,7 @@
 	</label>
 	<g:datePicker name="fechaCreacion" precision="day"  value="${eventoInstance?.fechaCreacion}" />
 
-</div>
+</div> -->
 <br>
 <%--<div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'cambioEstatusEvento', 'error')} ">
 	<label for="cambioEstatusEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
@@ -183,13 +295,10 @@
 <div class="fieldcontain">
 	   <fieldset>
 				<legend>Documentos del Evento</legend>
-				
 				<%--<div id="divDocsCompletos" class="alert alert-danger">
 					<span class="glyphicon glyphicon-ban-circle"></span> Debes incluir un documento de respaldo
 				</div> --%>
-				
 				<div id="divMultiplesDocumentos">
-					
 					  <div class="msgProcesando alert alert-info">
 						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
 					</div>
@@ -206,13 +315,13 @@
 					</div>
 					<div class="newFileRow row">
 						<div class="archivoInputDiv col-md-5">
-							<label class="control-label col-md-4">Seleccione un archivo:</label>
+							<label class="control-label col-md-8">Seleccione un archivo:</label>
 							<div class="col-md-8"><input type="file" class="file" id="ZmlsZURvY3VtZW50bw"/></div>
 						</div>
 						<div class="tipoDiv col-md-4">
-							<label class="control-label col-md-4">Tipo:</label>
+							<label class="control-label col-md-8">Tipo:</label>
 							<div class="col-md-8">
-								<select class="tipoDocumento form-control col-md-8">
+								<select class="tipoDocumento form-control col-md-4">
 									<option value="null">-Seleccione-</option>
 									 <g:each in="${viewModelInstance.tipoDocumentoList}">
 										validador.addDocType(${it.id});
@@ -248,14 +357,7 @@
 </div>
 <br>
 
-<div class="fieldcontain ${hasErrors(bean: cursosInstance, field: 'cursos', 'error')} required">
-	<label for="cursos" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
-		<g:message code="instituto.tipoInstituto.label" default="Lista de cursos" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="cursos" name="cursos.id" from="${mx.amib.sistemas.cursoseventos.cursos.model.Cursos.list()}" optionKey="id" optionValue="nombreDelCurso" required="" value="${cursosInstance?.id}" class="many-to-one" class ="form-control"/>
 
-</div>
 <br>
 <fieldset>
 				<legend>Datos de participantes</legend>
@@ -297,26 +399,13 @@
 				<input type="hidden" id="hdnParticipantesWidgetCount" />
 			</fieldset>
 
-<br>
+
 <fieldset>
+
 				<legend>Datos de expositores</legend>
 				
 				<div id="divExpositores">
-				<%--<div id="divMsgMatriculaYaEnLista" class="alert alert-danger">
-						<span class="glyphicon glyphicon-ban-circle"></span> Matrícula <strong>ya agregada</strong>.
-					</div>
-					<div id="divMsgMatriculaNoEncontrada" class="alert alert-danger">
-						<span class="glyphicon glyphicon-ban-circle"></span> Matrícula <strong>no encontrada</strong>.
-					</div>
-					<div id="divMsgErrorSolicitud" class="alert alert-danger">
-						<span class="glyphicon glyphicon-ban-circle"></span> Error al procesar la solicitud</strong>.
-					</div>
-					<div id="divMsgProcesandoAutorizado" class="alert alert-info">
-						<asset:image src="spinner_alert_info.gif"/> <strong>Procesando datos, espere un momento</strong>.
-					</div>
-					<div id="divMsgAlMenosUnAutorizado" class="alert alert-danger">
-						<span class="glyphicon glyphicon-ban-circle"></span> Se requiere ingresar <strong>al menos un autorizado</strong>.
-					</div> --%>
+			
 
 					<table class="table">
 						<thead>
@@ -330,8 +419,8 @@
 						</thead>
 						<tbody id="tbdyExpositores">
 							<tr>
-							<td><input id="txtNewNomExpositor" class="form-control" type="text" /></td>
-							<td><input id="txtNewPriApeExpositor" class="form-control" type="text"/></td>
+							<td><input id="txtNewNomExpositor" class="form-control" type="text" onFocus=clear_textbox() /></td>
+							<td><input id="txtNewPriApeExpositor" class="form-control" type="text" /></td>
 							<td><input id="txtNewSegApeExpositor" class="form-control" type="text" /></td>
 							<td><input id="NumNewhora" class="form-control" type="number" /></td>
 							</td>
@@ -348,6 +437,8 @@
 			</fieldset>
 
 <br>
+
+
 <%-- <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'documentoEvento', 'error')} ">
 	<label for="documentoEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.documentoEvento.label" default="Documento Evento" />
@@ -360,12 +451,9 @@
 </g:each>
 <li class="add">
 <g:link controller="documentoEvento" action="create" params="['evento.id': eventoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'documentoEvento.label', default: 'DocumentoEvento')])}</g:link>
-
 </li>
 </ul>
-
 </div>
-
 <div class="fieldcontain ${hasErrors(bean: eventoInstance, field: 'horarioEvento', 'error')} ">
 	<label for="horarioEvento" class="col-lg-4 col-sm-6 col-md-6 col-xs-6 control-label">
 		<g:message code="evento.horarioEvento.label" default="Horario Evento" />
@@ -395,6 +483,3 @@
 <br>
 </div>
 --%>
-
-
-

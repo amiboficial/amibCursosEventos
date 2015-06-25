@@ -141,16 +141,16 @@ class EventoController {
             return
         }
         eventoInstance.delete flush:true
-		def tr = eventoInstance.delete(eventoInstance)
-		if(tr.valid == true){
+		//def tr = eventoInstance.delete(eventoInstance)
+		//if(tr.valid == true){
         request.withFormat {
-            '*'{// form multipartForm
+           form multipartForm {// '*'
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Evento.label', default: 'Evento'), eventoInstance.id])
                 redirect action:"index", method:"GET"
             }
-           // '*'{ render status: NO_CONTENT }
+            '*'{ render status: NO_CONTENT }
         }
-    }
+    /*}
 		else{
 			request.whitFormat{
 				'*'{
@@ -158,7 +158,7 @@ class EventoController {
 					redirect action:"index", method:"GET"
 				}
 			}
-		}
+		}*/
     }
     protected void notFound() {
         request.withFormat {

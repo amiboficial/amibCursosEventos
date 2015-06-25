@@ -61,3 +61,17 @@
 	<!-- INICIO: SCRIPT PARA VISTA -->
 	<g:javascript src="mx.amib.sistemas.cursoseventos.oficioCNBV.form.js" />
 	<!-- FIN: SCRIPT PARA VISTA-->
+	<script>
+	function cleanCampos(expositores){
+		$(expositores).find('input').each(function(){
+				$(this).val('');
+			}
+			});
+	}
+	
+	$('#limpiar').click(function(){
+		cleanCampos('#tbdyExpositores');
+		});
+	</script>
+	
+	

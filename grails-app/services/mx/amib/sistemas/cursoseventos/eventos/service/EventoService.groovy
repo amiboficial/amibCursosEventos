@@ -85,7 +85,7 @@ class EventoService {
 		
 	}
 	
-	def update(Evento eventoInstance, List<String> participantesJson, List<String> documentosJson,  List<String> expositorJson){//, List<String> expositorJson, List<String> documentosJson, List<String> horarioEventoJson
+	def update(Evento eventoInstance, List<String> participantesJson, List<String> documentosJson,  List<String> expositorJson){
 	//// update para Expositores
 		List<Expositor> expositorToDelete = new ArrayList<Expositor>()
 		List<Expositor> expositorToAdd = new ArrayList<Expositor>()
